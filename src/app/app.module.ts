@@ -10,6 +10,7 @@ import { AllTemplateBackComponent } from './BackOffice/all-template-back/all-tem
 import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-template-front.component';
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
+import { HomeBackComponent } from './BackOffice/home-back/home-back.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.co
     AllTemplateBackComponent,
     AllTemplateFrontComponent,
     FooterFrontComponent,
-    HeaderFrontComponent
+    HeaderFrontComponent,
+    HomeBackComponent
   ],
   imports: [
     BrowserModule,

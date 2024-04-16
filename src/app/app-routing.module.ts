@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AllTemplateFrontComponent} from "./FrontOffice/all-template-front/all-template-front.component";
 import {AllTemplateBackComponent} from "./BackOffice/all-template-back/all-template-back.component";
+import {HomeBackComponent} from "./BackOffice/home-back/home-back.component";
 
 const routes: Routes = [
   {
@@ -10,7 +11,13 @@ const routes: Routes = [
   },
   {
     path:"admin",
-    component:AllTemplateBackComponent
+    component:AllTemplateBackComponent,
+    children:[
+      {
+        path:"",
+        component:HomeBackComponent
+      }
+    ]
   }
 ];
 
