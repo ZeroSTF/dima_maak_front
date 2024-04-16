@@ -12,6 +12,8 @@ import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.co
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
 import { HomeBackComponent } from './BackOffice/home-back/home-back.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
+import { LoginComponent } from './FrontOffice/login/login.component';
+import { SignupComponent } from './FrontOffice/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HomeFrontComponent } from './FrontOffice/home-front/home-front.componen
     FooterFrontComponent,
     HeaderFrontComponent,
     HomeBackComponent,
-    HomeFrontComponent
+    HomeFrontComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

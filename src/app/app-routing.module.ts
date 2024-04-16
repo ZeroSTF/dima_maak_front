@@ -4,6 +4,8 @@ import {AllTemplateFrontComponent} from "./FrontOffice/all-template-front/all-te
 import {AllTemplateBackComponent} from "./BackOffice/all-template-back/all-template-back.component";
 import {HomeBackComponent} from "./BackOffice/home-back/home-back.component";
 import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component";
+import {LoginComponent} from "./FrontOffice/login/login.component";
+import {SignupComponent} from "./FrontOffice/signup/signup.component";
 
 const routes: Routes = [
   {
@@ -13,6 +15,14 @@ const routes: Routes = [
       {
         path:"",
         component:HomeFrontComponent
+      },
+      {
+        path:"login",
+        component: LoginComponent
+      },
+      {
+        path:"signup",
+        component: SignupComponent
       }
     ]
   },
