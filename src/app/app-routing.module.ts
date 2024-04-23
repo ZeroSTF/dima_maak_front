@@ -6,6 +6,7 @@ import {HomeBackComponent} from "./BackOffice/home-back/home-back.component";
 import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component";
 import {LoginComponent} from "./FrontOffice/login/login.component";
 import {SignupComponent} from "./FrontOffice/signup/signup.component";
+import {UserListComponent} from "./BackOffice/user-back/user-list/user-list.component";
 
 const routes: Routes = [
   {
@@ -33,6 +34,15 @@ const routes: Routes = [
       {
         path:"",
         component:HomeBackComponent
+      },
+      {
+        path:"user",
+        component: UserListComponent,
+        children:[
+          {
+            path:""
+          }
+        ]
       }
     ]
   }

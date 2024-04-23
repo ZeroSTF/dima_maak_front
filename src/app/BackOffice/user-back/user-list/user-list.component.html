@@ -1,0 +1,18 @@
+<div class="user-list card">
+  <div class="card-header">
+    <h3 class="card-title">Users</h3>
+  </div>
+  <div class="card-body">
+    <ul *ngIf="users.length > 0" class="list-group">
+      <li *ngFor="let user of users" class="list-group-item">
+        <div class="user-details d-flex justify-content-between align-items-center">
+          <span class="user-name">{{ user.name }} {{ user.surname }}</span>
+          <span class="user-email">{{ user.email }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="card-footer text-center" *ngIf="users.length === 0">
+    <p class="text-muted">No users found.</p>
+  </div>
+</div>

@@ -14,6 +14,8 @@ import { HomeBackComponent } from './BackOffice/home-back/home-back.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { LoginComponent } from './FrontOffice/login/login.component';
 import { SignupComponent } from './FrontOffice/signup/signup.component';
+import {HttpClientModule} from "@angular/common/http";
+import { UserListComponent } from './BackOffice/user-back/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +30,13 @@ import { SignupComponent } from './FrontOffice/signup/signup.component';
     HomeBackComponent,
     HomeFrontComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
