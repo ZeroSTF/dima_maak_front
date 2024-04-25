@@ -6,6 +6,10 @@ import {HomeBackComponent} from "./BackOffice/home-back/home-back.component";
 import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component";
 import {LoginComponent} from "./FrontOffice/login/login.component";
 import {SignupComponent} from "./FrontOffice/signup/signup.component";
+import {VenturesComponent} from "./Ventures/ventures/ventures.component";
+import {VentureAddComponent} from "./Ventures/venture-add/venture-add.component";
+import {AddinvestmentComponent} from "./Investments/addinvestment/addinvestment.component";
+import {UpdateventureComponent} from "./Ventures/updateventure/updateventure.component";
 
 const routes: Routes = [
   {
@@ -33,7 +37,23 @@ const routes: Routes = [
       {
         path:"",
         component:HomeBackComponent
-      }
+      },
+      {
+        path:"venture",
+        component:VenturesComponent
+      },
+      {
+        path:"addventures",
+        component:VentureAddComponent
+      },
+      {
+        path:"addinvestment",
+        component:AddinvestmentComponent
+      },
+      {
+        path:"updateventure/:id",
+        component:UpdateventureComponent
+      },
     ]
   }
 ];
