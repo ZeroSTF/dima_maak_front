@@ -34,15 +34,6 @@ const routes: Routes = [
       {
         path:"",
         component:HomeBackComponent
-      },
-      {
-        path:"user",
-        component: UserListComponent,
-        children:[
-          {
-            path:""
-          }
-        ]
       }
     ]
   }
