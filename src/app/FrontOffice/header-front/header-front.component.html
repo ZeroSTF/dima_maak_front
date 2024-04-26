@@ -16,7 +16,7 @@
               <div class="main-menu f-right d-none d-lg-block">
                 <nav>
                   <ul id="navigation">
-                    <li class="active"><a routerLink="/">Home</a></li>
+                    <li><a routerLink="/">Home</a></li>
                     <li><a routerLink="#">Our Loan Packs</a></li>
                     <li><a routerLink="#">Our Insurance Packs</a></li>
                     <li><a routerLink="#">Our Leasing Offers</a>
@@ -27,8 +27,8 @@
                       </ul>
                     </li>
                     <li><a routerLink="#">Forum</a></li>
-                    <li><a routerLink="#">Profile</a></li>
-                    <li><a *ngIf="!authService.isAuthenticated()" routerLink="#">Sign Up</a>
+                    <li><a routerLink="#">My Profile</a></li>
+                    <li><a *ngIf="!authService.isAuthenticated()" routerLink="/signup">Sign Up</a>
                   </ul>
                 </nav>
               </div>
@@ -38,7 +38,6 @@
               <div *ngIf="authService.isAuthenticated()" class="header-right-btn f-right d-none d-lg-block">
                 <a class="btn header-btn" style="background-color: #1F506B; color: #fff;" (click)="logout()">Logout</a>
               </div>
-
             </div>
           </div>
           <!-- Mobile Menu -->

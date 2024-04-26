@@ -7,6 +7,7 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
 import {LoginComponent} from "./FrontOffice/login/login.component";
 import {SignupComponent} from "./FrontOffice/signup/signup.component";
 import {UserListComponent} from "./BackOffice/user-back/user-list/user-list.component";
+import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
     children:[
       {
         path:"",
-        component:HomeFrontComponent
+        component:HomeFrontComponent,
       },
       {
         path:"login",
@@ -23,7 +24,7 @@ const routes: Routes = [
       },
       {
         path:"signup",
-        component: SignupComponent
+        component: SignupComponent//, canActivate: [AuthGuard]
       }
     ]
   },
