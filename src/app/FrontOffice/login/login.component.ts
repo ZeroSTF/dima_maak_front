@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from "../../Service/auth.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {AuthService} from "../../Service/auth.service";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.formBuilder.group({
 
       email: ['', Validators.required],
@@ -29,11 +30,12 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
-
       this.authService.login({ email, password })
-        .subscribe(response => {
+        .subscribe((response : any) => {
           // handle successful login response
           console.log(response);
+          localStorage.setItem('token', response.jwt);  // Save token to local storage
+          this.router.navigate(['/']);
         }, error => {
           // handle login error
           console.error(error);
