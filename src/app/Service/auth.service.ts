@@ -14,7 +14,14 @@ export class AuthService {
   constructor(private http : HttpClient) { }
 
   isAuthenticated() {
-    return !!localStorage.getItem('accessToken') ;
+    const token = localStorage.getItem('token');
+    if (token) {
+      console.log('Token found in local storage');
+      return true;
+    } else {
+      console.log('Token not found in local storage');
+      return false;
+    }
   }
 
   login(requestBody : {email : string , password : string}) {

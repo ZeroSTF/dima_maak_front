@@ -28,12 +28,15 @@
                     </li>
                     <li><a routerLink="#">Forum</a></li>
                     <li><a routerLink="#">Profile</a></li>
-                    <li><a routerLink="#">Sign Up</a>
+                    <li><a *ngIf="!authService.isAuthenticated()" routerLink="#">Sign Up</a>
                   </ul>
                 </nav>
               </div>
-              <div class="header-right-btn f-right d-none d-lg-block">
+              <div *ngIf="!authService.isAuthenticated()" class="header-right-btn f-right d-none d-lg-block">
                 <a routerLink="/login" class="btn header-btn" style="background-color: #1F506B;">Sign In</a>
+              </div>
+              <div *ngIf="authService.isAuthenticated()" class="header-right-btn f-right d-none d-lg-block">
+                <a class="btn header-btn" style="background-color: #1F506B; color: #fff;" (click)="logout()">Logout</a>
               </div>
 
             </div>
