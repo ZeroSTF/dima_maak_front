@@ -11,11 +11,17 @@
               <label for="email">Email address</label>
               <input type="email" class="form-control" id="email" formControlName="email">
             </div>
+            <div *ngIf="loginForm.get('email')?.hasError('required')" class="alert alert-danger">
+              Email is required
+            </div>
             <div class="form-group">
               <label for="password">Password</label>
               <input type="password" class="form-control" id="password" formControlName="password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div *ngIf="loginForm.get('password')?.hasError('required')" class="alert alert-danger">
+              Password is required
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
           </form>
         </div>
       </div>

@@ -57,7 +57,6 @@
               "src/assets/BackOffice/plugins/jquery-mapael/jquery.mapael.min.js",
               "src/assets/BackOffice/plugins/jquery-mapael/maps/usa_states.min.js",
               "src/assets/BackOffice/plugins/chart.js/Chart.min.js",
-              "src/assets/BackOffice/dist/js/demo.js",
               "src/assets/BackOffice/dist/js/pages/dashboard2.js"
             ]
           },

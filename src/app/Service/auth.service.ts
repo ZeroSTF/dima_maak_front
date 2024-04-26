@@ -15,13 +15,7 @@ export class AuthService {
 
   isAuthenticated() {
     const token = localStorage.getItem('token');
-    if (token) {
-      console.log('Token found in local storage');
-      return true;
-    } else {
-      console.log('Token not found in local storage');
-      return false;
-    }
+    return !!token;
   }
 
   login(requestBody : {email : string , password : string}) {

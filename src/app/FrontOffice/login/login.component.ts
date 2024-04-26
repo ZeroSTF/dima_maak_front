@@ -13,18 +13,12 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.formBuilder.group({
-
       email: ['', Validators.required],
-
-      password: ['', Validators.required],
-
-      rememberMe: [false]
-
+      password: ['', Validators.required]
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {}
 
   onSubmit(): void {
     if (this.loginForm.valid) {
