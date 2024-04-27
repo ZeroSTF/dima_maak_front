@@ -13,6 +13,9 @@ private baseUrl:String = 'http://localhost:8080/user/'
   findAllUsers(): Observable<User[]>{
   return this.http.get<User[]>(this.baseUrl+'getAll')
   }
+  getUser(id:String){
+    return this.http.get(this.baseUrl+`get/${id}`) ;
+  }
   getProfile() {
     return this.http.get(this.baseUrl+`current`) ;
   }
