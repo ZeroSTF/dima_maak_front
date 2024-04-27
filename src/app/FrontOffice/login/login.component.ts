@@ -28,8 +28,13 @@ export class LoginComponent implements OnInit {
         .subscribe((response : any) => {
           // handle successful login response
           console.log(response);
-          localStorage.setItem('token', response.jwt);  // Save token to local storage
-          this.router.navigate(['/']);
+          if(response.jwt=="Invalid email/password supplied"){
+            console.log('login error'); //TODO handle login error
+          }
+          else {
+            localStorage.setItem('token', response.jwt);  // Save token to local storage
+            this.router.navigate(['/']);
+          }
         }, error => {
           // handle login error
           console.error(error);

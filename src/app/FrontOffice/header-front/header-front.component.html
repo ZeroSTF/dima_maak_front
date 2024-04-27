@@ -28,7 +28,34 @@
                       </ul>
                     </li>
                     <li><a routerLink="#">Forum</a></li>
-                    <li><a routerLink="/profile">My Profile</a></li>
+                    <!-- Notifications Dropdown Menu -->
+                    <li *ngIf="authService.isAuthenticated()" class="nav-item dropdown">
+                      <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-info navbar-badge">{{ unreadNotificationsCount }}</span>
+                      </a>
+                      <ul class="submenu">
+                        <span class="dropdown-item dropdown-header">{{ unreadNotificationsCount }} Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <ng-container *ngFor="let notification of sortedNotifications">
+                          <a *ngIf="!notification.status" href="{{ '/notification/' + notification.id }}" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> {{ notification.content | slice: 0: 10 }}{{ notification.content.length > 10? '...' : '' }}
+                            <span class="float-right text-muted text-sm">{{ timeDiff(notification.date) }}</span>
+                          </a>
+                          <div class="dropdown-divider" *ngIf="!notification.status"></div>
+                        </ng-container>
+                        <a href="/notification" class="dropdown-item dropdown-footer">All Notifications</a>
+                      </ul>
+                    </li>
+                    <li><a routerLink="/profile">My Profile</a>
+                      <ul class="submenu">
+                        <li><a routerLink="#">Insurances</a></li>
+                        <li><a routerLink="#">Loans</a></li>
+                        <li><a routerLink="#">Leases</a></li>
+                        <li><a routerLink="#">Investments</a></li>
+                        <li><a routerLink="#">Ventures</a></li>
+                      </ul>
+                    </li>
                     <li><a *ngIf="!authService.isAuthenticated()" routerLink="/signup">Sign Up</a>
                   </ul>
                 </nav>
