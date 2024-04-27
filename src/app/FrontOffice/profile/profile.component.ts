@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   profile: any;
   imageData: any;
   userId?: string;
+  current=false;
 
   constructor(private userService: UserService, private authService: AuthService, private sanitizer: DomSanitizer, private route: ActivatedRoute) {
   }
@@ -32,6 +33,7 @@ export class ProfileComponent implements OnInit {
       });
     } else {
       // For current user
+      this.current=true;
       this.userService.getProfile().subscribe(data => {
         this.processProfile(data);
       });
