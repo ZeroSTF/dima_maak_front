@@ -14,9 +14,12 @@ import { HomeBackComponent } from './BackOffice/home-back/home-back.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { LoginComponent } from './FrontOffice/login/login.component';
 import { SignupComponent } from './FrontOffice/signup/signup.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { UserListComponent } from './BackOffice/user-back/user-list/user-list.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ProfileComponent } from './FrontOffice/profile/profile.component';
+import {AuthInterceptor} from "./Service/auth.interceptor";
+import {AuthGuard} from "./auth.guard";
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     HomeFrontComponent,
     LoginComponent,
     SignupComponent,
-    UserListComponent
+    UserListComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

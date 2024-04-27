@@ -26,13 +26,4 @@ export class HeaderFrontComponent implements OnInit {
       }
     );
   }
-  private checkAuth(): boolean {
-    if (this.authService.isAuthenticated()) {
-      return true;
-    } else {
-      // Redirect to the login page if the user is not authenticated
-      this.router.navigate(['/login']);
-      return false;
-    }
-  }
 }

@@ -8,6 +8,7 @@ import {LoginComponent} from "./FrontOffice/login/login.component";
 import {SignupComponent} from "./FrontOffice/signup/signup.component";
 import {UserListComponent} from "./BackOffice/user-back/user-list/user-list.component";
 import {AuthGuard} from "./auth.guard";
+import {ProfileComponent} from "./FrontOffice/profile/profile.component";
 
 const routes: Routes = [
   {
@@ -24,7 +25,11 @@ const routes: Routes = [
       },
       {
         path:"signup",
-        component: SignupComponent//, canActivate: [AuthGuard]
+        component: SignupComponent
+      },
+      {
+        path:"profile",
+        component: ProfileComponent, canActivate: [AuthGuard]
       }
     ]
   },
