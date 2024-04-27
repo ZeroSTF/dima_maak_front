@@ -9,14 +9,14 @@
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
               <label for="email">Email address</label>
-              <input type="email" class="form-control" id="email" formControlName="email">
+              <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
             </div>
             <div *ngIf="loginForm.get('email')?.hasError('required')" class="alert alert-danger">
               Email is required
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" formControlName="password">
+              <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter password">
             </div>
             <div *ngIf="loginForm.get('password')?.hasError('required')" class="alert alert-danger">
               Password is required

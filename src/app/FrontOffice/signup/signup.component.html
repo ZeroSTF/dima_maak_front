@@ -20,73 +20,74 @@
         <div class="col-lg-8">
           <div class="apply-wrapper">
             <!-- Form -->
-            <form action="#">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="single-form">
-                    <label>* CIN (National ID)</label>
-                    <input type="text" class="form-control" id="cin" name="cin" placeholder="Enter CIN">
+                    <label>* First Name</label>
+                    <input type="text" id="firstName" formControlName="firstName" placeholder="Enter surname" class="form-control">
                   </div>
                 </div>
-              <div class="col-lg-6">
-                <div class="single-form">
-                  <label>* Name</label>
-                  <input type="text" name="name" placeholder="Enter name">
+                <div class="col-lg-6">
+                  <div class="single-form">
+                    <label>* Last Name</label>
+                    <input type="text" id="lastName" formControlName="lastName" placeholder="Enter name" class="form-control">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form">
+                    <label>* Email</label>
+                    <input type="email" id="email" formControlName="email" placeholder="Enter email" class="form-control">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form">
+                    <label>* Password</label>
+                    <input type="password" id="password" formControlName="password" placeholder="Enter password" class="form-control">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form">
+                    <label>* Job</label>
+                    <select class="form-control" id="jobSelect" formControlName="job" id="job">
+                      <option value="">Select your Job</option>
+                      <option value="Engineer">Engineer</option>
+                      <option value="Doctor">Doctor</option>
+                      <option value="Teacher">Teacher</option>
+                      <option value="Lawyer">Lawyer</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form">
+                    <label>* Salary (DT)</label>
+                    <input type="number" id="salary" formControlName="salary" placeholder="Enter salary" class="form-control">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form">
+                    <label>* CIN (National ID)</label>
+                    <input type="text" class="form-control" id="cin" formControlName="cin" placeholder="Enter CIN">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form">
+                    <label>* RIB (Bank Account Number)</label>
+                    <input type="text" class="form-control" id="rib" formControlName="rib" placeholder="Enter RIB">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="single-form">
+                    <label>* Birth Date</label>
+                    <input type="date" id="birthDate" formControlName="birthDate" placeholder="Enter birth date" class="form-control">
+                  </div>
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="single-form">
-                  <label>* Surname</label>
-                  <input type="text" name="surname" placeholder="Enter surname">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="single-form">
-                  <label>* Email</label>
-                  <input type="email" name="email" placeholder="Enter email">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="single-form">
-                  <label>* Password</label>
-                  <input type="password" name="password" placeholder="Enter password">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="single-form">
-                  <label>* Salary (DT)</label>
-                  <input type="number" name="salary" placeholder="Enter salary">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="single-form">
-                  <label>* Job</label>
-                  <select class="form-control" name="job" id="job">
-                    <option value="">Choose a Job</option>
-                    <option value="Engineer">Engineer</option>
-                    <option value="Doctor">Doctor</option>
-                    <option value="Teacher">Teacher</option>
-                    <option value="Lawyer">Lawyer</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="single-form">
-                  <label>* RIB (Bank Account Number)</label>
-                  <input type="text" class="form-control" id="rib" name="rib" placeholder="Enter RIB">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="single-form">
-                  <label>* Birth Date</label>
-                  <input type="date" name="birthDate" placeholder="Enter birth date">
-                </div>
-              </div>
-          </div>
+              <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Sign Up</button>
           </form>
           <!-- End Form -->
           <!-- Form btn -->
-          <a href="#" class="btn apply-btn mt-30" style="background-color: #1F506B;">SIGN UP</a>
+          <!--<a href="#" class="btn header-btn mt-30" style="background-color: #1F506B;">SIGN UP</a>-->
         </div>
       </div>
     </div>
