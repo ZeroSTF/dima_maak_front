@@ -34,19 +34,22 @@
                         <i class="far fa-bell"></i>
                         <span class="badge badge-info navbar-badge">{{ unreadNotificationsCount }}</span>
                       </a>
-                      <ul class="submenu">
+                      <ul class="submenu" style="width: 300px;">
                         <span class="dropdown-item dropdown-header">{{ unreadNotificationsCount }} Notifications</span>
                         <div class="dropdown-divider"></div>
+                        <div style="max-height: 300px; max-width: 5000px; overflow-y: scroll; overflow-x: hidden;">
                         <ng-container *ngFor="let notification of sortedNotifications">
                           <a *ngIf="!notification.status" href="{{ '/notification/' + notification.id }}" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> {{ notification.content | slice: 0: 10 }}{{ notification.content.length > 10? '...' : '' }}
-                            <span class="float-right text-muted text-sm">{{ timeDiff(notification.date) }}</span>
+                            <i class="fas fa-envelope mr-2"></i> {{ notification.content | slice: 0: 20 }}{{ notification.content.length > 20? '...' : '' }}
                           </a>
+                          <span class="float-right text-muted text-sm">{{ timeDiff(notification.date) }}</span>
                           <div class="dropdown-divider" *ngIf="!notification.status"></div>
                         </ng-container>
+                        </div>
                         <a href="/notification" class="dropdown-item dropdown-footer">All Notifications</a>
                       </ul>
                     </li>
+                    <!-- Notifications Dropdown Menu End-->
                     <li><a routerLink="/profile">My Profile</a>
                       <ul class="submenu">
                         <li><a routerLink="#">Insurances</a></li>
