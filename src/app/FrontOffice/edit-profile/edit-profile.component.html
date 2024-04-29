@@ -1,0 +1,45 @@
+<main>
+  <div class="whole-wrap mx-5">
+    <div class="section-top-border">
+      <div class="row">
+        <div class="col-md-2">
+          <img *ngIf="imageData" [src]="imageData" alt="Profile Picture" class="img-fluid">
+          <h6 class="text-center mt-20"><strong>CIN: </strong>{{ profile.cin }}</h6>
+        </div>
+
+        <!-- Form -->
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <div class="col-md-9 mt-sm-20">
+              <div class="form-group row">
+                <label for="firstName" class="col-sm-3 col-form-label"><p style="width: 200px"><strong>First Name:</strong></p></label>
+                <div class="col-sm-9">
+                  <input type="text" id="firstName" formControlName="firstName" placeholder="Enter first name" class="form-control" style=" width: 200px">
+                </div>
+                <label for="lastName" class="col-sm-3 col-form-label"><p style="width: 200px"><strong>Last Name:</strong></p></label>
+                <div class="col-sm-9">
+                  <input type="text" id="lastName" formControlName="lastName" placeholder="Enter last name" class="form-control" style=" width: 200px">
+                </div>
+                <label for="jobSelect" class="col-sm-3 col-form-label"><p style="width: 200px"><strong>Job</strong></p></label>
+                <div class="col-sm-9">
+                  <select class="form-control" id="jobSelect" formControlName="job" id="job">
+                    <option value="">Select your Job</option>
+                    <option value="Engineer">Engineer</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Lawyer">Lawyer</option>
+                  </select>
+                </div>
+              </div>
+            <p><strong>Birth Date:</strong> {{ profile.birthDate | date }}</p>
+            <p><strong>Email:</strong> {{ profile.email }}</p>
+            <p><strong>Salary:</strong> {{ profile.salary }} DT</p>
+            <p><strong>Job:</strong> {{ profile.job }}</p>
+            <p><strong>Address:</strong> {{ profile.address.city }}, {{ profile.address.state }}, {{ profile.address.country }} {{ profile.address.postalCode }}</p>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="editForm.invalid || !isChanged">Save changes</button>
+        </form>
+        <!-- End Form -->
+      </div>
+    </div>
+  </div>
+</main>

@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   userId?: string;
   current=false;
 
-  constructor(private userService: UserService, private authService: AuthService, private sanitizer: DomSanitizer, private route: ActivatedRoute) {
+  constructor(private userService: UserService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {

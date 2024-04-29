@@ -20,6 +20,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { ProfileComponent } from './FrontOffice/profile/profile.component';
 import {AuthInterceptor} from "./Service/auth.interceptor";
 import {AuthGuard} from "./auth.guard";
+import { EditProfileComponent } from './FrontOffice/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {AuthGuard} from "./auth.guard";
     LoginComponent,
     SignupComponent,
     UserListComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

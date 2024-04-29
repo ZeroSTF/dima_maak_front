@@ -9,6 +9,7 @@ import {SignupComponent} from "./FrontOffice/signup/signup.component";
 import {UserListComponent} from "./BackOffice/user-back/user-list/user-list.component";
 import {AuthGuard} from "./auth.guard";
 import {ProfileComponent} from "./FrontOffice/profile/profile.component";
+import {EditProfileComponent} from "./FrontOffice/edit-profile/edit-profile.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path:"profile/:userId",
         component: ProfileComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"editProfile",
+        component: EditProfileComponent, canActivate: [AuthGuard]
       }
     ]
   },
