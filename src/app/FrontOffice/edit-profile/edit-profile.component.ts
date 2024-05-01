@@ -169,6 +169,6 @@ export class EditProfileComponent implements OnInit{
     );
     setTimeout(() => {
       window.location.reload(); // Reload the page
-    }, 1000);
+    }, 500);
   }
 }
