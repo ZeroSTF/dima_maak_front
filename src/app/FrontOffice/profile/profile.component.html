@@ -6,7 +6,7 @@
         <div class="col-md-2">
           <img *ngIf="imageData" [src]="imageData" alt="Profile Picture" class="img-fluid">
           <h6 class="text-center mt-20" *ngIf="current"><strong>CIN: </strong>{{ profile.cin }}</h6>
-          <button routerLink="/editProfile" class="btn btn-header" style="background-color: #1F506B; color: #fff;margin-bottom: 10px; margin-left: 40px">Edit profile</button>
+          <button *ngIf="current" routerLink="/editProfile" class="btn btn-header" style="background-color: #1F506B; color: #fff;margin-bottom: 10px; margin-left: 40px">Edit profile</button>
         </div>
         <div class="col-md-9 mt-sm-20">
           <p><strong>First Name:</strong> {{ profile.surname }}</p>
