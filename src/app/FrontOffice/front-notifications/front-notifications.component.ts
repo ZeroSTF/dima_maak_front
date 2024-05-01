@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NotificationService} from "../../Service/user/notification.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-front-notifications',
@@ -8,7 +9,7 @@ import {NotificationService} from "../../Service/user/notification.service";
 })
 export class FrontNotificationsComponent implements OnInit{
   notifications:any;
-  constructor(private notificationService: NotificationService) {
+  constructor(private notificationService: NotificationService, private router:Router) {
   }
   ngOnInit() {
     this.fetch();
@@ -30,6 +31,7 @@ export class FrontNotificationsComponent implements OnInit{
   viewNotification(notification:any){
     this.notificationService.getNotification(notification.id).subscribe((notification:any)=>{
       console.log(notification);
+      this.router.navigate(["/"]);
     })
   }
 
