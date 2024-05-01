@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../Service/auth.service";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {UserService} from "../../Service/user/user.service";
 import {NotificationService} from "../../Service/user/notification.service";
 
@@ -25,6 +25,15 @@ export class HeaderFrontComponent implements OnInit {
     });
       this.getUnreadNotificationsCount();
     }
+    // Subscribe to router events
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Check if the current route matches "/notification/:id"
+        if (event.url.includes('/notification/')) {
+          this.getUnreadNotificationsCount();
+        }
+      }
+    });
   }
   processProfile(data: any) {
     this.profile = data;
@@ -71,7 +80,6 @@ export class HeaderFrontComponent implements OnInit {
     this.notificationService.getUnread().subscribe((data:any) => {
       this.unreadNotificationsCount = data.length;
       this.unreadNotifications=data;
-      console.log("ERROR SHOULD BE GONE NOW");
     });
   }
   toggleDropdown() {
