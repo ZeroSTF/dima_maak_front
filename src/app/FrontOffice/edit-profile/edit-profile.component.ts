@@ -56,11 +56,15 @@ export class EditProfileComponent implements OnInit{
       birthDate:this.profile.birthDate,
       email:this.profile.email,
       salary:this.profile.salary,
-      city:this.profile.address.city,
-      state:this.profile.address.state,
-      country:this.profile.address.country,
-      postalCode:this.profile.address.postalCode
     });
+    if(this.profile.address!=null){
+      this.editForm.patchValue({
+        city:this.profile.address.city,
+        state:this.profile.address.state,
+        country:this.profile.address.country,
+        postalCode:this.profile.address.postalCode
+      })
+    }
     if(this.profile.photo!=null){
     this.userService.getPhoto(this.profile.photo).subscribe(
       (imageBlob: Blob) => {
@@ -133,6 +137,37 @@ export class EditProfileComponent implements OnInit{
       country:country,
       postalCode:postalCode
     });
+  }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
 
+    // Check if the file type is JPG
+    if (file.type !== 'image/jpeg') {
+      alert('Please select a JPG image file.');
+      return;
+    }
+
+    // Create a FormData object to send the file
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // Call the userService.uploadPhoto() function to upload the photo
+    this.userService.uploadPhoto(formData).subscribe(
+      (response: any) => {
+        console.log('Photo uploaded successfully:', response);
+        // Optionally, you can update the imageData with the uploaded photo data
+        // this.imageData = response; // Assuming response contains the uploaded photo data
+      },
+      (error: any) => {
+        console.error('Failed to upload photo:', error);
+        // Handle the error if needed
+      }
+    );
+    setTimeout(() => {
+      window.location.reload(); // Reload the page
+    }, 1000);
   }
 }

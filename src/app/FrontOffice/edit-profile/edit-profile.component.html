@@ -3,7 +3,12 @@
     <div class="section-top-border">
       <div class="row">
         <div class="col-md-2">
-          <img *ngIf="imageData" [src]="imageData" alt="Profile Picture" class="img-fluid">
+          <!-- Hidden file input -->
+          <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+          <div class="image-container" *ngIf="imageData" (click)="fileInput.click()">
+            <img [src]="imageData" alt="Profile Picture" class="img-fluid  fixed-size">
+            <div class="image-text">Change your avatar</div>
+          </div>
           <h6 class="text-center mt-20"><strong>CIN: </strong>{{ profile.cin }}</h6>
         </div>
 

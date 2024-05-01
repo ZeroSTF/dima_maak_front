@@ -22,4 +22,7 @@ private baseUrl:String = 'http://localhost:8080/user/'
   getPhoto(photo: string): Observable<Blob> {
     return this.http.get(`${this.baseUrl}getPhoto/${photo}`, { responseType: 'blob' });
   }
+  uploadPhoto(requestBody:any){
+  return this.http.post(this.baseUrl+'upload',requestBody)
+  }
 }
