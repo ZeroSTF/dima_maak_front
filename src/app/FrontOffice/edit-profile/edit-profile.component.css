@@ -25,7 +25,54 @@
   opacity: 1; /* Show text on hover */
 }
 
-.fixed-size {
-  width: 300px; /* Specify your desired width */
-  height: 300px; /* Specify your desired height */
+.profile-picture {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 20px auto;
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.btn-primary {
+  margin-top: 20px;
+}
+
+.btn {
+  margin-bottom: 10px;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-sm-3 {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-sm-9 {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (max-width: 767.98px) {
+  .col-sm-3 {
+    padding-right: 10px;padding-left: 10px;
+  }
+
+  .col-sm-9 {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }

@@ -6,75 +6,71 @@
           <!-- Hidden file input -->
           <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
           <div class="image-container" *ngIf="imageData" (click)="fileInput.click()">
-            <img [src]="imageData" alt="Profile Picture" class="img-fluid  fixed-size">
+            <img [src]="imageData" alt="Profile Picture" class="img-fluid profile-picture rounded-circle">
             <div class="image-text">Change your avatar</div>
           </div>
-          <h6 class="text-center mt-20"><strong>CIN: </strong>{{ profile.cin }}</h6>
         </div>
 
         <!-- Form -->
-        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-          <div class="col-md-9 mt-sm-20">
-              <div class="form-group row">
-                <label for="firstName" class="col-sm-3 col-form-label"><p style="width: 360px"><strong>First Name:</strong></p></label>
-                <div class="col-sm-9">
-                  <input type="text" id="firstName" formControlName="firstName" placeholder="Enter first name" class="form-control" style=" width: 200px">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="col-md-9 mt-sm-20">
+          <div class="form-group row">
+            <label for="firstName" class="col-sm-3 col-form-label"><strong>First Name:</strong></label>
+            <div class="col-sm-9">
+              <input type="text" id="firstName" formControlName="firstName" placeholder="Enter first name" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="lastName" class="col-sm-3 col-form-label"><strong>Last Name:</strong></label>
+            <div class="col-sm-9">
+              <input type="text" id="lastName" formControlName="lastName" placeholder="Enter last name" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="birthDate" class="col-sm-3 col-form-label"><strong>Birth Date:</strong></label>
+            <div class="col-sm-9">
+              <input type="date" id="birthDate" formControlName="birthDate" placeholder="Enter birth date" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="email" class="col-sm-3 col-form-label"><strong>Email:</strong></label>
+            <div class="col-sm-9">
+              <input type="email" id="email" formControlName="email" placeholder="Enter email" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="salary" class="col-sm-3 col-form-label"><strong>Salary:</strong></label>
+            <div class="col-sm-9">
+              <input type="number" id="salary" formControlName="salary" placeholder="Enter salary" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jobSelect" class="col-sm-3 col-form-label"><strong>Job:</strong></label>
+            <div class="col-sm-9">
+              <select class="form-control" id="jobSelect" formControlName="job">
+                <option value="">Select your Job</option>
+                <option value="Engineer">Engineer</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Lawyer">Lawyer</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label"><strong>Address:</strong></label>
+            <div class="col-sm-9">
+              <div class="row">
+                <div class="col-sm-3">
+                  <input type="text" id="city" formControlName="city" placeholder="City" class="form-control">
                 </div>
-              </div>
-            <div class="form-group row">
-                <label for="lastName" class="col-sm-3 col-form-label"><p style="width: 200px"><strong>Last Name:</strong></p></label>
-                <div class="col-sm-9">
-                  <input type="text" id="lastName" formControlName="lastName" placeholder="Enter last name" class="form-control" style=" width: 200px">
+                <div class="col-sm-3">
+                  <input type="text" id="state" formControlName="state" placeholder="State" class="form-control">
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="birthDate" class="col-sm-3 col-form-label"><p style="width: 200px"><strong>Birth Date:</strong></p></label>
-                <div class="col-sm-9">
-                <input type="date" id="birthDate" formControlName="birthDate" placeholder="Enter birth date" class="form-control" style=" width: 200px">
+                <div class="col-sm-3">
+                  <input type="text" id="country" formControlName="country" placeholder="Country" class="form-control">
                 </div>
-            </div>
-            <div class="form-group row">
-              <label for="email" class="col-sm-3 col-form-label"><p style="width: 200px"><strong>Email:</strong></p></label>
-              <div class="col-sm-9">
-              <input type="email" id="email" formControlName="email" placeholder="Enter email" class="form-control" style=" width: 200px">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="salary" class="col-sm-3 col-form-label"><p style="width: 200px"><strong>Salary:</strong></p></label>
-              <div class="col-sm-9">
-                <input type="number" id="salary" formControlName="salary" placeholder="Enter salary" class="form-control" style=" width: 200px">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="jobSelect" class="col-sm-3 col-form-label"><p style="width: 200px"><strong>Job</strong></p></label>
-              <div class="col-sm-9">
-                <select class="form-control" id="jobSelect" formControlName="job" id="job" style=" width: 200px">
-                  <option value="">Select your Job</option>
-                  <option value="Engineer">Engineer</option>
-                  <option value="Doctor">Doctor</option>
-                  <option value="Teacher">Teacher</option>
-                  <option value="Lawyer">Lawyer</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="city" class="col-sm-3 col-form-label"><p style="width: 200px"><strong>Address:</strong></p></label>
-              <div class="col-sm-9">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <input type="text" id="city" formControlName="city" placeholder="Enter city" class="form-control">
-                  </div>
-                  <div class="col-sm-3" style="margin-left: -25px;">
-                    <input type="text" id="state" formControlName="state" placeholder="Enter state" class="form-control">
-                  </div>
-                  <div class="col-sm-3" style="margin-left: -25px;">
-                    <input type="text" id="country" formControlName="country" placeholder="Enter country" class="form-control">
-                  </div>
-                  <div class="col-sm-3" style="margin-left: -25px;">
-                    <input type="text" id="postalCode" formControlName="postalCode" placeholder="Enter postal" class="form-control">
-                    <a class="btn header-btn" style="background-color: #1F506B; color: #fff; margin-top: 10px" (click)="changeLocation()">Get current location</a>
-                  </div>
-
+                <div class="col-sm-3">
+                  <input type="text" id="postalCode" formControlName="postalCode" placeholder="Postal Code" class="form-control">
+                  <button class="btn btn-primary" (click)="changeLocation()">Get current location</button>
                 </div>
               </div>
             </div>
