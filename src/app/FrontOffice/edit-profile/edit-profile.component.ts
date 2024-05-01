@@ -78,6 +78,7 @@ export class EditProfileComponent implements OnInit{
   }
 
   onSubmit(): void {
+    console.log("in submit");
     if (this.editForm.valid) {
       const formData = {
         name: this.editForm.get('lastName')?.value,
@@ -99,14 +100,14 @@ export class EditProfileComponent implements OnInit{
       this.profile.address.state=formData.state;
       this.profile.address.country=formData.country;
       this.profile.address.postalCode=formData.postalCode;
-      //continue by editing location in backend and adding the editprofile service in the service file in the frontend
-     /* this.authService.editProfile(formData)
+      console.log("THE ID IS: "+ this.profile.id);
+      this.userService.updateProfile(this.profile)
         .subscribe((response : any) => {
           console.log(response);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/profile']);
         }, error => {
           console.error(error);
-        });*/
+        });
     }
   }
   changeLocation(){
