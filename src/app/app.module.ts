@@ -21,6 +21,7 @@ import { ProfileComponent } from './FrontOffice/profile/profile.component';
 import {AuthInterceptor} from "./Service/auth.interceptor";
 import {AuthGuard} from "./auth.guard";
 import { EditProfileComponent } from './FrontOffice/edit-profile/edit-profile.component';
+import { FrontNotificationsComponent } from './FrontOffice/front-notifications/front-notifications.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EditProfileComponent } from './FrontOffice/edit-profile/edit-profile.co
     SignupComponent,
     UserListComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    FrontNotificationsComponent
   ],
   imports: [
     BrowserModule,

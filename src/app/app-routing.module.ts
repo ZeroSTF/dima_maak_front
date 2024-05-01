@@ -10,6 +10,7 @@ import {UserListComponent} from "./BackOffice/user-back/user-list/user-list.comp
 import {AuthGuard} from "./auth.guard";
 import {ProfileComponent} from "./FrontOffice/profile/profile.component";
 import {EditProfileComponent} from "./FrontOffice/edit-profile/edit-profile.component";
+import {FrontNotificationsComponent} from "./FrontOffice/front-notifications/front-notifications.component";
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
       {
         path:"editProfile",
         component: EditProfileComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"notifications",
+        component: FrontNotificationsComponent, canActivate: [AuthGuard]
       }
     ]
   },

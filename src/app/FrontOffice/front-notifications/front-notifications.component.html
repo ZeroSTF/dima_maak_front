@@ -1,0 +1,27 @@
+<main>
+  <div class="container mt-5">
+    <div class="section-top-border">
+      <h2 class="mb-4">Notifications</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="notification-list">
+            <div class="notification-item" *ngFor="let notification of sortedNotifications" [ngClass]="{'unread': !notification.status}">
+              <div class="notification-content">
+                <div class="notification-info">
+                  <h4>{{ notification.type }}</h4>
+                  <p class="notification-date">{{ notification.date | date:'medium' }}</p>
+                </div>
+                <div class="notification-actions">
+                  <button class="btn btn-primary btn-sm" (click)="viewNotification(notification)">View</button>
+                </div>
+              </div>
+            </div>
+            <div class="no-notifications" *ngIf="sortedNotifications.length === 0">
+              <p>No notifications to display.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
