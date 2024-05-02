@@ -24,16 +24,8 @@ export class HeaderFrontComponent implements OnInit {
       this.processProfile(data);
     });
       this.getUnreadNotificationsCount();
+      setInterval(() => this.getUnreadNotificationsCount(), 60000); //time for fetching unread notification count
     }
-    // Subscribe to router events
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // Check if the current route matches "/notification/:id"
-        if (event.url.includes('/notification/')) {
-          this.getUnreadNotificationsCount();
-        }
-      }
-    });
   }
   processProfile(data: any) {
     this.profile = data;
