@@ -17,12 +17,14 @@ import {HttpClientModule} from "@angular/common/http";
 import { VenturesComponent } from './Ventures/ventures/ventures.component';
 import { VentureAddComponent } from './Ventures/venture-add/venture-add.component';
 import { AddventureComponent } from './Ventures/addventure/addventure.component';
-import { AddinvestmentComponent } from './Investments/addinvestment/addinvestment.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UpdateventureComponent } from './Ventures/updateventure/updateventure.component';
-
-
+import { ProcessexcelComponent } from './Ventures/processexcel/processexcel.component';
+import { VenturesfrontComponent } from './Ventures/venturesfront/venturesfront.component';
+import { InvestmentformComponent } from './Investments/investmentform/investmentform.component';
+import { AllinvestmentsComponent } from './Investments/allinvestments/allinvestments.component';
+import { AllreturnsComponent } from './Returns/allreturns/allreturns.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +43,12 @@ import { UpdateventureComponent } from './Ventures/updateventure/updateventure.c
     VenturesComponent,
     VentureAddComponent,
     AddventureComponent,
-    AddinvestmentComponent,
-    UpdateventureComponent
+    UpdateventureComponent,
+    ProcessexcelComponent,
+    VenturesfrontComponent,
+    InvestmentformComponent,
+    AllinvestmentsComponent,
+    AllreturnsComponent
 
   ],
   imports: [

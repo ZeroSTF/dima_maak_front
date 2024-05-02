@@ -1,0 +1,113 @@
+<div class="container mt-5">
+    <div class="content-wrapper">
+        <h2>Update Venture</h2>
+        <form (ngSubmit)="updateVenture()" #ventureForm="ngForm">
+
+            <!-- Company Name -->
+            <div class="mb-3">
+                <label for="companyName">Company Name:</label>
+                <input type="text" [(ngModel)]="venture.companyName" name="companyName" id="companyName" class="form-control" required>
+            </div>
+
+            <!-- Venture Name -->
+            <div class="mb-3">
+                <label for="ventureName">Venture Name:</label>
+                <input type="text" [(ngModel)]="venture.ventureName" name="ventureName" id="ventureName" class="form-control">
+            </div>
+
+            <!-- Venture Type -->
+            <div class="mb-3">
+                <label for="ventureType">Venture Type:</label>
+                <select [(ngModel)]="venture.ventureType" name="ventureType" id="ventureType" class="form-control">
+                    <option value="" disabled>Select Venture Type</option>
+                    <option value="LoanOffer">LoanOffer</option>
+                    <option value="SocialImpactLoan">SocialImpactLoan</option>
+                    <option value="PubliclyShares">PubliclyShares</option>
+                </select>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label for="description">Description:</label>
+                <textarea [(ngModel)]="venture.description" name="description" id="description" class="form-control"></textarea>
+            </div>
+
+            <!-- Stage -->
+            <div class="mb-3">
+                <label for="stage">Stage:</label>
+                <select [(ngModel)]="venture.stage" name="stage" id="stage" class="form-control">
+                    <option value="" disabled>Select Stage</option>
+                    <option value="STARTUP">STARTUP</option>
+                    <option value="GROWTH">GROWTH</option>
+                    <option value="MATURE">MATURE</option>
+                </select>
+            </div>
+
+            <!-- Sector -->
+            <div class="mb-3">
+                <label for="sector">Sector:</label>
+                <select [(ngModel)]="venture.sector" name="sector" id="sector" class="form-control">
+                    <option value="" disabled>Select Sector</option>
+                    <option value="AGRICULTURE">AGRICULTURE</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <!-- Available Shares -->
+            <div class="mb-3">
+                <label for="availableShares">Available Shares:</label>
+                <input type="number" [(ngModel)]="venture.availableShares" name="availableShares" id="availableShares" class="form-control">
+            </div>
+
+            <!-- Shares Price -->
+            <div class="mb-3">
+                <label for="sharesPrice">Shares Price:</label>
+                <input type="number" [(ngModel)]="venture.sharesPrice" name="sharesPrice" id="sharesPrice" class="form-control">
+            </div>
+
+            <!-- Date Exp -->
+            <div class="mb-3">
+                <label for="dateExp">Date Expiration:</label>
+                <input type="date" [(ngModel)]="venture.dateExp" name="dateExp" id="dateExp" class="form-control">
+            </div>
+
+            <!-- Status -->
+            <div class="mb-3">
+                <label for="status">Status:</label>
+                <select [(ngModel)]="venture.status" name="status" id="status" class="form-control">
+                    <option value="" disabled>Select Status</option>
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="CLOSED">CLOSED</option>
+                </select>
+            </div>
+
+            <!-- Loan Amount -->
+            <div class="mb-3">
+                <label for="loanAmount">Loan Amount:</label>
+                <input type="number" [(ngModel)]="venture.loanAmount" name="loanAmount" id="loanAmount" class="form-control">
+            </div>
+
+            <!-- Interest -->
+            <div class="mb-3">
+                <label for="interest">Interest:</label>
+                <input type="number" [(ngModel)]="venture.interest" name="interest" id="interest" class="form-control">
+            </div>
+
+            <!-- Loan Duration -->
+            <div class="mb-3">
+                <label for="loanDuration">Loan Duration:</label>
+                <input type="number" [(ngModel)]="venture.loanDuration" name="loanDuration" id="loanDuration" class="form-control">
+            </div>
+
+            <!-- Dividend Per Share -->
+            <div class="mb-3">
+                <label for="dividendPerShare">Dividend Per Share:</label>
+                <input type="number" [(ngModel)]="venture.dividendPerShare" name="dividendPerShare" id="dividendPerShare" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="ventureForm.invalid">Update Venture</button>
+        </form>
+    </div>
+</div>
