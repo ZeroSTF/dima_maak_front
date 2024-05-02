@@ -47,8 +47,6 @@ export class EditProfileComponent implements OnInit{
   processProfile(data: any) {
     this.profile = data;
     console.log(this.profile);
-    //fill form
-    console.log("IM RIGHT HERE");
     this.editForm.patchValue({
       firstName:this.profile.surname,
       lastName:this.profile.name,
@@ -66,6 +64,11 @@ export class EditProfileComponent implements OnInit{
       })
     }
     if(this.profile.photo!=null){
+      this.getPhoto();
+    }
+  }
+
+  getPhoto(){
     this.userService.getPhoto(this.profile.photo).subscribe(
       (imageBlob: Blob) => {
         const reader = new FileReader();
@@ -74,7 +77,7 @@ export class EditProfileComponent implements OnInit{
         };
         reader.readAsDataURL(imageBlob);
       },
-    );}
+    );
   }
 
   onSubmit(): void {
@@ -169,6 +172,6 @@ export class EditProfileComponent implements OnInit{
     );
     setTimeout(() => {
       window.location.reload(); // Reload the page
-    }, 500);
+    }, 100);
   }
 }
