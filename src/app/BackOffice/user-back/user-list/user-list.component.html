@@ -1,5 +1,4 @@
 <br>
-<br>
 <section class="content mt-lg-5" style="margin-left: 13%">
   <div class="container-fluid">
     <div class="row">
@@ -54,7 +53,7 @@
                   </td>
                   <td>{{ user.status }}</td>
                   <td class="project-actions text-right" style="white-space: nowrap;">
-                    <a routerLink="TODO" class="btn btn-sm btn-primary mr-1"><i class="fas fa-eye"></i> View</a>
+                    <a routerLink="/admin/profile/{{user.id}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-eye"></i> View</a>
                     <a routerLink="TODO" class="btn btn-sm btn-warning mr-1"><i class="fas fa-edit"></i> Edit</a>
                     <a (click)="delete(user)" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                   </td>

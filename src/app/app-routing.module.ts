@@ -12,6 +12,8 @@ import {ProfileComponent} from "./FrontOffice/profile/profile.component";
 import {EditProfileComponent} from "./FrontOffice/edit-profile/edit-profile.component";
 import {FrontNotificationsComponent} from "./FrontOffice/front-notifications/front-notifications.component";
 import {NotificationDetailsComponent} from "./FrontOffice/notification-details/notification-details.component";
+import {ShowUserComponent} from "./BackOffice/user-back/show-user/show-user.component";
+import {EditUserComponent} from "./BackOffice/user-back/edit-user/edit-user.component";
 
 const routes: Routes = [
   {
@@ -58,11 +60,19 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        component: HomeBackComponent
+        component: HomeBackComponent, canActivate: [AuthGuard]
       },
       {
         path: "user",
-        component: UserListComponent
+        component: UserListComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "profile/:userId",
+        component: ShowUserComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"edit/:userId",
+        component: EditUserComponent, canActivate: [AuthGuard]
       }
     ]
   }

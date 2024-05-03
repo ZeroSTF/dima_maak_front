@@ -23,6 +23,8 @@ import {AuthGuard} from "./auth.guard";
 import { EditProfileComponent } from './FrontOffice/edit-profile/edit-profile.component';
 import { FrontNotificationsComponent } from './FrontOffice/front-notifications/front-notifications.component';
 import { NotificationDetailsComponent } from './FrontOffice/notification-details/notification-details.component';
+import { ShowUserComponent } from './BackOffice/user-back/show-user/show-user.component';
+import { EditUserComponent } from './BackOffice/user-back/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { NotificationDetailsComponent } from './FrontOffice/notification-details
     ProfileComponent,
     EditProfileComponent,
     FrontNotificationsComponent,
-    NotificationDetailsComponent
+    NotificationDetailsComponent,
+    ShowUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

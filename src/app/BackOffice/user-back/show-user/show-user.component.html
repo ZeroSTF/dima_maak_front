@@ -1,0 +1,112 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+
+      <h1>
+        <img *ngIf="imageData" [src]="imageData" class="img-circle elevation-2" style="height: 2.5%; width: 2.5%" alt="User Image">
+        {{ user.surname }} {{ user.name }}
+      </h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">User Information</h5>
+              <table class="table">
+                <tbody>
+                <tr>
+                  <th><i class="fas fa-envelope"></i> Email:</th>
+                  <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-user"></i> Last Name:</th>
+                  <td>{{ user.surname }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-user"></i> First Name:</th>
+                  <td>{{ user.name }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-briefcase"></i> Job:</th>
+                  <td>{{ user.job }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-money-bill"></i> Salary:</th>
+                  <td>{{ user.salary }} DT/Month</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-map-marker-alt"></i> Address:</th>
+                  <td>{{ user.address.city }}, {{ user.address.state }}, {{ user.address.country }} {{ user.address.postalCode }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-id-card"></i> ID Card Number:</th>
+                  <td>{{ user.cin }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-university"></i> Bank Account Number (RIB):</th>
+                  <td>{{ user.rib }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-coins"></i> Balance:</th>
+                  <td>{{ user.balance }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-star"></i> Loyalty Points (LP):</th>
+                  <td>{{ user.lp }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-calendar-alt"></i> Date of Birth:</th>
+                  <td>{{ user.birthDate }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-user-tag"></i> Role:</th>
+                  <td>
+                    <ng-container *ngIf="user.role && user.role.length > 0 && user.role[0].type === 'ADMIN'; else userRole">
+                      <span class="badge badge-primary">Admin</span>
+                    </ng-container>
+                    <ng-template #userRole>
+                      <ng-container *ngIf="user.role[0].type === 'USER'; else investorRole">
+                        <span class="badge badge-secondary">User</span>
+                      </ng-container>
+                      <ng-template #investorRole>
+                        <span class="badge badge-secondary" style="background-color: #FFC107">Investor</span>
+                      </ng-template>
+                    </ng-template>
+                  </td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-info-circle"></i> Status:</th>
+                  <td>{{ user.status }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="margin-bottom: 15px">User Location</h5>
+              <div id="map" style="height: 550px;"></div>
+            </div>
+          </div>
+          <div class="btn-group" style="margin-top: 20px;">
+            <a routerLink="/admin/user" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+            <a routerLink="TODO" class="btn btn-outline-primary"><i class="fas fa-edit"></i> Edit User</a>
+            <a (click)="delete()" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+            <!-- TODO: DELETE button -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
