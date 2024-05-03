@@ -23,7 +23,7 @@ export class UserService {
   uploadPhoto(requestBody: any) {
     return this.http.post(this.baseUrl + 'upload', requestBody)
   }
-  updateProfile(requestBody: any) {
+  update(requestBody: any) {
     return this.http.put(this.baseUrl+'update',requestBody)
   }
   delete(id:String){

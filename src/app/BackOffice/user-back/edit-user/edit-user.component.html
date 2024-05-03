@@ -1,1 +1,135 @@
-<p>edit-user works!</p>
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+
+      <h1>
+        <img *ngIf="imageData" [src]="imageData" class="img-circle elevation-2" style="height: 2.5%; width: 2.5%" alt="User Image">
+        {{ user.surname }} {{ user.name }}
+      </h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title mb-1">User Information</h5>
+              <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+              <table class="table">
+                <tbody>
+                <tr>
+                  <th><i class="fas fa-envelope"></i> Email:</th>
+                  <td><input formControlName="email" class="form-control"></td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-user"></i> First Name:</th>
+                  <td><input formControlName="surname" class="form-control"></td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-user"></i> Last Name:</th>
+                  <td><input formControlName="name" class="form-control"></td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-briefcase"></i> Job:</th>
+                  <td><input formControlName="job" class="form-control"></td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-money-bill"></i> Salary:</th>
+                  <td><div class="row">
+                    <div class="col">
+                      <input formControlName="salary" class="form-control">
+                    </div>
+                    <div class="col-auto mt-1">DT/Month</div>
+                  </div></td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-map-marker-alt"></i> Address:</th>
+                  <td formGroupName="address">
+                    <div class="row">
+                      <div class="col">
+                        <input formControlName="city" class="form-control">
+                      </div>
+                      <div class="col">
+                        <input formControlName="state" class="form-control">
+                      </div>
+                      <div class="col">
+                        <input formControlName="country" class="form-control">
+                      </div>
+                      <div class="col">
+                        <input formControlName="postalCode" class="form-control">
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-id-card"></i> ID Card Number:</th>
+                  <td><input formControlName="cin" class="form-control"> </td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-university"></i> Bank Account Number (RIB):</th>
+                  <td><input formControlName="rib" class="form-control"> </td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-coins"></i> Balance:</th>
+                  <td><input formControlName="balance" class="form-control"> </td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-star"></i> Loyalty Points:</th>
+                  <td><input formControlName="lp" class="form-control"> </td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-calendar-alt"></i> Date of Birth:</th>
+                  <input type="date" formControlName="birthDate" class="form-control mt-1 ml-2" style="width: 97%">
+                </tr>
+                <tr>
+                  <th><i class="fas fa-user-tag"></i> Role:</th>
+                  <td>
+                    <select formControlName="role" class="form-control">
+                      <option value="2">User</option>
+                      <option value="3">Investor</option>
+                      <option value="1">Admin</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-info-circle"></i> Status:</th>
+                  <td>
+                    <select formControlName="status" class="form-control">
+                      <option value="Pending">Pending</option>
+                      <option value="Active">Active</option>
+                      <option value="Blocked">Blocked</option>
+                    </select>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+                <a class="btn btn-outline-primary" type="submit" (click)="onSubmit()"><i class="fas fa-edit"></i> Submit</a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="margin-bottom: 15px">User Location</h5>
+              <div id="map" style="height: 550px;"></div>
+            </div>
+          </div>
+          <div class="btn-group" style="margin-top: 20px;">
+            <a routerLink="/admin/user" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>

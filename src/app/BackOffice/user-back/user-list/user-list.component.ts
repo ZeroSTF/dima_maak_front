@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../Service/user/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-list',
@@ -8,7 +9,7 @@ import {UserService} from "../../../Service/user/user.service";
 })
 export class UserListComponent implements OnInit{
   users!:any;
-  constructor(private userService:UserService) {
+  constructor(private userService:UserService, private router:Router) {
 
   }
   ngOnInit(){
@@ -18,5 +19,8 @@ export class UserListComponent implements OnInit{
   }
   delete(u: any) {
     this.userService.delete(u.id)
+  }
+  edit(u:any){
+    this.router.navigate([`/admin/editUser/${u.id}`])
   }
 }

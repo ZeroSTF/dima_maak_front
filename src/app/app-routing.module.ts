@@ -71,7 +71,7 @@ const routes: Routes = [
         component: ShowUserComponent, canActivate: [AuthGuard]
       },
       {
-        path:"edit/:userId",
+        path:"editUser/:userId",
         component: EditUserComponent, canActivate: [AuthGuard]
       }
     ]

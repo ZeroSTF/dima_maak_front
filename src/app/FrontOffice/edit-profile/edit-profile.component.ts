@@ -81,7 +81,6 @@ export class EditProfileComponent implements OnInit{
   }
 
   onSubmit(): void {
-    console.log("in submit");
     if (this.editForm.valid) {
       const formData = {
         name: this.editForm.get('lastName')?.value,
@@ -104,7 +103,7 @@ export class EditProfileComponent implements OnInit{
       this.profile.address.country=formData.country;
       this.profile.address.postalCode=formData.postalCode;
       console.log("THE ID IS: "+ this.profile.id);
-      this.userService.updateProfile(this.profile)
+      this.userService.update(this.profile)
         .subscribe((response : any) => {
           console.log(response);
           this.router.navigate(['/profile']);

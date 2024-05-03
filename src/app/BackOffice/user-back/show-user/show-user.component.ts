@@ -62,4 +62,7 @@ export class ShowUserComponent implements OnInit {
     this.userService.delete(this.user.id);
     this.router.navigate(['/admin/user']);
   }
+  edit(){
+    this.router.navigate([`/admin/editUser/${this.user.id}`])
+  }
 }
