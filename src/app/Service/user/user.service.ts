@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {User} from "../../Model/User";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -12,8 +11,8 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  findAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + 'getAll')
+  findAllUsers(){
+    return this.http.get(this.baseUrl + 'getAll')
   }
 
   getUser(id: String) {

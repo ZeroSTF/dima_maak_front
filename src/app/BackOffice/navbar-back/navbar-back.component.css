@@ -1,0 +1,11 @@
+.submenu {
+  position: absolute;
+  top: calc(100% + 10px); /* Adjust this value as needed */
+  right: 0;
+  z-index: 1000; /* Ensure the dropdown is on top of other elements */
+  min-width: 10rem; /* Set a minimum width */
+  white-space: nowrap; /* Prevent wrapping of dropdown items */
+  width: 300px;
+  background-color: #454D55;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

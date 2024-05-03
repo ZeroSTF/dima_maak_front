@@ -1,18 +1,100 @@
-<div class="user-list card">
-  <div class="card-header">
-    <h3 class="card-title">Users</h3>
-  </div>
-  <div class="card-body">
-    <ul *ngIf="users.length > 0" class="list-group">
-      <li *ngFor="let user of users" class="list-group-item">
-        <div class="user-details d-flex justify-content-between align-items-center">
-          <span class="user-name">{{ user.name }} {{ user.surname }}</span>
-          <span class="user-email">{{ user.email }}</span>
+<br>
+<br>
+<section class="content mt-lg-5" style="margin-left: 13%">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th>Email</th>
+                  <th style="white-space: nowrap;">First Name</th>
+                  <th style="white-space: nowrap;">Last Name</th>
+                  <th>Job</th>
+                  <th>Salary</th>
+                  <th style="white-space: nowrap;">Address</th>
+                  <th>CIN</th>
+                  <th>RIB</th>
+                  <th>Balance</th>
+                  <th>LP</th>
+                  <th style="white-space: nowrap;">Birth Date</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.surname }}</td>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.job }}</td>
+                  <td>{{ user.salary }}</td>
+                  <td>{{ user.address.city }}, {{ user.address.state }}, {{ user.address.country }} {{ user.address.postalCode }}</td>
+                  <td>{{ user.cin}}</td>
+                  <td>{{ user.rib}}</td>
+                  <td>{{ user.balance}}</td>
+                  <td>{{ user.lp}}</td>
+                  <td>{{ user.birthDate}}</td>
+                  <td>
+                    <ng-container *ngIf="user.role && user.role.length > 0 && user.role[0].type === 'ADMIN'; else userRole">
+                    <span class="badge badge-primary">Admin</span>
+                    </ng-container>
+                    <ng-template #userRole>
+                      <ng-container *ngIf="user.role[0].type === 'USER'; else investorRole">
+                        <span class="badge badge-secondary">User</span>
+                      </ng-container>
+                      <ng-template #investorRole>
+                        <span class="badge badge-secondary">Investor</span>
+                      </ng-template>
+                    </ng-template>
+                  </td>
+                  <td>{{ user.status }}</td>
+                  <td class="project-actions text-right" style="white-space: nowrap;">
+                    <a routerLink="TODO" class="btn btn-sm btn-primary mr-1"><i class="fas fa-eye"></i> View</a>
+                    <a routerLink="TODO" class="btn btn-sm btn-warning mr-1"><i class="fas fa-edit"></i> Edit</a>
+                    //TODO delete button
+                  </td>
+                </tr>
+                <tr *ngIf="users.length==0">
+                  <td colspan="12">No users to display.</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <a routerLink="TODO ADD" class="nav-link btn btn-success">
+              <i class="fas fa-plus"></i>Create a new user</a>
+            <a routerLink="TODO STATISTICS" class="nav-link btn btn-default"><i class="nav-icon fas fa-chart-pie"></i><p>Statistics</p>
+            </a>
+          </div>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
-  <div class="card-footer text-center" *ngIf="users.length === 0">
-    <p class="text-muted">No users found.</p>
-  </div>
-</div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
