@@ -180,5 +180,33 @@ export class EditUserComponent implements OnInit{
         });
     }
   }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
 
+    // Check if the file type is JPG
+    if (file.type !== 'image/jpeg') {
+      alert('Please select a JPG image file.');
+      return;
+    }
+
+    // Create a FormData object to send the file
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // Call the userService.uploadPhoto() function to upload the photo
+    this.userService.uploadPhoto(formData, this.user.id).subscribe(
+      (response: any) => {
+        console.log('Photo uploaded successfully:', response);
+      },
+      (error: any) => {
+        console.error('Failed to upload photo:', error);
+      }
+    );
+    setTimeout(() => {
+      window.location.reload(); // Reload the page
+    }, 100);
+  }
 }

@@ -158,14 +158,14 @@ export class EditProfileComponent implements OnInit{
     formData.append('file', file);
 
     // Call the userService.uploadPhoto() function to upload the photo
-    this.userService.uploadPhoto(formData).subscribe(
+    this.userService.uploadPhoto(formData, this.profile.id).subscribe(
       (response: any) => {
         console.log('Photo uploaded successfully:', response);
         // Optionally, you can update the imageData with the uploaded photo data
         // this.imageData = response; // Assuming response contains the uploaded photo data
       },
       (error: any) => {
-        console.error('Failed to upload photo:', error);
+        console.error(error);
         // Handle the error if needed
       }
     );

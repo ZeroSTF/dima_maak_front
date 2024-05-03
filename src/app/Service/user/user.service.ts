@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -20,8 +20,8 @@ export class UserService {
   getPhoto(photo: string): Observable<Blob> {
     return this.http.get(`${this.baseUrl}getPhoto/${photo}`, {responseType: 'blob'});
   }
-  uploadPhoto(requestBody: any) {
-    return this.http.post(this.baseUrl + 'upload', requestBody)
+  uploadPhoto(requestBody: any, id:String) {
+    return this.http.post(this.baseUrl +`upload/${id}`, requestBody)
   }
   update(requestBody: any) {
     return this.http.put(this.baseUrl+'update',requestBody)
