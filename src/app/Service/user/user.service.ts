@@ -7,31 +7,26 @@ import {Observable} from "rxjs";
 })
 export class UserService {
   private baseUrl: String = 'http://localhost:8080/user/'
-
-  constructor(private http: HttpClient) {
-  }
-
+  constructor(private http: HttpClient) {}
   findAllUsers(){
     return this.http.get(this.baseUrl + 'getAll')
   }
-
   getUser(id: String) {
     return this.http.get(this.baseUrl + `get/${id}`);
   }
-
   getProfile() {
     return this.http.get(this.baseUrl + `current`);
   }
-
   getPhoto(photo: string): Observable<Blob> {
     return this.http.get(`${this.baseUrl}getPhoto/${photo}`, {responseType: 'blob'});
   }
-
   uploadPhoto(requestBody: any) {
     return this.http.post(this.baseUrl + 'upload', requestBody)
   }
-
   updateProfile(requestBody: any) {
     return this.http.put(this.baseUrl+'update',requestBody)
+  }
+  delete(id:String){
+    return this.http.get(this.baseUrl+`delete/${id}`);
   }
 }

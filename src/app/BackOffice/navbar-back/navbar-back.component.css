@@ -9,3 +9,9 @@
   background-color: #454D55;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+.navbar-badge {
+  font-family: Arial, sans-serif; /* Use a preferred font-family */
+  font-size: 14px; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the font bold */
+  color: #ffffff; /* Set the font color */
+}

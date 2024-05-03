@@ -16,4 +16,7 @@ export class UserListComponent implements OnInit{
       this.users=users;
     });
   }
+  delete(u: any) {
+    this.userService.delete(u.id)
+  }
 }
