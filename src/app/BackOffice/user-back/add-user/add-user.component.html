@@ -3,9 +3,7 @@
     <div class="container-fluid">
 
       <h1>
-        <img *ngIf="imageData" [src]="imageData" class="img-circle elevation-2" style="height: 2.5%; width: 2.5%"
-             alt="User Image">
-        {{ user.surname }} {{ user.name }}
+        Add a user
       </h1>
     </div>
   </section>
@@ -22,26 +20,30 @@
                   <tbody>
                   <tr>
                     <th><i class="fas fa-envelope"></i> Email:</th>
-                    <td><input formControlName="email" class="form-control"></td>
+                    <td><input type="email" formControlName="email" class="form-control" placeholder="Enter email"></td>
+                  </tr>
+                  <tr>
+                    <th><i class="fas fa-lock"></i> Password:</th>
+                    <td><input type="password" formControlName="password" class="form-control" placeholder="Enter password"></td>
                   </tr>
                   <tr>
                     <th><i class="fas fa-user"></i> First Name:</th>
-                    <td><input formControlName="surname" class="form-control"></td>
+                    <td><input formControlName="surname" class="form-control" placeholder="Enter first name"></td>
                   </tr>
                   <tr>
                     <th><i class="fas fa-user"></i> Last Name:</th>
-                    <td><input formControlName="name" class="form-control"></td>
+                    <td><input formControlName="name" class="form-control" placeholder="Enter last name"></td>
                   </tr>
                   <tr>
                     <th><i class="fas fa-briefcase"></i> Job:</th>
-                    <td><input formControlName="job" class="form-control"></td>
+                    <td><input formControlName="job" class="form-control" placeholder="Enter job"></td>
                   </tr>
                   <tr>
                     <th><i class="fas fa-money-bill"></i> Salary:</th>
                     <td>
                       <div class="row">
                         <div class="col">
-                          <input formControlName="salary" class="form-control">
+                          <input formControlName="salary" class="form-control" placeholder="Enter salary">
                         </div>
                         <div class="col-auto mt-1">DT/Month</div>
                       </div>
@@ -52,16 +54,16 @@
                     <td formGroupName="address">
                       <div class="row">
                         <div class="col">
-                          <input formControlName="city" class="form-control">
+                          <input formControlName="city" class="form-control" placeholder="city">
                         </div>
                         <div class="col">
-                          <input formControlName="state" class="form-control">
+                          <input formControlName="state" class="form-control" placeholder="state">
                         </div>
                         <div class="col">
-                          <input formControlName="country" class="form-control">
+                          <input formControlName="country" class="form-control" placeholder="country">
                         </div>
                         <div class="col">
-                          <input formControlName="postalCode" class="form-control">
+                          <input formControlName="postalCode" class="form-control" placeholder="postal code">
                         </div>
                         <input formControlName="latitude" class="form-control" hidden>
                         <input formControlName="longitude" class="form-control" hidden>
@@ -70,19 +72,19 @@
                   </tr>
                   <tr>
                     <th><i class="fas fa-id-card"></i> ID Card Number:</th>
-                    <td><input formControlName="cin" class="form-control"></td>
+                    <td><input formControlName="cin" class="form-control" placeholder="Enter ID Card Number (CIN)"></td>
                   </tr>
                   <tr>
                     <th><i class="fas fa-university"></i> Bank Account Number (RIB):</th>
-                    <td><input formControlName="rib" class="form-control"></td>
+                    <td><input formControlName="rib" class="form-control" placeholder="Enter Bank Account Number (RIB)"></td>
                   </tr>
                   <tr>
                     <th><i class="fas fa-coins"></i> Balance:</th>
-                    <td><input formControlName="balance" class="form-control"></td>
+                    <td><input formControlName="balance" class="form-control" placeholder="Enter balance"></td>
                   </tr>
                   <tr>
                     <th><i class="fas fa-star"></i> Loyalty Points:</th>
-                    <td><input formControlName="lp" class="form-control"></td>
+                    <td><input formControlName="lp" class="form-control" placeholder="Enter loyalty points"></td>
                   </tr>
                   <tr>
                     <th><i class="fas fa-calendar-alt"></i> Date of Birth:</th>
@@ -92,6 +94,7 @@
                     <th><i class="fas fa-user-tag"></i> Role:</th>
                     <td>
                       <select formControlName="role" class="form-control">
+                        <option value="">Select role</option>
                         <option value="2">User</option>
                         <option value="3">Investor</option>
                         <option value="1">Admin</option>
@@ -102,6 +105,7 @@
                     <th><i class="fas fa-info-circle"></i> Status:</th>
                     <td>
                       <select formControlName="status" class="form-control">
+                        <option value="">Select status</option>
                         <option value="Pending">Pending</option>
                         <option value="Active">Active</option>
                         <option value="Blocked">Blocked</option>
@@ -124,8 +128,8 @@
             <div class="card-body">
               <h5 class="card-title" style="margin-bottom: 15px">User Photo</h5>
               <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
-              <div class="image-container" *ngIf="imageData" (click)="fileInput.click()">
-                <img [src]="imageData" alt="Profile Picture" class="img-fluid profile-picture rounded-circle">
+              <div class="image-container" (click)="fileInput.click()">
+                <img [src]="selectedImageUrl" alt="Profile Picture" class="img-fluid profile-picture rounded-circle">
                 <div class="image-text">Change user photo</div>
               </div>
             </div>

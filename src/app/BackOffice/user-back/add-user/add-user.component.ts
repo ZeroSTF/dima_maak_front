@@ -1,27 +1,26 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {UserService} from "../../../Service/user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import * as L from "leaflet";
-import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.css']
 })
-export class EditUserComponent implements OnInit {
-  user: any;
-  imageData: any;
-  userId?: string;
-  current = false;
+export class AddUserComponent implements OnInit {
   map: any;
   userForm: FormGroup;
   fileData = new FormData();
   isPhotoSelected = false;
+  selectedImageUrl: string | ArrayBuffer | null = '/assets/default.jpg';
+  user:any;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
     this.userForm = this.fb.group({
       email: [''],
+      password:[''],
       surname: [''],
       name: [''],
       job: [''],
@@ -42,76 +41,24 @@ export class EditUserComponent implements OnInit {
       role: [''],
       status: ['']
     });
+    this.userForm.controls['address'].disable();
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.userId = params['userId'];
-      this.fetchProfile();
-    });
-  }
-
-  async fetchProfile() {
-    let data;
-    if (this.userId) {
-      data = await this.userService.getUser(this.userId).toPromise();
-    }
-    this.processProfile(data);
-  }
-
-  processProfile(data: any) {
-    this.user = data;
-    this.populateForm();
     this.initMap();
-    this.userService.getPhoto(this.user.photo).subscribe((imageBlob: Blob) => {
-      const reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.imageData = event.target.result;
-      };
-      reader.readAsDataURL(imageBlob);
-    });
-  }
-
-  populateForm() {
-    this.userForm.patchValue({
-      email: this.user.email,
-      surname: this.user.surname,
-      name: this.user.name,
-      job: this.user.job,
-      salary: this.user.salary,
-      address: {
-        city: this.user.address.city,
-        state: this.user.address.state,
-        country: this.user.address.country,
-        postalCode: this.user.address.postalCode,
-        latitude: this.user.address.latitude,
-        longitude: this.user.address.longitude
-      },
-      cin: this.user.cin,
-      rib: this.user.rib,
-      balance: this.user.balance,
-      lp: this.user.lp,
-      birthDate: this.user.birthDate,
-      role: this.user.role[0].id,
-      status: this.user.status
-    });
-    this.userForm.controls['address'].disable();
   }
 
   initMap() {
     if (!this.map) {
-      this.map = L.map('map').setView([this.user.address.latitude, this.user.address.longitude], 10);
+      this.map = L.map('map').setView([36.9045944, 10.1874519], 10);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
       }).addTo(this.map);
-      let marker = L.marker([this.user.address.latitude, this.user.address.longitude]).addTo(this.map);
-      let clickedAddress = this.user.address.city + ", " + this.user.address.state + ", " + this.user.address.country + " " + this.user.address.postalCode;
-      marker.bindPopup(clickedAddress).openPopup();
       this.map.on('click', (e: any) => {
         this.updateMarker(e.latlng.lat, e.latlng.lng);
       });
     } else {
-      this.map.setView([this.user.address.latitude, this.user.address.longitude]);
+      this.map.setView([36.9045944, 10.1874519]);
     }
   }
 
@@ -130,8 +77,6 @@ export class EditUserComponent implements OnInit {
         let clickedAddress = data.display_name;
         let marker = L.marker([latitude, longitude]).addTo(this.map);
         marker.bindPopup(clickedAddress).openPopup();
-        console.log("THE LOCATION DATA IS");
-        console.log(data);
         this.userForm.patchValue({
           address: {
             city: data.address.county,
@@ -142,6 +87,7 @@ export class EditUserComponent implements OnInit {
             longitude: data.lon
           }
         });
+        console.log(data.address);
       })
       .catch(error => {
         console.error("Error fetching address:", error);
@@ -149,14 +95,15 @@ export class EditUserComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log("in sub");
     if (this.userForm.valid) {
       const formData = {
         email: this.userForm.get('email')?.value,
+        password: this.userForm.get('password')?.value,
         cin: this.userForm.get('cin')?.value,
         rib: this.userForm.get('rib')?.value,
         balance: this.userForm.get('balance')?.value,
         lp: this.userForm.get('lp')?.value,
-        role: this.userForm.get('role')?.value,
         status: this.userForm.get('status')?.value,
         name: this.userForm.get('name')?.value,
         surname: this.userForm.get('surname')?.value,
@@ -170,25 +117,19 @@ export class EditUserComponent implements OnInit {
         latitude: this.userForm.get('address.latitude')?.value,
         longitude: this.userForm.get('address.longitude')?.value
       };
-      this.user.email = formData.email;
-      this.user.cin = formData.cin;
-      this.user.rib = formData.rib;
-      this.user.balance = formData.balance;
-      this.user.lp = formData.lp;
-      this.user.status = formData.status;
-      this.user.name = formData.name;
-      this.user.surname = formData.surname;
-      this.user.birthDate = formData.birthDate;
-      this.user.salary = formData.salary;
-      this.user.job = formData.job;
-      this.user.address.city = formData.city;
-      this.user.address.state = formData.state;
-      this.user.address.country = formData.country;
-      this.user.address.postalCode = formData.postalCode;
-      this.user.address.latitude= formData.latitude;
-      this.user.address.longitude= formData.longitude;
-      this.user.role[0].id = formData.role;
-      this.userService.update(this.user)
+      this.user=formData;
+      this.user.role=[];
+      this.user.role[0]={id: this.userForm.get('role')?.value};
+      this.user.address={};
+      this.user.address.city=formData.city;
+      this.user.address.state=formData.state;
+      this.user.address.country=formData.country;
+      this.user.address.postalCode=formData.postalCode;
+      this.user.address.latitude=formData.latitude;
+      this.user.address.longitude=formData.longitude;
+      this.user.photo="default.jpg";
+      console.log(this.user);
+      this.userService.add(this.user)
         .subscribe((response: any) => {
           console.log(response);
           if (this.isPhotoSelected) {
@@ -196,15 +137,13 @@ export class EditUserComponent implements OnInit {
             this.userService.uploadPhoto(this.fileData, response.id).subscribe(
               (response: any) => {
                 console.log('Photo uploaded successfully:', response);
-                this.router.navigate([`/admin/profile/${this.user.id}`]);
               },
               (error: any) => {
                 console.error('Failed to upload photo:', error);
-                this.router.navigate([`/admin/profile/${this.user.id}`]);
               }
             );
           }
-          else this.router.navigate([`/admin/profile/${this.user.id}`]);
+          this.router.navigate([`/admin/user`]);
         }, error => {
           console.error(error);
         });
@@ -223,7 +162,8 @@ export class EditUserComponent implements OnInit {
       return;
     }
     // Create a URL object from the file
-    this.imageData = URL.createObjectURL(file);
+    const fileUrl = URL.createObjectURL(file);
+    this.selectedImageUrl = fileUrl;
 
     // Populate fileData object to send the file
     this.fileData.append('file', file);
