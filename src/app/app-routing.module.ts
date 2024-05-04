@@ -16,6 +16,7 @@ import {ShowUserComponent} from "./BackOffice/user-back/show-user/show-user.comp
 import {EditUserComponent} from "./BackOffice/user-back/edit-user/edit-user.component";
 import {AddUserComponent} from "./BackOffice/user-back/add-user/add-user.component";
 import {NotificationListComponent} from "./BackOffice/notification-back/notification-list/notification-list.component";
+import {ShowNotificationComponent} from "./BackOffice/notification-back/show-notification/show-notification.component";
 
 const routes: Routes = [
   {
@@ -87,6 +88,10 @@ const routes: Routes = [
       {
         path: "notification/:current",
         component: NotificationListComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "viewNotification/:id",
+        component: ShowNotificationComponent, canActivate: [AuthGuard]
       }
     ]
   }

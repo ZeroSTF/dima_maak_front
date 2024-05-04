@@ -27,6 +27,8 @@ import { ShowUserComponent } from './BackOffice/user-back/show-user/show-user.co
 import { EditUserComponent } from './BackOffice/user-back/edit-user/edit-user.component';
 import { AddUserComponent } from './BackOffice/user-back/add-user/add-user.component';
 import { NotificationListComponent } from './BackOffice/notification-back/notification-list/notification-list.component';
+import { ShowNotificationComponent } from './BackOffice/notification-back/show-notification/show-notification.component';
+import { EditNotificationComponent } from './BackOffice/notification-back/edit-notification/edit-notification.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { NotificationListComponent } from './BackOffice/notification-back/notifi
     ShowUserComponent,
     EditUserComponent,
     AddUserComponent,
-    NotificationListComponent
+    NotificationListComponent,
+    ShowNotificationComponent,
+    EditNotificationComponent
   ],
   imports: [
     BrowserModule,

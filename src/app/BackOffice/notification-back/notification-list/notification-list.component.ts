@@ -45,5 +45,12 @@ export class NotificationListComponent implements OnInit {
   edit(u:any){
     this.router.navigate([`/admin/editNotification/${u.id}`])
   }
+  get sortedNotifications(): any[] {
+    return this.notifications.sort((a: any, b: any) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateB.getTime() - dateA.getTime();
+    });
+  }
 
 }
