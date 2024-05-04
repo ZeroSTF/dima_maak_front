@@ -9,7 +9,10 @@ import {forkJoin} from "rxjs";
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit{
-  users!:any;
+  users:any;
+  searchTerm:string='';
+  searchType:string='surname';
+  filteredUsers:any[]=[];
   constructor(private userService:UserService, private router:Router, private cdr: ChangeDetectorRef) {
   }
   ngOnInit(){
@@ -18,7 +21,6 @@ export class UserListComponent implements OnInit{
   fetchUsers(){
     this.userService.findAllUsers().subscribe((users: any) => {
       this.users = users;
-
       // Create an array of observables
       const riskObservables = users.map((user:any) => this.userService.assessRisk(user.id));
 
@@ -33,13 +35,29 @@ export class UserListComponent implements OnInit{
 
         // Trigger change detection to update the view
         this.cdr.detectChanges();
+
+        // Call the filterUsers method after the users array is updated
+        this.filterUsers();
       });
     });
   }
+  filterUsers() {
+    if (!this.searchTerm) {
+      this.filteredUsers = this.users;
+      return;
+    }
+    this.filteredUsers = this.users.filter((user: any) => {
+        if (this.searchType==='address'){
+          return user.address.city.toLowerCase().includes(this.searchTerm.toLowerCase()) || user.address.state.toLowerCase().includes(this.searchTerm.toLowerCase()) || user.address.country.toLowerCase().includes(this.searchTerm.toLowerCase()) || user.address.postalCode.toLowerCase().includes(this.searchTerm.toLowerCase());
+        }
+        if (this.searchType==='role'){
+          return user.role[0].type.toLowerCase().includes(this.searchTerm.toLowerCase());
+        }
+        return user[this.searchType].toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+  }
   delete(u: any) {
-    console.log("outside of delete");
     this.userService.delete(u.id).subscribe(() => {
-      console.log("in delete");
       // Remove the deleted user from the users array
       this.users = this.users.filter((user: any) => user.id !== u.id);
       this.cdr.detectChanges();

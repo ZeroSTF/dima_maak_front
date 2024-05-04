@@ -38,7 +38,6 @@ export class FrontNotificationsComponent implements OnInit {
         // Convert both dates to MM/DD/YYYY format for comparison
         const notificationDate = new Date(notification.date).toLocaleDateString();
         const searchTermDate = new Date(this.searchTerm).toLocaleDateString();
-        console.log(notificationDate, searchTermDate);
         return notificationDate === searchTermDate;
       } else {
         return notification[this.searchType].toLowerCase().includes(this.searchTerm.toLowerCase());

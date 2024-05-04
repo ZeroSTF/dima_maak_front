@@ -10,6 +10,22 @@
             </h1>
           </div>
           <div class="card-body">
+            <div class="search-bar row mb-2">
+              <div class="col-md-5 ml-1">
+                <input [(ngModel)]="searchTerm" (ngModelChange)="filterUsers()" placeholder="Search users..." class="form-control">
+              </div>
+              <div class="col-md-1">
+                <select [(ngModel)]="searchType" (ngModelChange)="filterUsers()" class="form-control">
+                  <option value="surname">First Name</option>
+                  <option value="name">Last Name</option>
+                  <option value="job">Job</option>
+                  <option value="address">Address</option>
+                  <option value="role">Role</option>
+                  <option value="status">Status</option>
+                </select>
+              </div>
+            </div>
+
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
@@ -32,7 +48,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let user of users">
+                <tr *ngFor="let user of filteredUsers">
                   <td>{{ user.email }}</td>
                   <td>{{ user.surname }}</td>
                   <td>{{ user.name }}</td>
