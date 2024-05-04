@@ -42,8 +42,8 @@ export class NotificationListComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
-  edit(u:any){
-    this.router.navigate([`/admin/editNotification/${u.id}`])
+  edit(n:any){
+    this.router.navigate([`/admin/editNotification/${n.id}`])
   }
   get sortedNotifications(): any[] {
     return this.notifications.sort((a: any, b: any) => {

@@ -24,4 +24,7 @@ export class NotificationService {
   delete(id:String){
     return this.http.delete(this.baseUrl+`delete/${id}`);
   }
+  update(requestBody: any){
+    return this.http.put(this.baseUrl+'update',requestBody);
+  }
 }

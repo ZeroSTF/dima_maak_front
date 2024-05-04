@@ -52,8 +52,7 @@
                   <td class="project-actions text-right" style="white-space: nowrap;">
                     <a routerLink="/admin/viewNotification/{{notification.id}}" class="btn btn-sm btn-primary mr-1"
                        *ngIf="currentBool"><i class="fas fa-eye"></i> View</a> <!--TODO-->
-                    <a class="btn btn-sm btn-warning mr-1" *ngIf="!currentBool"><i class="fas fa-edit"></i> Edit</a>
-                    <!--TODO-->
+                    <a (click)="edit(notification)" class="btn btn-sm btn-warning mr-1" *ngIf="!currentBool"><i class="fas fa-edit"></i> Edit</a>
                     <a (click)="delete(notification)" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                   </td>
                 </tr>

@@ -1,0 +1,52 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+
+      <h1>
+        Notification Details
+      </h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <tbody>
+                <tr>
+                  <th><i class="fas fa-info-circle"></i> Type:</th>
+                  <td>
+                    <span [ngClass]="{
+                        'badge badge-primary': notification.type === 'Informational',
+                        'badge badge-warning': notification.type === 'Reminder',
+                        'badge badge-danger': notification.type === 'Alert',
+                        'badge badge-success': notification.type === 'Transaction',
+                        'badge badge-info': notification.type === 'Confirmation',
+                        'badge badge-secondary': notification.type === 'Other'
+                      }" class="custom-badge">{{ notification.type }}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-envelope"></i> Content:</th>
+                  <td>{{ notification.content }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-clock"></i> Received on:</th>
+                  <td>{{ notification.date | date:'long' }}</td>
+                </tr>
+                </tbody>
+                <div class="btn-group" style="margin-top: 20px;">
+                  <a routerLink="/admin/notification/inbox" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> Back to Inbox</a>
+                  <a (click)="delete()" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                </div>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
