@@ -1,55 +1,40 @@
 <main>
-
-  <!-- Hero Start-->
-  <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center ">
+  <div class="apply-area pt-5 pb-5">
     <div class="container">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="hero-cap text-center pt-50">
-            <h2>Sign Up</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Hero End -->
-  <!-- Apply Area Start -->
-  <div class="apply-area pt-150 pb-150">
-    <div class="container">
+      <h2 class="text-center mb-4">Sign Up</h2>
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="apply-wrapper">
-            <!-- Form -->
             <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
               <div class="row">
-                <div class="col-lg-6">
-                  <div class="single-form">
-                    <label>* First Name</label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="firstName">First Name *</label>
                     <input type="text" id="firstName" formControlName="firstName" placeholder="Enter first name" class="form-control">
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="single-form">
-                    <label>* Last Name</label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="lastName">Last Name *</label>
                     <input type="text" id="lastName" formControlName="lastName" placeholder="Enter last name" class="form-control">
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="single-form">
-                    <label>* Email</label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="email">Email *</label>
                     <input type="email" id="email" formControlName="email" placeholder="Enter email" class="form-control">
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="single-form">
-                    <label>* Password</label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="password">Password *</label>
                     <input type="password" id="password" formControlName="password" placeholder="Enter password" class="form-control">
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="single-form">
-                    <label>* Job</label>
-                    <select class="form-control" id="jobSelect" formControlName="job" id="job">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="jobSelect">Job *</label>
+                    <select class="form-control" id="jobSelect" formControlName="job">
                       <option value="">Select your Job</option>
                       <option value="Engineer">Engineer</option>
                       <option value="Doctor">Doctor</option>
@@ -58,42 +43,36 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="single-form">
-                    <label>* Salary (DT/Month)</label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="salary">Salary (DT/Month) *</label>
                     <input type="number" id="salary" formControlName="salary" placeholder="Enter salary" class="form-control">
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="single-form">
-                    <label>* CIN (National ID)</label>
-                    <input type="text" class="form-control" id="cin" formControlName="cin" placeholder="Enter CIN">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="cin">CIN (National ID) *</label>
+                    <input type="text" id="cin" formControlName="cin" placeholder="Enter CIN" class="form-control">
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="single-form">
-                    <label>* RIB (Bank Account Number)</label>
-                    <input type="text" class="form-control" id="rib" formControlName="rib" placeholder="Enter RIB">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="rib">RIB (Bank Account Number) *</label>
+                    <input type="text" id="rib" formControlName="rib" placeholder="Enter RIB" class="form-control">
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="single-form">
-                    <label>* Birth Date</label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="birthDate">Birth Date *</label>
                     <input type="date" id="birthDate" formControlName="birthDate" placeholder="Enter birth date" class="form-control">
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Sign Up</button>
-          </form>
-          <!-- End Form -->
-          <!-- Form btn -->
-          <!--<a href="#" class="btn header-btn mt-30" style="background-color: #1F506B;">SIGN UP</a>-->
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="signUpForm.invalid">Sign Up</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-  <!-- Apply Area End -->
-
 </main>
-
