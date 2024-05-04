@@ -10,10 +10,9 @@ import {Router} from "@angular/router";
 export class UserListComponent implements OnInit{
   users!:any;
   constructor(private userService:UserService, private router:Router, private cdr: ChangeDetectorRef) {
-
   }
   ngOnInit(){
-    this.fetchUsers()
+    this.fetchUsers();
   }
   fetchUsers(){
     this.userService.findAllUsers().subscribe(users=>{

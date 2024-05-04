@@ -9,16 +9,16 @@ export class NotificationService {
 
   constructor(private http: HttpClient) {
   }
-
   getUnread() {
     return this.http.get(this.baseUrl + `getUnread`);
   }
-
   getAllByUser() {
     return this.http.get(this.baseUrl + 'getAllByUser');
   }
-
   getNotification(id:any){
     return this.http.get(this.baseUrl+'get/'+id);
+  }
+  getAll(){
+    return this.http.get(this.baseUrl+'getAll');
   }
 }

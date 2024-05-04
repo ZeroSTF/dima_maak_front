@@ -1,0 +1,84 @@
+<br>
+<section class="content mt-lg-5" style="margin-left: 13%">
+  <div class="container-fluid">
+    <h1 style="margin-left: 40%" *ngIf="!currentBool">
+     Notification List
+    </h1>
+    <h1 style="margin-left: 45%" *ngIf="currentBool">
+      Inbox
+    </h1>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th>Type</th>
+                  <th style="white-space: nowrap;">Content</th>
+                  <th>Received on</th>
+                  <th>Status</th>
+                  <th *ngIf="!currentBool">Sent to</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let notification of notifications">
+                  <td>{{ notification.type }}</td>
+                  <td>{{ notification.content }}</td>
+                  <td>{{ notification.date | date:'long' }}</td>
+                  <td>
+                    <ng-container *ngIf="notification.status; else notSeen">
+                      <span class="badge badge-secondary">Opened</span>
+                    </ng-container>
+                    <ng-template #notSeen>
+                        <span class="badge badge-primary">Not opnened</span>
+                    </ng-template>
+                  </td>
+                  <td *ngIf="!currentBool">{{ notification.user.surname }} {{notification.user.name}}</td>
+                  <td class="project-actions text-right" style="white-space: nowrap;">
+                    <a routerLink="/admin/viewNotification/{{notification.id}}" class="btn btn-sm btn-primary mr-1" *ngIf="currentBool"><i class="fas fa-eye"></i> View</a> <!--TODO-->
+                    <a class="btn btn-sm btn-warning mr-1"><i class="fas fa-edit" *ngIf="!currentBool"></i> Edit</a> <!--TODO-->
+                    <a class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a> <!--TODO-->
+                  </td>
+                </tr>
+                <tr *ngIf="notifications.length==0">
+                  <td colspan="12">No notifications to display.</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <a routerLink="#" class="nav-link btn btn-success" *ngIf="!currentBool"> <!--TODO-->
+              <i class="fas fa-plus"></i>Send a notification</a>
+            <a routerLink="TODO STATISTICS" class="nav-link btn btn-default" *ngIf="!currentBool"><i class="nav-icon fas fa-chart-pie"></i><p>Statistics</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

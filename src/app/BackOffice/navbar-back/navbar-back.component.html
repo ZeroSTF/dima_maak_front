@@ -28,14 +28,14 @@
         <div class="dropdown-divider" style="transform: translateX(calc(20% - 5rem));"></div>
         <div style="max-height: 300px; overflow-y: scroll; overflow-x: hidden; transform: translateX(calc(20% - 5rem));">
         <ng-container *ngFor="let notification of sortedNotifications">
-        <a routerLink="{{ '/notification/' + notification.id }}" class="dropdown-item" style="background-color: #454D55;">
+        <a routerLink="{{ '/notification/' + notification.id }}" class="dropdown-item" style="background-color: #454D55;"> <!--TODO-->
           <i class="fas fa-envelope mr-2"></i> {{ notification.content | slice: 0: 10 }}{{ notification.content.length > 10? '...' : '' }}
           <span class="float-right text-muted text-sm">{{ timeDiff(notification.date) }}</span>
         </a>
         <div class="dropdown-divider"></div>
         </ng-container>
         </div>
-        <a routerLink="/notification" class="dropdown-item dropdown-footer" style="transform: translateX(calc(20% - 5rem));">All notifications</a>
+        <a routerLink="/admin/notification/inbox" class="dropdown-item dropdown-footer" style="transform: translateX(calc(20% - 5rem));">All notifications</a>
       </ul>
     </li>
   </ul>
