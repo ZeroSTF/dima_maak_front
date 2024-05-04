@@ -8,11 +8,6 @@
     <li class="nav-item d-none d-sm-inline-block">
       <a routerLink="/admin" class="nav-link">Home</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" (click)="logout()">
-        <i class="fas fa-sign-out-alt"></i> Logout
-      </a>
-    </li>
   </ul>
 
   <!-- Right navbar links -->
@@ -37,6 +32,11 @@
         </div>
         <a routerLink="/admin/notification/inbox" class="dropdown-item dropdown-footer" style="transform: translateX(calc(20% - 5rem));">All notifications</a>
       </ul>
+    </li>
+    <li class="nav-item ml-4">
+      <a class="nav-link btn btn-dark" aria-current="page" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
     </li>
   </ul>
 </nav>

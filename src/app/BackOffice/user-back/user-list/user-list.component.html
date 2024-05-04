@@ -25,6 +25,7 @@
                   <th>Balance</th>
                   <th>LP</th>
                   <th style="white-space: nowrap;">Birth Date</th>
+                  <th style="white-space: nowrap;">Risk Category</th>
                   <th>Role</th>
                   <th>Status</th>
                   <th></th>
@@ -44,17 +45,14 @@
                   <td>{{ user.lp}}</td>
                   <td>{{ user.birthDate}}</td>
                   <td>
-                    <ng-container *ngIf="user.role && user.role.length > 0 && user.role[0].type === 'ADMIN'; else userRole">
-                    <span class="badge badge-primary custom-badge">Admin</span>
-                    </ng-container>
-                    <ng-template #userRole>
-                      <ng-container *ngIf="user.role[0].type === 'USER'; else investorRole">
-                        <span class="badge badge-secondary custom-badge">User</span>
-                      </ng-container>
-                      <ng-template #investorRole>
-                        <span class="badge badge-secondary custom-badge" style="background-color: #FFC107">Investor</span>
-                      </ng-template>
-                    </ng-template>
+                    <span *ngIf="user['riskCategory'] === 'Low Risk'" class="badge badge-success custom-badge">{{ user['riskCategory'] }}</span>
+                    <span *ngIf="user['riskCategory'] === 'Medium Risk'" class="badge badge-warning custom-badge">{{ user['riskCategory'] }}</span>
+                    <span *ngIf="user['riskCategory'] === 'High Risk'" class="badge badge-danger custom-badge">{{ user['riskCategory'] }}</span>
+                  </td>
+                  <td>
+                    <span *ngIf="user.role[0]?.type === 'ADMIN'" class="badge badge-primary custom-badge">Admin</span>
+                    <span *ngIf="user.role[0]?.type === 'USER'" class="badge badge-secondary custom-badge">User</span>
+                    <span *ngIf="user.role[0]?.type !== 'ADMIN' && user.role[0]?.type !== 'USER'" class="badge badge-secondary custom-badge" style="background-color: #FFC107">Investor</span>
                   </td>
                   <td>{{ user.status }}</td>
                   <td class="project-actions text-right" style="white-space: nowrap;">

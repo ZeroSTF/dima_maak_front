@@ -3,6 +3,8 @@ import {AuthService} from "../../Service/auth.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../Service/user/user.service";
 import {NotificationService} from "../../Service/user/notification.service";
+import {fromEvent, interval, merge, startWith, tap} from 'rxjs';
+import { switchMap, throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar-back',
@@ -20,8 +22,27 @@ export class NavbarBackComponent implements OnInit{
     this.userService.getProfile().subscribe(data => {
       this.processProfile(data);
     });
-    this.getUnreadNotificationsCount();
-    setInterval(() => this.getUnreadNotificationsCount(), 60000); //time for fetching unread notification count
+    // Define sources of user activity
+    const clicks = fromEvent(document, 'click');
+    const mouseMoves = fromEvent(document, 'mousemove');
+    const keyPresses = fromEvent(document, 'keypress');
+
+    // Merge the streams
+    const userActivity = merge(clicks, mouseMoves, keyPresses);
+
+    // Throttle the events (e.g., only allow one event per second)
+    const throttledUserActivity = userActivity.pipe(throttleTime(1000));
+
+    // Switch to interval when user is active, and stop when user is idle
+    throttledUserActivity.pipe(
+      switchMap(() => {
+        // User is active: start interval
+        return interval(60000).pipe(
+          startWith(0),  // To immediately fetch the count at the start
+          tap(() => this.getUnreadNotificationsCount())
+        );
+      })
+    ).subscribe();
   }
   processProfile(data: any) {
     this.profile = data;
@@ -32,7 +53,7 @@ export class NavbarBackComponent implements OnInit{
       (data: any) => {
         localStorage.removeItem('token');
         console.log('Logout successful:', data.message);
-        this.router.navigate(["/"]);
+        window.location.href = '/';
       },
       error => {
         console.error('Logout error:', error);

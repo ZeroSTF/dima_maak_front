@@ -32,4 +32,7 @@ export class UserService {
   add(requestBody:any){
     return this.http.post(this.baseUrl+'add',requestBody);
   }
+  assessRisk(id:String){
+    return this.http.get(this.baseUrl+`assess/${id}`,{responseType: 'text'});
+  }
 }
