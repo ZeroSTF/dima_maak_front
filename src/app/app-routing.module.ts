@@ -18,6 +18,7 @@ import {AddUserComponent} from "./BackOffice/user-back/add-user/add-user.compone
 import {NotificationListComponent} from "./BackOffice/notification-back/notification-list/notification-list.component";
 import {ShowNotificationComponent} from "./BackOffice/notification-back/show-notification/show-notification.component";
 import {EditNotificationComponent} from "./BackOffice/notification-back/edit-notification/edit-notification.component";
+import {AddNotificationComponent} from "./BackOffice/notification-back/add-notification/add-notification.component";
 
 const routes: Routes = [
   {
@@ -97,6 +98,10 @@ const routes: Routes = [
       {
         path:"editNotification/:id",
         component: EditNotificationComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"addNotification",
+        component: AddNotificationComponent, canActivate: [AuthGuard]
       }
     ]
   }

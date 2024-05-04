@@ -27,4 +27,7 @@ export class NotificationService {
   update(requestBody: any){
     return this.http.put(this.baseUrl+'update',requestBody);
   }
+  add(requestBody:any){
+    return this.http.post(this.baseUrl+'add',requestBody);
+  }
 }
