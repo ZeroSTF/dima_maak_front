@@ -35,4 +35,7 @@ export class UserService {
   assessRisk(id:String){
     return this.http.get(this.baseUrl+`assess/${id}`,{responseType: 'text'});
   }
+  generateAffiliate(){
+    return this.http.get(this.baseUrl+`generateAffiliateLink`,{responseType: 'text'});
+  }
 }

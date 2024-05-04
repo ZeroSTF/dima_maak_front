@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../Service/user/user.service";
-import {AuthService} from "../../Service/auth.service";
-import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute} from "@angular/router";
+
+
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
   imageData: any;
   userId?: string;
   current=false;
+  affiliateLink="";
+  affiliateToggle=false;
 
   constructor(private userService: UserService, private route: ActivatedRoute) {
   }
@@ -52,5 +54,11 @@ export class ProfileComponent implements OnInit {
         reader.readAsDataURL(imageBlob);
       },
     );
+  }
+  generateAffiliate(){
+    this.userService.generateAffiliate().subscribe((data)=>{
+      this.affiliateLink=data;
+      this.affiliateToggle=!this.affiliateToggle;
+    });
   }
 }

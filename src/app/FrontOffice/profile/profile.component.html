@@ -66,6 +66,14 @@
                   </span>
                 </div>
               </li>
+              <button *ngIf="current" (click)="generateAffiliate()" class="btn btn-primary btn-edit-profile"><i class="fas fa-link mr-1"></i> Generate Affiliate Link</button>
+              <li *ngIf="affiliateToggle" class="mt-2">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-link mr-1"></i>
+                  <strong class="mr-2">Affiliate Link:</strong>
+                  <span>{{ affiliateLink }}</span>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
