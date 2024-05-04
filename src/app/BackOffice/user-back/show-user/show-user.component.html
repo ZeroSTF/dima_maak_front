@@ -66,14 +66,14 @@
                   <th><i class="fas fa-user-tag"></i> Role:</th>
                   <td>
                     <ng-container *ngIf="user.role && user.role.length > 0 && user.role[0].type === 'ADMIN'; else userRole">
-                      <span class="badge badge-primary">Admin</span>
+                      <span class="badge badge-primary custom-badge">Admin</span>
                     </ng-container>
                     <ng-template #userRole>
                       <ng-container *ngIf="user.role[0].type === 'USER'; else investorRole">
-                        <span class="badge badge-secondary">User</span>
+                        <span class="badge badge-secondary custom-badge">User</span>
                       </ng-container>
                       <ng-template #investorRole>
-                        <span class="badge badge-secondary" style="background-color: #FFC107">Investor</span>
+                        <span class="badge badge-secondary custom-badge" style="background-color: #FFC107">Investor</span>
                       </ng-template>
                     </ng-template>
                   </td>

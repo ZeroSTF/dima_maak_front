@@ -1,15 +1,17 @@
 <br>
 <section class="content mt-lg-5" style="margin-left: 13%">
   <div class="container-fluid">
-    <h1 style="margin-left: 40%" *ngIf="!currentBool">
-     Notification List
-    </h1>
-    <h1 style="margin-left: 45%" *ngIf="currentBool">
-      Inbox
-    </h1>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
+          <div class="card-header">
+            <h1 style="margin-left: 40%" *ngIf="!currentBool">
+              Notification List
+            </h1>
+            <h1 style="margin-left: 45%" *ngIf="currentBool">
+            Inbox
+          </h1>
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-striped">
@@ -25,22 +27,34 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let notification of notifications">
-                  <td>{{ notification.type }}</td>
+                  <td>
+                      <span [ngClass]="{
+                        'badge badge-primary': notification.type === 'Informational',
+                        'badge badge-warning': notification.type === 'Reminder',
+                        'badge badge-danger': notification.type === 'Alert',
+                        'badge badge-success': notification.type === 'Transaction',
+                        'badge badge-info': notification.type === 'Confirmation',
+                        'badge badge-secondary': notification.type === 'Other'
+                      }" class="custom-badge">{{ notification.type }}</span>
+                  </td>
+
                   <td>{{ notification.content }}</td>
                   <td>{{ notification.date | date:'long' }}</td>
                   <td>
                     <ng-container *ngIf="notification.status; else notSeen">
-                      <span class="badge badge-secondary">Opened</span>
+                      <span class="badge badge-secondary custom-badge">Opened</span>
                     </ng-container>
                     <ng-template #notSeen>
-                        <span class="badge badge-primary">Not opnened</span>
+                      <span class="badge badge-primary custom-badge">Not opnened</span>
                     </ng-template>
                   </td>
-                  <td *ngIf="!currentBool">{{ notification.user.surname }} {{notification.user.name}}</td>
+                  <td *ngIf="!currentBool">{{ notification.user.surname }} {{ notification.user.name }}</td>
                   <td class="project-actions text-right" style="white-space: nowrap;">
-                    <a routerLink="/admin/viewNotification/{{notification.id}}" class="btn btn-sm btn-primary mr-1" *ngIf="currentBool"><i class="fas fa-eye"></i> View</a> <!--TODO-->
-                    <a class="btn btn-sm btn-warning mr-1"><i class="fas fa-edit" *ngIf="!currentBool"></i> Edit</a> <!--TODO-->
-                    <a class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a> <!--TODO-->
+                    <a routerLink="/admin/viewNotification/{{notification.id}}" class="btn btn-sm btn-primary mr-1"
+                       *ngIf="currentBool"><i class="fas fa-eye"></i> View</a> <!--TODO-->
+                    <a class="btn btn-sm btn-warning mr-1" *ngIf="!currentBool"><i class="fas fa-edit"></i> Edit</a>
+                    <!--TODO-->
+                    <a (click)="delete(notification)" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                   </td>
                 </tr>
                 <tr *ngIf="notifications.length==0">
@@ -51,7 +65,9 @@
             </div>
             <a routerLink="#" class="nav-link btn btn-success" *ngIf="!currentBool"> <!--TODO-->
               <i class="fas fa-plus"></i>Send a notification</a>
-            <a routerLink="TODO STATISTICS" class="nav-link btn btn-default" *ngIf="!currentBool"><i class="nav-icon fas fa-chart-pie"></i><p>Statistics</p>
+            <a routerLink="TODO STATISTICS" class="nav-link btn btn-default" *ngIf="!currentBool"><i
+              class="nav-icon fas fa-chart-pie"></i>
+              <p>Statistics</p>
             </a>
           </div>
         </div>

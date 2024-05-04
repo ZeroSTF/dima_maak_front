@@ -21,4 +21,7 @@ export class NotificationService {
   getAll(){
     return this.http.get(this.baseUrl+'getAll');
   }
+  delete(id:String){
+    return this.http.delete(this.baseUrl+`delete/${id}`);
+  }
 }

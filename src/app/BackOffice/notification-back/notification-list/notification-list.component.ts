@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {NotificationService} from "../../../Service/user/notification.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-notification-list',
@@ -12,7 +12,7 @@ export class NotificationListComponent implements OnInit {
   current?: string;
   currentBool = false;
 
-  constructor(private notificationService: NotificationService, private route: ActivatedRoute) {
+  constructor(private notificationService: NotificationService, private route: ActivatedRoute, private router:Router, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -34,6 +34,16 @@ export class NotificationListComponent implements OnInit {
         this.notifications = notifications;
       });
     }
+  }
+  delete(n: any) {
+    this.notificationService.delete(n.id).subscribe(() => {
+      // Remove the deleted user from the users array
+      this.notifications = this.notifications.filter((notification: any) => notification.id !== n.id);
+      this.cdr.detectChanges();
+    });
+  }
+  edit(u:any){
+    this.router.navigate([`/admin/editNotification/${u.id}`])
   }
 
 }
