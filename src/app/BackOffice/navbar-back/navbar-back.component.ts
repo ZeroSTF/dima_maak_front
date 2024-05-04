@@ -26,6 +26,7 @@ export class NavbarBackComponent implements OnInit{
   processProfile(data: any) {
     this.profile = data;
   }
+  //add a new empty method
   logout() {
     this.authService.logout().subscribe(
       (data: any) => {

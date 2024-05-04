@@ -20,7 +20,9 @@ export class UserListComponent implements OnInit{
     });
   }
   delete(u: any) {
+    console.log("outside of delete");
     this.userService.delete(u.id).subscribe(() => {
+      console.log("in delete");
       // Remove the deleted user from the users array
       this.users = this.users.filter((user: any) => user.id !== u.id);
       this.cdr.detectChanges();

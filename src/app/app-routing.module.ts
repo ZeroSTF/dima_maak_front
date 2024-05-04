@@ -19,6 +19,7 @@ import {NotificationListComponent} from "./BackOffice/notification-back/notifica
 import {ShowNotificationComponent} from "./BackOffice/notification-back/show-notification/show-notification.component";
 import {EditNotificationComponent} from "./BackOffice/notification-back/edit-notification/edit-notification.component";
 import {AddNotificationComponent} from "./BackOffice/notification-back/add-notification/add-notification.component";
+import {VerifiedComponent} from "./FrontOffice/verified/verified.component";
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
       {
         path: "notification/:id",
         component: NotificationDetailsComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "verify",
+        component: VerifiedComponent
       }
     ]
   },
