@@ -16,7 +16,7 @@ import { LoginComponent } from './FrontOffice/login/login.component';
 import { SignupComponent } from './FrontOffice/signup/signup.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { UserListComponent } from './BackOffice/user-back/user-list/user-list.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ProfileComponent } from './FrontOffice/profile/profile.component';
 import {AuthInterceptor} from "./Service/auth.interceptor";
 import {AuthGuard} from "./auth.guard";
@@ -64,7 +64,8 @@ import { VerifiedComponent } from './FrontOffice/verified/verified.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
