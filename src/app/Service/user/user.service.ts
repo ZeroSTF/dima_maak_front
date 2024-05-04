@@ -29,4 +29,7 @@ export class UserService {
   delete(id:String){
     return this.http.get(this.baseUrl+`delete/${id}`);
   }
+  add(requestBody:any){
+    return this.http.post(this.baseUrl+'add',requestBody);
+  }
 }

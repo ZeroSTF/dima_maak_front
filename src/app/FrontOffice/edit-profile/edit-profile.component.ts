@@ -17,6 +17,8 @@ export class EditProfileComponent implements OnInit{
   editForm: FormGroup;
   isChanged=false;
   location:any;
+  fileData = new FormData();
+  isPhotoSelected = false;
   constructor(private formBuilder: FormBuilder,private userService: UserService, private route: ActivatedRoute, private authService:AuthService, private router:Router, private http:HttpClient) {
     this.editForm=this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -102,11 +104,22 @@ export class EditProfileComponent implements OnInit{
       this.profile.address.state=formData.state;
       this.profile.address.country=formData.country;
       this.profile.address.postalCode=formData.postalCode;
-      console.log("THE ID IS: "+ this.profile.id);
       this.userService.update(this.profile)
-        .subscribe((response : any) => {
-          console.log(response);
-          this.router.navigate(['/profile']);
+        .subscribe((response : any) => {console.log(response);
+          if (this.isPhotoSelected) {
+            // Call the userService.uploadPhoto() function to upload the photo
+            this.userService.uploadPhoto(this.fileData, response.id).subscribe(
+              (response: any) => {
+                console.log('Photo uploaded successfully:', response);
+                this.router.navigate([`/profile`]);
+              },
+              (error: any) => {
+                console.error('Failed to upload photo:', error);
+                this.router.navigate(['/profile']);
+              }
+            );
+          }
+          else this.router.navigate([`/profile`]);
         }, error => {
           console.error(error);
         });
@@ -152,25 +165,11 @@ export class EditProfileComponent implements OnInit{
       alert('Please select a JPG image file.');
       return;
     }
+    // Create a URL object from the file
+    this.imageData = URL.createObjectURL(file);
 
-    // Create a FormData object to send the file
-    const formData = new FormData();
-    formData.append('file', file);
-
-    // Call the userService.uploadPhoto() function to upload the photo
-    this.userService.uploadPhoto(formData, this.profile.id).subscribe(
-      (response: any) => {
-        console.log('Photo uploaded successfully:', response);
-        // Optionally, you can update the imageData with the uploaded photo data
-        // this.imageData = response; // Assuming response contains the uploaded photo data
-      },
-      (error: any) => {
-        console.error(error);
-        // Handle the error if needed
-      }
-    );
-    setTimeout(() => {
-      window.location.reload(); // Reload the page
-    }, 100);
+    // Populate fileData object to send the file
+    this.fileData.append('file', file);
+    this.isPhotoSelected = true;
   }
 }

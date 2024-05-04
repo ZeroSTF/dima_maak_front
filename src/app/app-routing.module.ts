@@ -14,6 +14,7 @@ import {FrontNotificationsComponent} from "./FrontOffice/front-notifications/fro
 import {NotificationDetailsComponent} from "./FrontOffice/notification-details/notification-details.component";
 import {ShowUserComponent} from "./BackOffice/user-back/show-user/show-user.component";
 import {EditUserComponent} from "./BackOffice/user-back/edit-user/edit-user.component";
+import {AddUserComponent} from "./BackOffice/user-back/add-user/add-user.component";
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
       {
         path:"editUser/:userId",
         component: EditUserComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"addUser",
+        component: AddUserComponent, canActivate: [AuthGuard]
       }
     ]
   }

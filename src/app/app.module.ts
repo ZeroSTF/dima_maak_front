@@ -25,6 +25,7 @@ import { FrontNotificationsComponent } from './FrontOffice/front-notifications/f
 import { NotificationDetailsComponent } from './FrontOffice/notification-details/notification-details.component';
 import { ShowUserComponent } from './BackOffice/user-back/show-user/show-user.component';
 import { EditUserComponent } from './BackOffice/user-back/edit-user/edit-user.component';
+import { AddUserComponent } from './BackOffice/user-back/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EditUserComponent } from './BackOffice/user-back/edit-user/edit-user.co
     FrontNotificationsComponent,
     NotificationDetailsComponent,
     ShowUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
