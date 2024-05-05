@@ -1,0 +1,62 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+
+      <h1>
+        Send Notification
+      </h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <form [formGroup]="notifForm" (ngSubmit)="onSubmit()">
+                <table class="table">
+                  <tbody>
+                  <tr>
+                    <th><i class="fas fa-info-circle"></i> Type:</th>
+                    <td>
+                      <select formControlName="type" class="form-control">
+                        <option value="">Select type</option>
+                        <option value="Informational">Informational</option>
+                        <option value="Reminder">Reminder</option>
+                        <option value="Alert">Alert</option>
+                        <option value="Transaction">Transaction</option>
+                        <option value="Confirmation">Confirmation</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th><i class="fas fa-envelope"></i> Content:</th>
+                    <td>
+                      <input type="text" formControlName="content" placeholder="Enter content" class="form-control">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th><i class="fas fa-user"></i> Send to:</th>
+                    <td>
+                      <select formControlName="user" class="form-control">
+                        <option value="">Select user</option>
+                        <option *ngFor="let user of users" [value]="user.id">{{ user.surname }} {{ user.name }}</option>
+                      </select>
+                    </td>
+                  </tr>
+                  </tbody>
+                  <div class="btn-group" style="margin-top: 20px;">
+                    <a routerLink="/admin/notification" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+                    <a class="btn btn-outline-primary" type="submit" (click)="onSubmit()"><i class="fas fa-edit"></i> Submit</a>
+                  </div>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

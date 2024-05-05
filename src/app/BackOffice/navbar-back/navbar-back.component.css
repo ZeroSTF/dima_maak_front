@@ -1,0 +1,17 @@
+.submenu {
+  position: absolute;
+  top: calc(100% + 10px); /* Adjust this value as needed */
+  right: 0;
+  z-index: 1000; /* Ensure the dropdown is on top of other elements */
+  min-width: 10rem; /* Set a minimum width */
+  white-space: nowrap; /* Prevent wrapping of dropdown items */
+  width: 300px;
+  background-color: #454D55;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.navbar-badge {
+  font-family: Arial, sans-serif; /* Use a preferred font-family */
+  font-size: 14px; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the font bold */
+  color: #343A40; /* Set the font color */
+}

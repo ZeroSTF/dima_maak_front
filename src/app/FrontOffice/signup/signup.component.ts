@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../Service/auth.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Subject} from "rxjs";
 
@@ -10,10 +10,12 @@ import {Subject} from "rxjs";
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit{
+export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
-  location:any;
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private http:HttpClient) {
+  location: any;
+  id?: string;
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private http: HttpClient, private route: ActivatedRoute) {
     this.signUpForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -26,13 +28,18 @@ export class SignupComponent implements OnInit{
       birthDate: ['', Validators.required]
     });
   }
+
   ngOnInit() {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       await this.getLocationData(latitude, longitude);
-    })
+    });
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
   }
+
   async getLocationData(latitude: number, longitude: number) {
     const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
     const response = await this.http.get<any>(url).toPromise();
@@ -40,7 +47,7 @@ export class SignupComponent implements OnInit{
     const state = response.address.state || '';
     const country = response.address.country || '';
     const postalCode = response.address.postcode || '';
-    this.location={
+    this.location = {
       city: city,
       state: state,
       country: country,
@@ -64,13 +71,23 @@ export class SignupComponent implements OnInit{
         job: this.signUpForm.get('job')?.value,
         rib: this.signUpForm.get('rib')?.value
       };
-      this.authService.register(formData)
-        .subscribe((response : any) => {
-          console.log(response);
-          this.router.navigate(['/login']);
-        }, error => {
-          console.error(error);
-        });
+      if (this.id) {
+        this.authService.affiliateRegister(this.id, formData)
+            .subscribe((response: any) => {
+                console.log(response);
+                this.router.navigate(['/login']);
+            }, error => {
+                console.error(error);
+            });
+      } else {
+        this.authService.register(formData)
+          .subscribe((response: any) => {
+            console.log(response);
+            this.router.navigate(['/login']);
+          }, error => {
+            console.error(error);
+          });
+      }
     }
   }
 

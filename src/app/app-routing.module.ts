@@ -12,6 +12,15 @@ import {ProfileComponent} from "./FrontOffice/profile/profile.component";
 import {EditProfileComponent} from "./FrontOffice/edit-profile/edit-profile.component";
 import {FrontNotificationsComponent} from "./FrontOffice/front-notifications/front-notifications.component";
 import {NotificationDetailsComponent} from "./FrontOffice/notification-details/notification-details.component";
+import {ShowUserComponent} from "./BackOffice/user-back/show-user/show-user.component";
+import {EditUserComponent} from "./BackOffice/user-back/edit-user/edit-user.component";
+import {AddUserComponent} from "./BackOffice/user-back/add-user/add-user.component";
+import {NotificationListComponent} from "./BackOffice/notification-back/notification-list/notification-list.component";
+import {ShowNotificationComponent} from "./BackOffice/notification-back/show-notification/show-notification.component";
+import {EditNotificationComponent} from "./BackOffice/notification-back/edit-notification/edit-notification.component";
+import {AddNotificationComponent} from "./BackOffice/notification-back/add-notification/add-notification.component";
+import {VerifiedComponent} from "./FrontOffice/verified/verified.component";
+import {StatsUserComponent} from "./BackOffice/user-back/stats-user/stats-user.component";
 
 const routes: Routes = [
   {
@@ -28,6 +37,10 @@ const routes: Routes = [
       },
       {
         path: "signup",
+        component: SignupComponent
+      },
+      {
+        path: "signup/:id",
         component: SignupComponent
       },
       {
@@ -49,6 +62,10 @@ const routes: Routes = [
       {
         path: "notification/:id",
         component: NotificationDetailsComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "verify",
+        component: VerifiedComponent
       }
     ]
   },
@@ -58,11 +75,47 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        component: HomeBackComponent
+        component: HomeBackComponent, canActivate: [AuthGuard]
       },
       {
         path: "user",
-        component: UserListComponent
+        component: UserListComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "profile/:userId",
+        component: ShowUserComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"editUser/:userId",
+        component: EditUserComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"addUser",
+        component: AddUserComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"notification",
+        component: NotificationListComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "notification/:current",
+        component: NotificationListComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "viewNotification/:id",
+        component: ShowNotificationComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"editNotification/:id",
+        component: EditNotificationComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"addNotification",
+        component: AddNotificationComponent, canActivate: [AuthGuard]
+      },
+{
+        path: "userStats",
+        component: StatsUserComponent, canActivate: [AuthGuard]
       }
     ]
   }
