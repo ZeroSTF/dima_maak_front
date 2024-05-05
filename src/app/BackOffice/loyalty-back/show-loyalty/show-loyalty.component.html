@@ -1,0 +1,49 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+
+      <h1>
+        Loyalty Details
+      </h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <tbody>
+                <tr>
+                  <th><i class="fas fa-info-circle"></i> Reason:</th>
+                  <td *ngIf="loyalty.reason=='Payment_on_date'">Payment on date</td>
+                  <td *ngIf="loyalty.reason!='Payment_on_date'">{{loyalty.reason}}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-euro-sign"></i> Value:</th>
+                  <td>{{ loyalty.value }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-clock"></i> Date:</th>
+                  <td>{{ loyalty.date | date:'long' }}</td>
+                </tr>
+                <tr>
+                  <th><i class="fas fa-user"></i> Sent to:</th>
+                  <td>{{loyalty.user.surname}} {{ loyalty.user.name }}</td>
+                </tr>
+                </tbody>
+                <div class="btn-group" style="margin-top: 20px;">
+                  <a routerLink="/admin/loyalty" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> Back to list</a>
+                  <a (click)="delete()" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                </div>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<br>
