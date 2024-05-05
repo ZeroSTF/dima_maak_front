@@ -46,4 +46,8 @@ export class UserService {
   countUsersByAge(){
     return this.http.get(this.baseUrl+`countUsersByAge`);
   }
+  //user statistics by location
+  countUsersByLocation(){
+    return this.http.get(this.baseUrl+`findAllUserCoordinates`);
+  }
 }

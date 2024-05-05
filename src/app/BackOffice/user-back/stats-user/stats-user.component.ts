@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UserService} from "../../../Service/user/user.service";
 import {Chart, registerables} from 'node_modules/chart.js';
 Chart.register(...registerables);
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-stats-user',
@@ -9,19 +10,23 @@ Chart.register(...registerables);
   styleUrls: ['./stats-user.component.css']
 })
 export class StatsUserComponent implements OnInit {
+  map: any;
   constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
     //user statistics by salary
     this.userService.countUsers().subscribe((data: any) => {
-      console.log(data);
       this.renderBarChart(data);
     });
     //user statistics by age
     this.userService.countUsersByAge().subscribe((data: any) => {
-      console.log(data);
       this.renderPieChart(data);
+    });
+
+    //user statistics by location
+this.userService.countUsersByLocation().subscribe((data: any) => {
+      this.renderMap(data);
     });
   }
   //barchart for user statistics by salary
@@ -66,6 +71,18 @@ export class StatsUserComponent implements OnInit {
         }
       }
     });
+  }
+  //map for user statistics by location
+  renderMap(data:any){
+    this.map = L.map('map').setView([36.8188, 10.1658], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+    }).addTo(this.map);
+    console.log(data);
+    for (let i = 0; i < data.length; i++) {
+
+      L.marker([data[i][0], data[i][1]]).addTo(this.map);
+    }
   }
 
 }
