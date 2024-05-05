@@ -38,4 +38,12 @@ export class UserService {
   generateAffiliate(){
     return this.http.get(this.baseUrl+`generateAffiliateLink`,{responseType: 'text'});
   }
+  //user statistics by salary
+  countUsers(){
+    return this.http.get(this.baseUrl+`countUsers`);
+  }
+  //user statistics by age
+  countUsersByAge(){
+    return this.http.get(this.baseUrl+`countUsersByAge`);
+  }
 }

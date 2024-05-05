@@ -31,6 +31,8 @@ import { ShowNotificationComponent } from './BackOffice/notification-back/show-n
 import { EditNotificationComponent } from './BackOffice/notification-back/edit-notification/edit-notification.component';
 import { AddNotificationComponent } from './BackOffice/notification-back/add-notification/add-notification.component';
 import { VerifiedComponent } from './FrontOffice/verified/verified.component';
+import { StatsUserComponent } from './BackOffice/user-back/stats-user/stats-user.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -58,14 +60,16 @@ import { VerifiedComponent } from './FrontOffice/verified/verified.component';
     ShowNotificationComponent,
     EditNotificationComponent,
     AddNotificationComponent,
-    VerifiedComponent
+    VerifiedComponent,
+    StatsUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
