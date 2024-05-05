@@ -33,6 +33,10 @@ import { AddNotificationComponent } from './BackOffice/notification-back/add-not
 import { VerifiedComponent } from './FrontOffice/verified/verified.component';
 import { StatsUserComponent } from './BackOffice/user-back/stats-user/stats-user.component';
 import {CommonModule} from "@angular/common";
+import { LoyaltyListComponent } from './BackOffice/loyalty-back/loyalty-list/loyalty-list.component';
+import { AddLoyaltyComponent } from './BackOffice/loyalty-back/add-loyalty/add-loyalty.component';
+import { EditLoyaltyComponent } from './BackOffice/loyalty-back/edit-loyalty/edit-loyalty.component';
+import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/show-loyalty.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,11 @@ import {CommonModule} from "@angular/common";
     EditNotificationComponent,
     AddNotificationComponent,
     VerifiedComponent,
-    StatsUserComponent
+    StatsUserComponent,
+    LoyaltyListComponent,
+    AddLoyaltyComponent,
+    EditLoyaltyComponent,
+    ShowLoyaltyComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,10 @@ import {EditNotificationComponent} from "./BackOffice/notification-back/edit-not
 import {AddNotificationComponent} from "./BackOffice/notification-back/add-notification/add-notification.component";
 import {VerifiedComponent} from "./FrontOffice/verified/verified.component";
 import {StatsUserComponent} from "./BackOffice/user-back/stats-user/stats-user.component";
+import {LoyaltyListComponent} from "./BackOffice/loyalty-back/loyalty-list/loyalty-list.component";
+import {AddLoyaltyComponent} from "./BackOffice/loyalty-back/add-loyalty/add-loyalty.component";
+import {EditLoyaltyComponent} from "./BackOffice/loyalty-back/edit-loyalty/edit-loyalty.component";
+import {ShowLoyaltyComponent} from "./BackOffice/loyalty-back/show-loyalty/show-loyalty.component";
 
 const routes: Routes = [
   {
@@ -113,9 +117,25 @@ const routes: Routes = [
         path:"addNotification",
         component: AddNotificationComponent, canActivate: [AuthGuard]
       },
-{
+      {
         path: "userStats",
         component: StatsUserComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "loyalty",
+        component: LoyaltyListComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "addLoyalty",
+        component: AddLoyaltyComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "editLoyalty/:id",
+        component: EditLoyaltyComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: "viewLoyalty/:id",
+        component: ShowLoyaltyComponent, canActivate: [AuthGuard]
       }
     ]
   }
