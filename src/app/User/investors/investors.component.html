@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="content-wrapper">
+
+        <!-- CARD: USERS -->
+        <div class="card">
+            <div class="card-header border-transparent">
+                <h3 class="card-title" style="text-align: center;">Users Details</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table m-0 table-striped table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="text-center">ID</th>
+                            <th scope="col" class="text-center">Name</th>
+                            <th scope="col" class="text-center">Surname</th>
+                            <th scope="col" class="text-center">Balance</th>
+                            <th scope="col" class="text-center">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let user of users; let i = index">
+                            <td class="align-middle text-center">{{ user.id }}</td>
+                            <td class="align-middle text-center">{{ user.name }}</td>
+                            <td class="align-middle text-center">{{ user.surname }}</td>
+                            <td class="align-middle text-center">{{ user.balance }}</td>
+
+                            <td class="align-middle">
+                                <div class="d-flex justify-content-between">
+                                    <!-- Ajoutez ici les boutons d'action pour chaque utilisateur -->
+                                    <button *ngIf="user.id" (click)="removeUser(user.id)" class="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr *ngIf="users.length === 0">
+                            <td colspan="15" class="text-center">Aucun utilisateur trouvé</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div>
+</div>

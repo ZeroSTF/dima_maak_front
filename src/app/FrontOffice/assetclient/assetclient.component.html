@@ -1,0 +1,73 @@
+<!-- Testimonial End -->
+<!-- Blog Ara Start -->
+<div class="home-blog-area section-padding30">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-10">
+        <!-- Section Tittle -->
+        <div class="section-tittle text-center mb-70">
+          <h2>
+            All Product
+            <!-- Button trigger modal -->
+
+            <!-- Modal -->
+
+            .
+          </h2>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="etat(true)">
+      List demande
+    </button>
+    <div class="modal-body m-2" *ngIf="showtable">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Request Date</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+            <td>{{ item.id }}</td>
+            <td>{{ item.requestDate | date }}</td>
+            <!-- Assuming requestDate is a valid Date object -->
+            <td>{{ item.status }}</td>
+            <td *ngIf="item.status === 'Accepted'">
+              <a routerLink="/payment" class="btn btn-primary">Payment</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" (click)="etat(false)">
+        close
+      </button>
+    </div>
+    <br><br><br><br>
+    <div class="row">
+      <div class="container">
+    <div class="row">
+  <div class="col-md-4" *ngFor="let asset of assets">
+    <div class="card">
+      <img [src]="'http://localhost:8085/assets/images/' + asset.image" class="card-img-top" style="height: 250px;width: 250px;" alt="Asset Image">
+      <div class="card-body">
+        <p class="card-text">Description: {{ asset.description }}</p>
+        <p class="card-text">Type: {{ asset.type }}</p>
+
+        <p class="card-text">Price: {{ asset.price }}</p>
+        <button (click)="add(asset.assetid)" class="btn btn-danger">
+          envoyer Demande
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Blog Ara End -->

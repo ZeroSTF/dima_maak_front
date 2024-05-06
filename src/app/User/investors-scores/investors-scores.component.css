@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+    .list-group-item {
+        padding: 20px; /* Larger padding for better touch targets on mobile */
+    }
+    h5 {
+        font-size: 1.2em; /* Larger text for better readability on small screens */
+    }
+}

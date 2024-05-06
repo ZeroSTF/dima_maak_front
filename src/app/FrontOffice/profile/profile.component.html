@@ -66,6 +66,21 @@
                   </span>
                 </div>
               </li>
+              <div style="display: flex; justify-content: space-between;">
+                <button *ngIf="current" (click)="generateAffiliate()" class="btn btn-primary btn-edit-profile">
+                  <i class="fas fa-link mr-1"></i> Generate Affiliate Link
+                </button>
+                <span *ngIf="profile.status==='Active'" class="badge badge-success custom-badge">Active</span>
+                <span *ngIf="profile.status==='Pending'" class="badge badge-warning custom-badge">Pending</span>
+                <span *ngIf="profile.status==='Blocked'" class="badge badge-danger custom-badge">Blocked</span>
+              </div>
+              <li *ngIf="affiliateToggle" class="mt-2">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-link mr-1"></i>
+                  <strong class="mr-2">Affiliate Link:</strong>
+                  <span>{{ affiliateLink }}</span>
+                </div>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,0 +1,51 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+
+      <h1>
+        Edit Loyalty
+      </h1>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <form [formGroup]="loyaltyForm" (ngSubmit)="onSubmit()">
+                <table class="table">
+                  <tbody>
+                  <tr>
+                    <th><i class="fas fa-info-circle"></i> Reason:</th>
+                    <td>
+                      <select formControlName="reason" class="form-control">
+                        <option value="">Select reason</option>
+                        <option value="Payment_on_date">Payment on date</option>
+                        <option value="Investment">Investment</option>
+                        <option value="Recruitment">Recruitment</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th><i class="fas fa-euro-sign"></i> Value:</th>
+                    <td>
+                      <input type="number" formControlName="value" placeholder="Enter value" class="form-control">
+                    </td>
+                  </tr>
+                  </tbody>
+                  <div class="btn-group" style="margin-top: 20px;">
+                    <a routerLink="/admin/loyalty" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+                    <a class="btn btn-outline-primary" type="submit" (click)="onSubmit()"><i class="fas fa-edit"></i> Submit</a>
+                  </div>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<br>

@@ -70,6 +70,8 @@
                 </div>
                 <div class="col-sm-3">
                   <input type="text" id="postalCode" formControlName="postalCode" placeholder="Postal Code" class="form-control">
+                  <input type="text" id="latitude" formControlName="latitude" class="form-control" hidden>
+                  <input type="text" id="longitude" formControlName="longitude"class="form-control" hidden>
                   <button type="button" class="btn btn-primary" (click)="changeLocation()"><i class="fas fa-map-marker-alt mr-2"></i>Get current location</button>
                 </div>
               </div>

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private baseUrl:String = 'http://localhost:8080/auth/'
-
+  islogin=false
   headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
@@ -28,5 +28,9 @@ export class AuthService {
 
   register(requestBody :any) {
     return this.http.post(this.baseUrl+`register`,requestBody,{ headers : this.headers , withCredentials: true  })
+  }
+
+  affiliateRegister(id:string, requestBody :any) {
+    return this.http.post(this.baseUrl+`register/${id}`,requestBody,{ headers : this.headers , withCredentials: true  })
   }
 }

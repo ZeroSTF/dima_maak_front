@@ -17,6 +17,8 @@ export class EditProfileComponent implements OnInit{
   editForm: FormGroup;
   isChanged=false;
   location:any;
+  fileData = new FormData();
+  isPhotoSelected = false;
   constructor(private formBuilder: FormBuilder,private userService: UserService, private route: ActivatedRoute, private authService:AuthService, private router:Router, private http:HttpClient) {
     this.editForm=this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -29,6 +31,8 @@ export class EditProfileComponent implements OnInit{
       state: ['', Validators.required],
       country: ['', Validators.required],
       postalCode: ['', Validators.required],
+      latitude:[''],
+      longitude:['']
 
     })
   }
@@ -47,8 +51,6 @@ export class EditProfileComponent implements OnInit{
   processProfile(data: any) {
     this.profile = data;
     console.log(this.profile);
-    //fill form
-    console.log("IM RIGHT HERE");
     this.editForm.patchValue({
       firstName:this.profile.surname,
       lastName:this.profile.name,
@@ -62,10 +64,17 @@ export class EditProfileComponent implements OnInit{
         city:this.profile.address.city,
         state:this.profile.address.state,
         country:this.profile.address.country,
-        postalCode:this.profile.address.postalCode
+        postalCode:this.profile.address.postalCode,
+        latitude: this.profile.address.latitude,
+        longitude: this.profile.address.longitude
       })
     }
     if(this.profile.photo!=null){
+      this.getPhoto();
+    }
+  }
+
+  getPhoto(){
     this.userService.getPhoto(this.profile.photo).subscribe(
       (imageBlob: Blob) => {
         const reader = new FileReader();
@@ -74,11 +83,10 @@ export class EditProfileComponent implements OnInit{
         };
         reader.readAsDataURL(imageBlob);
       },
-    );}
+    );
   }
 
   onSubmit(): void {
-    console.log("in submit");
     if (this.editForm.valid) {
       const formData = {
         name: this.editForm.get('lastName')?.value,
@@ -89,7 +97,9 @@ export class EditProfileComponent implements OnInit{
         city:this.editForm.get('city')?.value,
         state:this.editForm.get('state')?.value,
         country:this.editForm.get('country')?.value,
-        postalCode:this.editForm.get('postalCode')?.value
+        postalCode:this.editForm.get('postalCode')?.value,
+        latitude: this.editForm.get('latitude')?.value,
+        longitude: this.editForm.get('longitude')?.value
       };
       this.profile.name=formData.name;
       this.profile.surname=formData.surname;
@@ -100,11 +110,24 @@ export class EditProfileComponent implements OnInit{
       this.profile.address.state=formData.state;
       this.profile.address.country=formData.country;
       this.profile.address.postalCode=formData.postalCode;
-      console.log("THE ID IS: "+ this.profile.id);
-      this.userService.updateProfile(this.profile)
-        .subscribe((response : any) => {
-          console.log(response);
-          this.router.navigate(['/profile']);
+      this.profile.address.latitude= formData.latitude;
+      this.profile.address.longitude= formData.longitude;
+      this.userService.update(this.profile)
+        .subscribe((response : any) => {console.log(response);
+          if (this.isPhotoSelected) {
+            // Call the userService.uploadPhoto() function to upload the photo
+            this.userService.uploadPhoto(this.fileData, response.id).subscribe(
+              (response: any) => {
+                console.log('Photo uploaded successfully:', response);
+                this.router.navigate([`/profile`]);
+              },
+              (error: any) => {
+                console.error('Failed to upload photo:', error);
+                this.router.navigate(['/profile']);
+              }
+            );
+          }
+          else this.router.navigate([`/profile`]);
         }, error => {
           console.error(error);
         });
@@ -136,7 +159,9 @@ export class EditProfileComponent implements OnInit{
       city:city,
       state:state,
       country:country,
-      postalCode:postalCode
+      postalCode:postalCode,
+      latitude:latitude,
+      longitude:longitude
     });
   }
   onFileSelected(event: any) {
@@ -150,25 +175,11 @@ export class EditProfileComponent implements OnInit{
       alert('Please select a JPG image file.');
       return;
     }
+    // Create a URL object from the file
+    this.imageData = URL.createObjectURL(file);
 
-    // Create a FormData object to send the file
-    const formData = new FormData();
-    formData.append('file', file);
-
-    // Call the userService.uploadPhoto() function to upload the photo
-    this.userService.uploadPhoto(formData).subscribe(
-      (response: any) => {
-        console.log('Photo uploaded successfully:', response);
-        // Optionally, you can update the imageData with the uploaded photo data
-        // this.imageData = response; // Assuming response contains the uploaded photo data
-      },
-      (error: any) => {
-        console.error('Failed to upload photo:', error);
-        // Handle the error if needed
-      }
-    );
-    setTimeout(() => {
-      window.location.reload(); // Reload the page
-    }, 500);
+    // Populate fileData object to send the file
+    this.fileData.append('file', file);
+    this.isPhotoSelected = true;
   }
 }

@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="text-center my-3">All Investment Offers</h3>
+        </div>
+        <!-- Loop through your investments here -->
+        <div class="col-md-4" *ngFor="let venture of ventures">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ venture.companyName }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted text-center">{{ venture.ventureName }}</h6>
+                    <p class="card-text text-center">{{ venture.description }}</p>
+                    <div class="list-container">
+                        <ul class="list-unstyled text-center">
+                            <li>Stage: {{ venture.stage }}</li>
+                            <li>Sector: {{ venture.sector }}</li>
+                            <li>Status: <span [ngClass]="getStatusLabelClass(venture.status)">{{ venture.status }}</span></li>
+                            <li>Shares Available: {{ venture.availableShares }}</li>
+                            <li>Price per Share: ${{ venture.sharesPrice }}</li>
+                            <li>Dividend per Share: ${{ venture.dividendPerShare }}</li>
+                            <li>Loan Amount: ${{ venture.loanAmount }}</li>
+                            <li>Interest: {{ venture.interest }}%</li>
+                            <li>Loan Duration: {{ venture.loanDuration }} months</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-sm btn-secondary" [routerLink]="['/investmentform', venture.idV]" [disabled]="venture.status === 'CLOSED'">Invest</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="ventures.length === 0" class="col-12">
+            <p class="text-center">No ventures found</p>
+        </div>
+    </div>
+</div>
