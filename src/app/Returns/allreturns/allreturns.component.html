@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="content-wrapper">
+
+        <!-- CARD: RETURNS -->
+        <div class="card">
+            <div class="card-header border-transparent">
+                <h3 class="card-title" style="text-align: center;">Returns Details</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table m-0 table-striped table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="text-center">ID</th>
+                            <th scope="col" class="text-center">Date</th>
+                            <th scope="col" class="text-center">Type</th>
+                            <th scope="col" class="text-center">Amount</th>
+                            <th scope="col" class="text-center">Interest</th>
+                            <th scope="col" class="text-center">Shares Gain</th>
+                            <th scope="col" class="text-center">Investment ID</th>
+                            <th scope="col" class="text-center">Actions</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let ret of returns; let i = index">
+                            <td class="align-middle text-center">{{ ret.idR }}</td>
+                            <td class="align-middle text-center">{{ ret.rDate }}</td>
+                            <td class="align-middle text-center">{{ ret.returnType }}</td>
+                            <td class="align-middle text-center">{{ ret.returnAmount }}</td>
+                            <td class="align-middle text-center">{{ ret.returnInterest }}</td>
+                            <td class="align-middle text-center">{{ ret.sharesGain }}</td>
+                            <td class="align-middle text-center">{{ ret.investment?.id }}</td> <!-- Assuming investment is an object with an id property --><td class="align-middle">
+                            <div class="d-flex justify-content-between">
+                                <button *ngIf="ret.idR" (click)="deleteReturn(ret.idR)" class="btn btn-danger btn-sm">Delete</button>
+                                <button class="btn btn-sm btn-secondary float-right" [routerLink]="['/admin/updatereturn', ret.idR]">Update</button>
+
+                            </div>
+                        </td>
+                        </tr>
+                        <tr *ngIf="returns.length === 0">
+                            <td colspan="15" class="text-center">No returns found</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <div class="card-footer clearfix mt-3">
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-sm btn-secondary" [routerLink]="['/admin/addventures']">Add Return To Investment</button>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div>
+</div>

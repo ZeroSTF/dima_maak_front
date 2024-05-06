@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="content-wrapper">
+        <!-- CARD: VENTURES -->
+        <div class="card">
+            <div class="card-header border-transparent">
+                <h3 class="card-title text-center">Investments Details</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped table-dark mb-0">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="text-center">ID</th>
+                            <th scope="col" class="text-center">Date</th>
+                            <th scope="col" class="text-center">Purchased Shares</th>
+                            <th scope="col" class="text-center">Amount</th>
+                            <th scope="col" class="text-center">Total Investment</th>
+                            <th scope="col" class="text-center">Status</th>
+                            <th scope="col" class="text-center">Venture ID</th>
+                            <th scope="col" class="text-center">Investor ID</th>
+                            <th scope="col" class="text-center">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let investment of investments; let i = index">
+                            <td class="align-middle text-center">{{ investment.id }}</td>
+                            <td class="align-middle text-center">{{ investment.date }}</td>
+                            <td class="align-middle text-center">{{ investment.purchasedShares }}</td>
+                            <td class="align-middle text-center">{{ investment.amount }}</td>
+                            <td class="align-middle text-center">{{ investment.totalInvestment }}</td>
+                            <td class="align-middle text-center">{{ investment.status }}</td>
+                            <td class="align-middle text-center">{{  investment.venture?.idV }}</td>
+                            <td class="align-middle text-center">{{  investment.user?.id }}</td>
+
+
+                            <td class="align-middle">
+                                <div class="d-flex justify-content-center">
+                                    <button *ngIf="investment.id"
+                                            (click)="deleteInvestment(investment.id)"
+                                            class="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr *ngIf="investments.length === 0">
+                            <td colspan="8" class="text-center">No investments found</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

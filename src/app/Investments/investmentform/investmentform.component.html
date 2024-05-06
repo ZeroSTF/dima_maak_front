@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <div class="content-wrapper">
+        <form (ngSubmit)="onSubmit()" #investmentForm="ngForm">
+            <label>Date:</label>
+            <input type="date" [(ngModel)]="newI.date" name="date" class="form-control">
+
+            <label>Purchased Shares:</label>
+            <input type="number" [(ngModel)]="newI.purchasedShares" name="purchasedShares" class="form-control">
+
+            <label>Amount:</label>
+            <input type="number" [(ngModel)]="newI.amount" name="amount" class="form-control">
+
+            <label>Status:</label>
+            <select [(ngModel)]="newI.status" name="status" class="form-control">
+                <option value="" disabled>Select Status</option>
+                <option value="ACTIVE">ACTIVE</option>
+                <option value="DISABLED">DISABLED</option>
+            </select>
+
+            <label>Venture ID:</label>
+            <input type="number" [(ngModel)]="newI.idV" name="ventureIdv" class="form-control">
+
+            <label>Investor ID:</label>
+            <input type="number" [(ngModel)]="newUser.id" name="userIdv" class="form-control">
+
+            <button type="submit" class="btn btn-success">Confirm Investment</button>
+        </form>
+    </div>
+</div>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterBackComponent } from './BackOffice/footer-back/footer-back.component';
@@ -14,6 +13,19 @@ import { HomeBackComponent } from './BackOffice/home-back/home-back.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { LoginComponent } from './FrontOffice/login/login.component';
 import { SignupComponent } from './FrontOffice/signup/signup.component';
+import { VenturesComponent } from './Ventures/ventures/ventures.component';
+import { VentureAddComponent } from './Ventures/venture-add/venture-add.component';
+import { AddventureComponent } from './Ventures/addventure/addventure.component';
+import { RouterModule } from '@angular/router';
+import { UpdateventureComponent } from './Ventures/updateventure/updateventure.component';
+import { ProcessexcelComponent } from './Ventures/processexcel/processexcel.component';
+import { VenturesfrontComponent } from './Ventures/venturesfront/venturesfront.component';
+import { InvestmentformComponent } from './Investments/investmentform/investmentform.component';
+import { AllinvestmentsComponent } from './Investments/allinvestments/allinvestments.component';
+import { AllreturnsComponent } from './Returns/allreturns/allreturns.component';
+import { InvestorsComponent } from './User/investors/investors.component';
+import { InvestorsScoresComponent } from './User/investors-scores/investors-scores.component';
+import { AddreturnComponent } from './Returns/addreturn/addreturn.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { UserListComponent } from './BackOffice/user-back/user-list/user-list.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -65,6 +77,18 @@ import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/sho
     HomeFrontComponent,
     LoginComponent,
     SignupComponent,
+    VenturesComponent,
+    VentureAddComponent,
+    AddventureComponent,
+    UpdateventureComponent,
+    ProcessexcelComponent,
+    VenturesfrontComponent,
+    InvestmentformComponent,
+    AllinvestmentsComponent,
+    AllreturnsComponent,
+    InvestorsComponent,
+    InvestorsScoresComponent,
+    AddreturnComponent
     UserListComponent,
     ProfileComponent,
     InsuranceListComponent,
@@ -103,9 +127,11 @@ import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/sho
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    RouterModule.forRoot([])
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

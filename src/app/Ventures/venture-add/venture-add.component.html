@@ -1,0 +1,87 @@
+<div class="container mt-5">
+      <div class="content-wrapper" >
+        <form (ngSubmit)="onSubmit()">
+            <!-- Company Name -->
+            <label>Company Name:</label>
+            <input type="text" [(ngModel)]="newV.companyName" name="companyName" class="form-control">
+
+            <!-- Venture Name -->
+            <label>Venture Name:</label>
+            <input type="text" [(ngModel)]="newV.ventureName" name="ventureName" class="form-control">
+
+            <!-- Venture Type -->
+            <label>Venture Type:</label>
+            <select [(ngModel)]="newV.ventureType" name="ventureType" class="form-control">
+                <option value="" disabled>Select Venture Type</option>
+                <option value="LoanOffer">LoanOffer</option>
+                <option value="SocialImpactLoan">SocialImpactLoan</option>
+                <option value="PubliclyShares">PubliclyShares</option>
+            </select>
+
+            <!-- Description -->
+            <label>Description:</label>
+            <textarea [(ngModel)]="newV.description" name="description" class="form-control"></textarea>
+
+            <!-- Stage -->
+            <label>Stage:</label>
+            <select [(ngModel)]="newV.stage" name="stage" class="form-control">
+                <option value="" disabled>Select Stage</option>
+                <option value="STARTUP">STARTUP</option>
+                <option value="GROWTH">GROWTH</option>
+                <option value="MATURE">MATURE</option>
+            </select>
+
+            <!-- Sector -->
+            <label>Sector:</label>
+            <select [(ngModel)]="newV.sector" name="sector" class="form-control">
+                <option value="" disabled>Select Sector</option>
+                <option value="AGRICULTURE">AGRICULTURE</option>
+                <option value="Retail">Retail</option>
+                <option value="Technology">Technology</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <!-- Available Shares -->
+            <label>Available Shares:</label>
+            <input type="number" [(ngModel)]="newV.availableShares" name="availableShares" class="form-control">
+
+            <!-- Shares Price -->
+            <label>Shares Price:</label>
+            <input type="number" [(ngModel)]="newV.sharesPrice" name="sharesPrice" class="form-control">
+
+            <!-- Date Exp -->
+            <label>Date Expipration:</label>
+            <input type="date" [(ngModel)]="newV.dateExp" name="dateExp" class="form-control">
+
+            <!-- Status -->
+            <label>Status:</label>
+            <select [(ngModel)]="newV.status" name="status" class="form-control">
+                <option value="" disabled>Select Status</option>
+                <option value="ACTIVE">ACTIVE</option>
+                <option value="CLOSED">CLOSED</option>
+            </select>
+
+            <!-- Loan Amount -->
+            <label>Loan Amount:</label>
+            <input type="number" [(ngModel)]="newV.loanAmount" name="loanAmount" class="form-control">
+
+            <!-- Interest -->
+            <label>Interest:</label>
+            <input type="number" [(ngModel)]="newV.interest" name="interest" class="form-control">
+
+            <!-- Loan Duration -->
+            <div class="mb-3">
+            <label class="form-label">Loan Duration:</label>
+            <input type="number" [(ngModel)]="newV.loanDuration" name="loanDuration" class="form-control">
+            </div>
+
+            <!-- Dividend Per Share -->
+            <label>Dividend Per Share:</label>
+            <input type="number" [(ngModel)]="newV.dividendPerShare" name="dividendPerShare" class="form-control">
+
+            <button type="submit" class="btn btn-success">Confirm Add</button>
+
+        </form>
+     </div>
+</div>
+
