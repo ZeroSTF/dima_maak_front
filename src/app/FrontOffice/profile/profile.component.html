@@ -1,22 +1,88 @@
 <main>
-  <div class="whole-wrap mx-5">
-    <div class="section-top-border">
-      <h3 *ngIf="current" class="mb-30">Welcome {{ profile.surname }}!</h3>
+  <div class="container mt-5">
+    <div class="section">
       <div class="row">
-        <div class="col-md-2">
-          <img *ngIf="imageData" [src]="imageData" alt="Profile Picture" class="img-fluid">
-          <h6 class="text-center mt-20" *ngIf="current"><strong>CIN: </strong>{{ profile.cin }}</h6>
-          <button routerLink="/editProfile" class="btn btn-header" style="background-color: #1F506B; color: #fff;margin-bottom: 10px; margin-left: 40px">Edit profile</button>
+        <!-- Profile Picture and Information -->
+        <div class="col-md-4 text-center profile-pic-container">
+          <img *ngIf="imageData" [src]="imageData" alt="Profile Picture" class="img-fluid profile-picture rounded-circle">
+          <h6 class="mt-3" *ngIf="current"><i class="fas fa-id-badge mr-1"></i> {{ profile.cin }}</h6>
+          <button *ngIf="current" routerLink="/editProfile" class="btn btn-primary mt-3 btn-edit-profile"><i class="fas fa-edit mr-1"></i> Edit Profile</button>
         </div>
-        <div class="col-md-9 mt-sm-20">
-          <p><strong>First Name:</strong> {{ profile.surname }}</p>
-          <p><strong>Last Name:</strong> {{ profile.name }}</p>
-          <p><strong>Birth Date:</strong> {{ profile.birthDate | date }}</p>
-          <p *ngIf="current"><strong>Email:</strong> {{ profile.email }}</p>
-          <p *ngIf="current"><strong>Salary:</strong> {{ profile.salary }} DT</p>
-          <p><strong>Job:</strong> {{ profile.job }}</p>
-          <p *ngIf="profile.address && !current"><strong>Address:</strong> {{ profile.address.state }}, {{ profile.address.country }}</p>
-          <p *ngIf="profile.address && current"><strong>Address:</strong> {{ profile.address.city }}, {{ profile.address.state }}, {{ profile.address.country }} {{ profile.address.postalCode }}</p>
+        <div class="col-md-8">
+          <!-- Welcome Message -->
+          <h3 *ngIf="current" class="mb-4 welcome-message">Welcome, {{ profile.surname }}!</h3>
+          <!-- Personal Information -->
+          <div class="personal-info">
+            <h4 class="mb-3">Personal Information <i class="fas fa-user-circle ml-2"></i></h4>
+            <ul class="list-unstyled">
+              <li>
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-user mr-1"></i>
+                  <strong class="mr-2">First Name:</strong>
+                  <span>{{ profile.surname }}</span>
+                </div>
+              </li>
+              <li>
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-user mr-1"></i>
+                  <strong class="mr-2">Last Name:</strong>
+                  <span>{{ profile.name }}</span>
+                </div>
+              </li>
+              <li>
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-birthday-cake mr-1"></i>
+                  <strong class="mr-2">Birth Date:</strong>
+                  <span>{{ profile.birthDate | date }}</span>
+                </div>
+              </li>
+              <li *ngIf="current">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-envelope mr-1"></i>
+                  <strong class="mr-2">Email:</strong>
+                  <span>{{ profile.email }}</span>
+                </div>
+              </li>
+              <li *ngIf="current">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-dollar-sign mr-1"></i>
+                  <strong class="mr-2">Salary:</strong>
+                  <span>{{ profile.salary }} DT</span>
+                </div>
+              </li>
+              <li>
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-briefcase mr-1"></i>
+                  <strong class="mr-2">Job:</strong>
+                  <span>{{ profile.job }}</span>
+                </div>
+              </li>
+              <li *ngIf="profile.address">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-map-marker-alt mr-1"></i>
+                  <strong class="mr-2">Address:</strong>
+                  <span>
+                    {{ profile.address.city }}, {{ profile.address.state }}, {{ profile.address.country }} {{ profile.address.postalCode }}
+                  </span>
+                </div>
+              </li>
+              <div style="display: flex; justify-content: space-between;">
+                <button *ngIf="current" (click)="generateAffiliate()" class="btn btn-primary btn-edit-profile">
+                  <i class="fas fa-link mr-1"></i> Generate Affiliate Link
+                </button>
+                <span *ngIf="profile.status==='Active'" class="badge badge-success custom-badge">Active</span>
+                <span *ngIf="profile.status==='Pending'" class="badge badge-warning custom-badge">Pending</span>
+                <span *ngIf="profile.status==='Blocked'" class="badge badge-danger custom-badge">Blocked</span>
+              </div>
+              <li *ngIf="affiliateToggle" class="mt-2">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-link mr-1"></i>
+                  <strong class="mr-2">Affiliate Link:</strong>
+                  <span>{{ affiliateLink }}</span>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

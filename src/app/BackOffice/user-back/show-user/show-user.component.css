@@ -1,0 +1,9 @@
+#map {
+  width: 100%; /* Adjust width as needed */
+  height: 100%; /* Adjust height as needed */
+}
+.custom-badge {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem; /* Adjust font size as needed */
+  border-radius: 0.25rem; /* Adjust border radius as needed */
+}
