@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <h2>Update Complaint</h2>
+    <form (ngSubmit)="updateComplaint()">
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" [(ngModel)]="complaint.subject" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" [(ngModel)]="complaint.description" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" name="status" [(ngModel)]="complaint.status" class="form-control" required>
+          <option [value]="true">Active</option>
+          <option [value]="false">Inactive</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+  

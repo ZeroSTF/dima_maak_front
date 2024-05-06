@@ -48,6 +48,21 @@ import { ClaimComponent } from './BackOffice/claim/claim.component';
 import { PaypremiumComponent } from './FrontOffice/paypremium/paypremium.component';
 import { FrontNotificationsComponent } from './FrontOffice/front-notifications/front-notifications.component';
 import { NotificationDetailsComponent } from './FrontOffice/notification-details/notification-details.component';
+import { AddComplaintComponent } from './FrontOffice/complaint/add-complaint/add-complaint.component';
+import { ListComplaintComponent } from './FrontOffice/complaint/list-complaint/list-complaint.component';
+import { UpdateComplaintComponent } from './FrontOffice/complaint/update-complaint/update-complaint.component';
+import { DetailComplaintComponent } from './FrontOffice/complaint/detail-complaint/detail-complaint.component';
+import { AddComplaintBackComponent } from './BackOffice/complaint/add-complaint-back/add-complaint-back.component';
+import { ListComplaintBackComponent } from './BackOffice/complaint/list-complaint-back/list-complaint-back.component';
+import { EditComplaintBackComponent } from './BackOffice/complaint/edit-complaint-back/edit-complaint-back.component';
+import { DetailComplaintBackComponent } from './BackOffice/complaint/detail-complaint-back/detail-complaint-back.component';
+import { ListPostComponent } from './FrontOffice/post/list-post/list-post.component';
+import { ListCommentComponent } from './BackOffice/comment/list-comment/list-comment.component';
+import { DetailCommentComponent } from './BackOffice/comment/detail-comment/detail-comment.component';
+import { UpdateCommentComponent } from './BackOffice/comment/update-comment/update-comment.component';
+import { UpdatePostComponent } from './FrontOffice/post/update-post/update-post.component';
+import { StatPostComponent } from './BackOffice/post/stat-post/stat-post.component';
+import { ListPostBackComponent } from './BackOffice/post/list-post-back/list-post-back.component';
 import { ShowUserComponent } from './BackOffice/user-back/show-user/show-user.component';
 import { EditUserComponent } from './BackOffice/user-back/edit-user/edit-user.component';
 import { AddUserComponent } from './BackOffice/user-back/add-user/add-user.component';
@@ -107,6 +122,21 @@ import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/sho
     EditProfileComponent,
     FrontNotificationsComponent,
     NotificationDetailsComponent,
+    AddComplaintComponent,
+    ListComplaintComponent,
+    UpdateComplaintComponent,
+    DetailComplaintComponent,
+    AddComplaintBackComponent,
+    ListComplaintBackComponent,
+    EditComplaintBackComponent,
+    DetailComplaintBackComponent,
+    ListPostComponent,
+    ListCommentComponent,
+    DetailCommentComponent,
+    UpdateCommentComponent,
+    UpdatePostComponent,
+    StatPostComponent,
+    ListPostBackComponent
     ShowUserComponent,
     EditUserComponent,
     AddUserComponent,

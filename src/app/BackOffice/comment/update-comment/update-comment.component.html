@@ -1,0 +1,10 @@
+<div class="container mt-5">
+    <h2>Update Comment</h2>
+    <form (ngSubmit)="updateComment()" #updateCommentForm="ngForm">
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea class="form-control" id="content" name="content" [(ngModel)]="comment.content" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
