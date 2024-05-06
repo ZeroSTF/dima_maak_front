@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, Observable, of} from 'rxjs';
 import {Investment} from "../Models/investment";
 
 @Injectable({
@@ -35,5 +35,37 @@ export class InvestmentService {
     return this.http.delete(`${this.apiUrl}/delete/${id}`);
   }
 
+  addInvestmentAndAssignToVentureAndUser(investment: any, ventureId: number, userId: number): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<any>(`${this.apiUrl}/addInvestmentAndAssignToVentureAndUser?ventureId=${ventureId}&userId=${userId}`, investment, { headers });
+  }
 
+  getUserScores(): Observable<UserScore[]> {
+    return this.http.get<UserScore[]>(this.apiUrl)
+        .pipe(
+            catchError(this.handleError<UserScore[]>('getUserScores', []))
+        );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
 }
+
+export interface UserScore {
+  userId: number;
+  score: number;
+  // Define other properties based on your API response
+}
+
+
+

@@ -19,6 +19,7 @@
                             <th scope="col" class="text-center">Total Investment</th>
                             <th scope="col" class="text-center">Status</th>
                             <th scope="col" class="text-center">Venture ID</th>
+                            <th scope="col" class="text-center">Investor ID</th>
                             <th scope="col" class="text-center">Actions</th>
                         </tr>
                         </thead>
@@ -31,6 +32,9 @@
                             <td class="align-middle text-center">{{ investment.totalInvestment }}</td>
                             <td class="align-middle text-center">{{ investment.status }}</td>
                             <td class="align-middle text-center">{{  investment.venture?.idV }}</td>
+                            <td class="align-middle text-center">{{  investment.user?.id }}</td>
+
+
                             <td class="align-middle">
                                 <div class="d-flex justify-content-center">
                                     <button *ngIf="investment.id"
@@ -49,3 +53,4 @@
         </div>
     </div>
 </div>
+

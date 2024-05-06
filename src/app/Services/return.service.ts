@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class ReturnService {
 
-  private baseUrl = 'http://localhost:8080/return';
+  private baseUrl = 'http://localhost:8084/return';
 
   constructor(private http: HttpClient) { }
 
@@ -28,7 +28,7 @@ export class ReturnService {
     return this.http.get<Return>(`${this.baseUrl}/get/${idR}`);
   }
 
-  getAllReturns(): Observable<Return[]> {
+  getAllReturn(): Observable<Return[]> {
     return this.http.get<Return[]>(`${this.baseUrl}/getAllReturn`);
   }
 

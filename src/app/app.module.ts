@@ -25,6 +25,9 @@ import { VenturesfrontComponent } from './Ventures/venturesfront/venturesfront.c
 import { InvestmentformComponent } from './Investments/investmentform/investmentform.component';
 import { AllinvestmentsComponent } from './Investments/allinvestments/allinvestments.component';
 import { AllreturnsComponent } from './Returns/allreturns/allreturns.component';
+import { InvestorsComponent } from './User/investors/investors.component';
+import { InvestorsScoresComponent } from './User/investors-scores/investors-scores.component';
+import { AddreturnComponent } from './Returns/addreturn/addreturn.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { AllreturnsComponent } from './Returns/allreturns/allreturns.component';
     VenturesfrontComponent,
     InvestmentformComponent,
     AllinvestmentsComponent,
-    AllreturnsComponent
+    AllreturnsComponent,
+    InvestorsComponent,
+    InvestorsScoresComponent,
+    AddreturnComponent
 
   ],
   imports: [
