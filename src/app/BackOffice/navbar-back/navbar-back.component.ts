@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar-back.component.css']
 })
 export class NavbarBackComponent {
+  constructor(){ 
 
+  }
+logout(){
+  localStorage.clear()
+  window.location.href="/login"
+}
 }

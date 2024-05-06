@@ -7,7 +7,8 @@
           <!-- Logo -->
           <div class="col-xl-2 col-lg-2 col-md-1">
             <div class="logo">
-              <a href="index.html"><img src="/assets/FrontOffice/assets/img/logo/logo.png" alt=""></a> <!-- TODO change logo to our logo-->
+              <a routerLink="/"><img src="favicon.ico" alt=""></a>
+              <a routerLink="/"><img src="/assets/dima_maak_text.png" alt=""></a>
             </div>
           </div>
           <div class="col-xl-10 col-lg-10 col-md-10">
@@ -16,26 +17,58 @@
               <div class="main-menu f-right d-none d-lg-block">
                 <nav>
                   <ul id="navigation">
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="#">Our Loan Packs</a></li>
-                    <li><a href="#">Our Insurance Packs</a></li>
-                    <li><a href="#">Our Leasing Offers</a>
-                    <li><a href="#">Ventures</a>
+                    <li><a routerLink="/">Home</a></li>
+                    <li><a routerLink="#">Our Loan Packs</a></li>
+                    <li><a routerLink="#">Our Insurance Packs</a></li>
+                    <li><a routerLink="#">Our Leasing Offers</a>
+                    <li><a routerLink="#">Ventures</a>
                       <ul class="submenu">
-                        <li><a href="#">Invest</a></li>
-                        <li><a href="#">Launch a Venture</a></li>
+                        <li><a routerLink="#">Invest</a></li>
+                        <li><a routerLink="#">Launch a Venture</a></li>
                       </ul>
                     </li>
-                    <li><a href="#">Forum</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Sign Up</a>
+                    <li><a routerLink="#">Forum</a></li>
+                    <!-- Notifications Dropdown Menu -->
+                    <li *ngIf="authService.isAuthenticated()" class="nav-item dropdown">
+                      <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-info navbar-badge">{{ unreadNotificationsCount }}</span>
+                      </a>
+                      <ul class="submenu">
+                        <span class="dropdown-item dropdown-header">{{ unreadNotificationsCount }} Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <ng-container *ngFor="let notification of sortedNotifications">
+                          <a *ngIf="!notification.status" href="{{ '/notification/' + notification.id }}" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> {{ notification.content | slice: 0: 10 }}{{ notification.content.length > 10? '...' : '' }}
+                            <span class="float-right text-muted text-sm">{{ timeDiff(notification.date) }}</span>
+                          </a>
+                          <div class="dropdown-divider" *ngIf="!notification.status"></div>
+                        </ng-container>
+                        <a href="/notification" class="dropdown-item dropdown-footer">All Notifications</a>
+                      </ul>
+                    </li>
+                    <li><a routerLink="/profile">My Profile</a>
+                      <ul class="submenu">
+                        <li><a routerLink="#">Insurances</a></li>
+                        <li><a routerLink="#">Loans</a></li>
+                        <li><a routerLink="#">Leases</a></li>
+                        <li><a routerLink="#">Investments</a></li>
+                        <li><a routerLink="#">Ventures</a></li>
+                      </ul>
+                    </li>
+                    <li><a *ngIf="!authService.isAuthenticated()" routerLink="/signup">Sign Up</a>
                   </ul>
                 </nav>
               </div>
-              <div class="header-right-btn f-right d-none d-lg-block">
-                <a href="#" class="btn header-btn" style="background-color: #1F506B;">Sign In</a>
-              </div>
+              <div *ngIf="!authService.isAuthenticated()" class="header-right-btn f-right d-none d-lg-block">
+                <a *ngIf="role !== 'ROLE_USER'" routerLink="/login" class="btn header-btn" style="background-color: #1F506B;">Login</a>
+                <a *ngIf="role === 'ROLE_USER'" class="btn header-btn" style="background-color: #1F506B; color: #fff;" (click)="logout()" routerLink="/login">logout</a>
 
+              </div>
+              <div *ngIf="authService.isAuthenticated()" class="header-right-btn f-right d-none d-lg-block">
+                <a  class="btn header-btn" style="background-color: #1F506B; color: #fff;" (click)="logout()">Logout</a>
+
+              </div>
             </div>
           </div>
           <!-- Mobile Menu -->

@@ -14,8 +14,17 @@ import { HomeBackComponent } from './BackOffice/home-back/home-back.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { LoginComponent } from './FrontOffice/login/login.component';
 import { SignupComponent } from './FrontOffice/signup/signup.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { UserListComponent } from './BackOffice/user-back/user-list/user-list.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ProfileComponent } from './FrontOffice/profile/profile.component';
+import {AuthInterceptor} from "./Service/auth.interceptor";
+import { AssetComponent } from './BackOffice/asset/asset.component';
+import { LeasingComponent } from './BackOffice/leasing/leasing.component';
+import { DemandeComponent } from './BackOffice/demande/demande.component';
+import { AssetclientComponent } from './FrontOffice/assetclient/assetclient.component';
+import { PaymentComponent } from './FrontOffice/payment/payment.component';
+import { ConfirmationComponent } from './BackOffice/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -31,14 +40,23 @@ import { UserListComponent } from './BackOffice/user-back/user-list/user-list.co
     HomeFrontComponent,
     LoginComponent,
     SignupComponent,
-    UserListComponent
+    UserListComponent,
+    ProfileComponent,
+    AssetComponent,
+    LeasingComponent,
+    DemandeComponent,
+    AssetclientComponent,
+    PaymentComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

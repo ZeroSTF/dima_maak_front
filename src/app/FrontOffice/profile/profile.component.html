@@ -1,0 +1,23 @@
+<main>
+  <div class="whole-wrap mx-5">
+    <div class="section-top-border">
+      <h3 *ngIf="current" class="mb-30">Welcome {{ profile.surname }}!</h3>
+      <div class="row">
+        <div class="col-md-2">
+          <img *ngIf="imageData" [src]="imageData" alt="Profile Picture" class="img-fluid">
+          <h6 class="text-center mt-20" *ngIf="current"><strong>CIN: </strong>{{ profile.cin }}</h6>
+        </div>
+        <div class="col-md-9 mt-sm-20">
+          <p><strong>First Name:</strong> {{ profile.surname }}</p>
+          <p><strong>Last Name:</strong> {{ profile.name }}</p>
+          <p><strong>Birth Date:</strong> {{ profile.birthDate | date }}</p>
+          <p *ngIf="current"><strong>Email:</strong> {{ profile.email }}</p>
+          <p *ngIf="current"><strong>Salary:</strong> {{ profile.salary }} DT</p>
+          <p><strong>Job:</strong> {{ profile.job }}</p>
+          <p *ngIf="profile.address && !current"><strong>Address:</strong> {{ profile.address.state }}, {{ profile.address.country }}</p>
+          <p *ngIf="profile.address && current"><strong>Address:</strong> {{ profile.address.city }}, {{ profile.address.state }}, {{ profile.address.country }} {{ profile.address.postalCode }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

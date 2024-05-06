@@ -27,7 +27,38 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/FrontOffice/assets/js/vendor/modernizr-3.5.0.min.js",
+              "src/assets/FrontOffice/assets/js/vendor/jquery-1.12.4.min.js",
+              "src/assets/FrontOffice/assets/js/popper.min.js",
+              "src/assets/FrontOffice/assets/js/bootstrap.min.js",
+              "src/assets/FrontOffice/assets/js/jquery.slicknav.min.js",
+              "src/assets/FrontOffice/assets/js/owl.carousel.min.js",
+              "src/assets/FrontOffice/assets/js/slick.min.js",
+              "src/assets/FrontOffice/assets/js/wow.min.js",
+              "src/assets/FrontOffice/assets/js/animated.headline.js",
+              "src/assets/FrontOffice/assets/js/jquery.magnific-popup.js",
+              "src/assets/FrontOffice/assets/js/jquery.nice-select.min.js",
+              "src/assets/FrontOffice/assets/js/jquery.sticky.js",
+              "src/assets/FrontOffice/assets/js/contact.js",
+              "src/assets/FrontOffice/assets/js/jquery.form.js",
+              "src/assets/FrontOffice/assets/js/jquery.validate.min.js",
+              "src/assets/FrontOffice/assets/js/mail-script.js",
+              "src/assets/FrontOffice/assets/js/jquery.ajaxchimp.min.js",
+              "src/assets/FrontOffice/assets/js/plugins.js",
+              "src/assets/FrontOffice/assets/js/main.js",
+
+              "src/assets/BackOffice/plugins/jquery/jquery.min.js",
+              "src/assets/BackOffice/plugins/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/BackOffice/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+              "src/assets/BackOffice/dist/js/adminlte.js",
+              "src/assets/BackOffice/plugins/jquery-mousewheel/jquery.mousewheel.js",
+              "src/assets/BackOffice/plugins/raphael/raphael.min.js",
+              "src/assets/BackOffice/plugins/jquery-mapael/jquery.mapael.min.js",
+              "src/assets/BackOffice/plugins/jquery-mapael/maps/usa_states.min.js",
+              "src/assets/BackOffice/plugins/chart.js/Chart.min.js",
+              "src/assets/BackOffice/dist/js/pages/dashboard2.js"
+            ]
           },
           "configurations": {
             "production": {
