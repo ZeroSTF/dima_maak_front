@@ -27,6 +27,13 @@ import { PaymentComponent } from './FrontOffice/payment/payment.component';
 import { ConfirmationComponent } from './BackOffice/confirmation/confirmation.component';
 import {AuthGuard} from "./auth.guard";
 import { EditProfileComponent } from './FrontOffice/edit-profile/edit-profile.component';
+import { InsuranceListComponent } from './BackOffice/Insurance-Back/insurance-list/insurance-list.component';
+import { InsurancePackOffersComponent } from './FrontOffice/Insurance-Pack-Front/insurance-pack-offers/insurance-pack-offers.component';
+import { AdminInsComponent } from './FrontOffice/admin-ins/admin-ins.component';
+import { InsurancepackComponent } from './BackOffice/insurancepack/insurancepack.component';
+import { PremiumComponent } from './BackOffice/premium/premium.component';
+import { ClaimComponent } from './BackOffice/claim/claim.component';
+import { PaypremiumComponent } from './FrontOffice/paypremium/paypremium.component';
 import { FrontNotificationsComponent } from './FrontOffice/front-notifications/front-notifications.component';
 import { NotificationDetailsComponent } from './FrontOffice/notification-details/notification-details.component';
 import { ShowUserComponent } from './BackOffice/user-back/show-user/show-user.component';
@@ -60,6 +67,13 @@ import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/sho
     SignupComponent,
     UserListComponent,
     ProfileComponent,
+    InsuranceListComponent,
+    InsurancePackOffersComponent,
+    AdminInsComponent,
+    InsurancepackComponent,
+    PremiumComponent,
+    ClaimComponent,
+    PaypremiumComponent
     AssetComponent,
     LeasingComponent,
     DemandeComponent,

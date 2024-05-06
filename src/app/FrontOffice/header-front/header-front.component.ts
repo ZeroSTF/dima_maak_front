@@ -31,7 +31,7 @@ export class HeaderFrontComponent implements OnInit, OnDestroy {
 
   constructor(public authService: AuthService, private router: Router, private userService: UserService, private notificationService: NotificationService) {
   }
-
+role:any
   ngOnInit() {
     console.log("TESTING IS AUTHENTITCATED " + this.authService.isAuthenticated());
     if (this.authService.isAuthenticated()) {
@@ -66,6 +66,7 @@ export class HeaderFrontComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout().subscribe(
       (data: any) => {
+        localStorage.clear()
         localStorage.removeItem('token');
         console.log('Logout successful:', data.message);
         this.stopUserActivityCheck$.next(1);

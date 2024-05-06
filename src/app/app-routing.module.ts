@@ -16,6 +16,12 @@ import { ConfirmationComponent } from './BackOffice/confirmation/confirmation.co
 import {AuthGuard} from "./auth.guard";
 import {ProfileComponent} from "./FrontOffice/profile/profile.component";
 import {EditProfileComponent} from "./FrontOffice/edit-profile/edit-profile.component";
+import { InsurancePackOffersComponent } from './FrontOffice/Insurance-Pack-Front/insurance-pack-offers/insurance-pack-offers.component';
+import { InsuranceListComponent } from './BackOffice/Insurance-Back/insurance-list/insurance-list.component';
+import { InsurancepackComponent } from './BackOffice/insurancepack/insurancepack.component';
+import { PremiumComponent } from './BackOffice/premium/premium.component';
+import { ClaimComponent } from './BackOffice/claim/claim.component';
+import { PaypremiumComponent } from './FrontOffice/paypremium/paypremium.component';
 import {FrontNotificationsComponent} from "./FrontOffice/front-notifications/front-notifications.component";
 import {NotificationDetailsComponent} from "./FrontOffice/notification-details/notification-details.component";
 import {ShowUserComponent} from "./BackOffice/user-back/show-user/show-user.component";
@@ -78,6 +84,11 @@ const routes: Routes = [
         component: EditProfileComponent, canActivate: [AuthGuard]
       },
       {
+        path:"InsurancePacks",
+        component:InsurancePackOffersComponent
+      },   {
+        path:"payment/:id/:amount",
+        component:PaypremiumComponent
         path: "notifications",
         component: FrontNotificationsComponent, canActivate: [AuthGuard]
       },
@@ -168,9 +179,26 @@ const routes: Routes = [
     component:DemandeComponent
       },
       {
+        path:"insurancelist", 
+        component:InsuranceListComponent
+      },
+      {
+        path:"packlist", 
+        component:InsurancepackComponent
+      },
+      {
+        path:"claim", 
+        component:ClaimComponent
+      },
+      {
+        path:"premium", 
+        component:PremiumComponent
+      },
+      {
         path: "viewLoyalty/:id",
         component: ShowLoyaltyComponent, canActivate: [AuthGuard]
       }
+
     ]
   }
 ];
