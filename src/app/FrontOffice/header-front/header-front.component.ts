@@ -17,8 +17,9 @@ export class HeaderFrontComponent implements OnInit {
 
   constructor(public authService: AuthService, private router: Router, private userService: UserService, private notificationService: NotificationService) {
   }
-
+role:any
   ngOnInit() {
+    this.role=JSON.parse(String(localStorage.getItem("userRole")))
     if(this.authService.isAuthenticated()){
     this.userService.getProfile().subscribe(data => {
       this.processProfile(data);
@@ -32,6 +33,7 @@ export class HeaderFrontComponent implements OnInit {
   logout() {
     this.authService.logout().subscribe(
       (data: any) => {
+        localStorage.clear()
         localStorage.removeItem('token');
         console.log('Logout successful:', data.message);
         this.router.navigate(["/"]);

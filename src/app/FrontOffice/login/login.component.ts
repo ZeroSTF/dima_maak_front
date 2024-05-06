@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from "../../Service/auth.service";
 import { Router } from '@angular/router';
+import { InsuranceServicesService } from 'src/app/Service/Insurance/insurance-services.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private service:InsuranceServicesService ,private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -40,5 +41,23 @@ export class LoginComponent implements OnInit {
           console.error(error);
         });
     }
+  }
+  login(){
+    const email = this.loginForm.get('email')?.value;
+    const password = this.loginForm.get('password')?.value;
+this.service.login(email,password).subscribe((data:any)=>{
+  console.log(data.role[0].authority,data.id);
+  localStorage.setItem('userId', data.id); 
+    localStorage.setItem('userRole', data.role[0].authority); 
+
+   if(data.role[0].authority==="ADMIN")
+    {
+      this.router.navigate(['/admin/packlist']); 
+    }else{
+      this.router.navigate(['/InsurancePacks']); 
+    }
+  
+  
+})
   }
 }

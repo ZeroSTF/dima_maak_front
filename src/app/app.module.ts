@@ -16,11 +16,18 @@ import { LoginComponent } from './FrontOffice/login/login.component';
 import { SignupComponent } from './FrontOffice/signup/signup.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { UserListComponent } from './BackOffice/user-back/user-list/user-list.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule,FormsModule} from "@angular/forms";
 import { ProfileComponent } from './FrontOffice/profile/profile.component';
 import {AuthInterceptor} from "./Service/auth.interceptor";
 import {AuthGuard} from "./auth.guard";
 import { EditProfileComponent } from './FrontOffice/edit-profile/edit-profile.component';
+import { InsuranceListComponent } from './BackOffice/Insurance-Back/insurance-list/insurance-list.component';
+import { InsurancePackOffersComponent } from './FrontOffice/Insurance-Pack-Front/insurance-pack-offers/insurance-pack-offers.component';
+import { AdminInsComponent } from './FrontOffice/admin-ins/admin-ins.component';
+import { InsurancepackComponent } from './BackOffice/insurancepack/insurancepack.component';
+import { PremiumComponent } from './BackOffice/premium/premium.component';
+import { ClaimComponent } from './BackOffice/claim/claim.component';
+import { PaypremiumComponent } from './FrontOffice/paypremium/paypremium.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +45,21 @@ import { EditProfileComponent } from './FrontOffice/edit-profile/edit-profile.co
     SignupComponent,
     UserListComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    InsuranceListComponent,
+    InsurancePackOffersComponent,
+    AdminInsComponent,
+    InsurancepackComponent,
+    PremiumComponent,
+    ClaimComponent,
+    PaypremiumComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]

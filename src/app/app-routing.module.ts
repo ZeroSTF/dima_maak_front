@@ -10,6 +10,12 @@ import {UserListComponent} from "./BackOffice/user-back/user-list/user-list.comp
 import {AuthGuard} from "./auth.guard";
 import {ProfileComponent} from "./FrontOffice/profile/profile.component";
 import {EditProfileComponent} from "./FrontOffice/edit-profile/edit-profile.component";
+import { InsurancePackOffersComponent } from './FrontOffice/Insurance-Pack-Front/insurance-pack-offers/insurance-pack-offers.component';
+import { InsuranceListComponent } from './BackOffice/Insurance-Back/insurance-list/insurance-list.component';
+import { InsurancepackComponent } from './BackOffice/insurancepack/insurancepack.component';
+import { PremiumComponent } from './BackOffice/premium/premium.component';
+import { ClaimComponent } from './BackOffice/claim/claim.component';
+import { PaypremiumComponent } from './FrontOffice/paypremium/paypremium.component';
 
 const routes: Routes = [
   {
@@ -39,6 +45,13 @@ const routes: Routes = [
       {
         path:"editProfile",
         component: EditProfileComponent, canActivate: [AuthGuard]
+      },
+      {
+        path:"InsurancePacks",
+        component:InsurancePackOffersComponent
+      },   {
+        path:"payment/:id/:amount",
+        component:PaypremiumComponent
       }
     ]
   },
@@ -53,7 +66,24 @@ const routes: Routes = [
       {
         path:"user",
         component:UserListComponent
+      },
+      {
+        path:"insurancelist", 
+        component:InsuranceListComponent
+      },
+      {
+        path:"packlist", 
+        component:InsurancepackComponent
+      },
+      {
+        path:"claim", 
+        component:ClaimComponent
+      },
+      {
+        path:"premium", 
+        component:PremiumComponent
       }
+
     ]
   }
 ];

@@ -60,6 +60,8 @@
                       </ul>
                     </li>
                     <li><a *ngIf="!authService.isAuthenticated()" routerLink="/signup">Sign Up</a>
+                      <li><a (click)="logout()">Logout</a>
+
                   </ul>
                 </nav>
               </div>

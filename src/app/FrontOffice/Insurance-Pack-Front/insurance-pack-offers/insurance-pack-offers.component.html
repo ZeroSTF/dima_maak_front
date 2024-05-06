@@ -1,0 +1,182 @@
+<div class="home-blog-area section-padding30">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-10">
+        <!-- Section Tittle -->
+        <div class="section-tittle text-center mb-70">
+          <h2>insurance packs</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="packs-container">
+        <button class="btn btn-primary" (click)="change(true)">
+          List Insurance
+        </button>
+     
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Claim</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #ng="ngForm" (ngSubmit)="addclaim(ng)">
+          <div class="form-group">
+              <label for="date">Date:</label>
+              <input type="date" id="date" name="date" ngModel required class="form-control">
+          </div>
+      
+          <div class="form-group">
+              <label for="details">Details:</label>
+              <textarea id="details" name="details" rows="4" cols="50" ngModel required class="form-control"></textarea>
+          </div>
+      
+          <div class="form-group">
+              <label for="amount">Amount:</label>
+              <input type="number" id="amount" name="amount" step="0.01" ngModel required class="form-control">
+          </div>
+      
+          <div class="form-group">
+            <input type="hidden" name="status" id="status" value="Pending">
+        </div>
+        
+      
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </form>
+      
+      </div>
+   
+    </div>
+  </div>
+</div>
+
+        <div *ngIf="etat">
+          <h2>Information</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Client Premium</th>
+                <th>Client Coverage Amount</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>State</th>
+                <th>Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let coverage of listebyuser">
+                <td>{{ coverage.clientpremium }}</td>
+                <td>{{ coverage.clientcoverageamount }}</td>
+                <td>{{ coverage.startDate }}</td>
+                <td>{{ coverage.endDate }}</td>
+                <td>{{ coverage.state }}</td>
+                <td><button class="btn" (click)="getallpr(coverage.id)">see</button></td>
+                <td>   <button  *ngIf="coverage.state=== 'Accepted'" class="btn btn-success" (click)="copy(coverage.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: green;">
+                  Add claim 
+                </button></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table" *ngIf="premium.length > 0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>date</th>
+                <th>amount</th>
+                <th>status</th>
+                <th>accumulatedInterest</th>
+                <th>payment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let insurance of premium">
+               
+                <td>{{ insurance.id }}</td>
+                <td>{{ insurance.date }}</td>
+                <td>{{ insurance.amount }}</td>
+                <td>{{ insurance.status }}</td>
+                <td>{{ insurance.accumulatedInterest }}</td>
+                <td> <a *ngIf="insurance.status != true" class="btn btn-primary" [routerLink]="'/payment/'+insurance.id+'/'+insurance.amount">Payment</a>
+                  <button *ngIf="insurance.status == true" class="btn btn-primary" disabled>Payment</button>
+                </td>
+           
+  
+  
+  
+              </tr>
+            </tbody>
+          </table>
+          <!-- <h3>Insurance Policy Information</h3> -->
+          <!-- <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Coverage Amount</th>
+                <th>Duration</th>
+                <th>Policy</th>
+                <th>Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let policy of listebyuser.insuranceP">
+                <td>{{ policy.name }}</td>
+                <td>{{ policy.type }}</td>
+                <td>{{ policy.coverageAmount }}</td>
+                <td>{{ policy.duration }}</td>
+                <td>{{ policy.policy }}</td>
+                <td>{{ policy.premium }}</td>
+              </tr>
+            </tbody>
+          </table> -->
+          <button class="btn btn-danger" (click)="change(false)">close</button>
+        </div>
+
+        <br /><br /><br />
+
+        <div class="row">
+          <div
+            class="col-lg-4 col-md-6 mb-4"
+            *ngFor="let pack of insurancepacks"
+          >
+            <div class="card pack">
+              <div class="card-header pack__header">
+                <h3 class="card-title">{{ pack.name }}</h3>
+                <p class="pack__type badge badge-primary">{{ pack.type }}</p>
+              </div>
+              <div class="card-body pack__details">
+                <p class="card-text">
+                  <strong>Duration:</strong> {{ pack.duration }} years
+                </p>
+                <p class="card-text">
+                  <strong>Coverage Amount:</strong> ${{ pack.coverageAmount }}
+                </p>
+                <p class="card-text">
+                  <strong>Premium:</strong> ${{ pack.premium }}/year
+                </p>
+                <p class="card-text">
+                  <strong>Policy:</strong> {{ pack.policy }}
+                </p>
+              </div>
+              <div class="card-footer pack__footer">
+                <button
+                  class="choose-button btn btn-primary"
+                  (click)="choose(pack.id)"
+                >
+                  Choose
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Blog Ara End -->
