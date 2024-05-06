@@ -30,23 +30,26 @@
                     <li><a routerLink="#">Forum</a></li>
                     <!-- Notifications Dropdown Menu -->
                     <li *ngIf="authService.isAuthenticated()" class="nav-item dropdown">
-                      <a class="nav-link" data-toggle="dropdown" href="#">
+                      <a class="nav-link" data-toggle="dropdown" routerLink="#">
                         <i class="far fa-bell"></i>
                         <span class="badge badge-info navbar-badge">{{ unreadNotificationsCount }}</span>
                       </a>
-                      <ul class="submenu">
+                      <ul class="submenu" style="width: 300px;">
                         <span class="dropdown-item dropdown-header">{{ unreadNotificationsCount }} Notifications</span>
                         <div class="dropdown-divider"></div>
+                        <div style="max-height: 300px; overflow-y: scroll; overflow-x: hidden;">
                         <ng-container *ngFor="let notification of sortedNotifications">
-                          <a *ngIf="!notification.status" href="{{ '/notification/' + notification.id }}" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> {{ notification.content | slice: 0: 10 }}{{ notification.content.length > 10? '...' : '' }}
-                            <span class="float-right text-muted text-sm">{{ timeDiff(notification.date) }}</span>
+                          <a *ngIf="!notification.status" routerLink="{{ '/notification/' + notification.id }}" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> {{ notification.content | slice: 0: 20 }}{{ notification.content.length > 20? '...' : '' }}
                           </a>
+                          <span class="float-right text-muted text-sm">{{ timeDiff(notification.date) }}</span>
                           <div class="dropdown-divider" *ngIf="!notification.status"></div>
                         </ng-container>
-                        <a href="/notification" class="dropdown-item dropdown-footer">All Notifications</a>
+                        </div>
+                        <a routerLink="/notifications" class="dropdown-item dropdown-footer">All Notifications</a>
                       </ul>
                     </li>
+                    <!-- Notifications Dropdown Menu End-->
                     <li><a routerLink="/profile">My Profile</a>
                       <ul class="submenu">
                         <li><a routerLink="#">Insurances</a></li>
@@ -61,13 +64,10 @@
                 </nav>
               </div>
               <div *ngIf="!authService.isAuthenticated()" class="header-right-btn f-right d-none d-lg-block">
-                <a *ngIf="role !== 'ROLE_USER'" routerLink="/login" class="btn header-btn" style="background-color: #1F506B;">Login</a>
-                <a *ngIf="role === 'ROLE_USER'" class="btn header-btn" style="background-color: #1F506B; color: #fff;" (click)="logout()" routerLink="/login">logout</a>
-
+                <a routerLink="/login" class="btn header-btn" style="background-color: #1F506B;">Login</a>
               </div>
               <div *ngIf="authService.isAuthenticated()" class="header-right-btn f-right d-none d-lg-block">
-                <a  class="btn header-btn" style="background-color: #1F506B; color: #fff;" (click)="logout()">Logout</a>
-
+                <a class="btn header-btn" style="background-color: #1F506B; color: #fff;" (click)="logout()">Logout</a>
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+/*
 import { Set } from 'typescript';
 export class User{
   id!: number;
@@ -24,3 +25,4 @@ export enum UStatus {
 }
 export class Role {
 }
+*/

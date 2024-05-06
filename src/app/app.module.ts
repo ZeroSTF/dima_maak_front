@@ -25,6 +25,24 @@ import { DemandeComponent } from './BackOffice/demande/demande.component';
 import { AssetclientComponent } from './FrontOffice/assetclient/assetclient.component';
 import { PaymentComponent } from './FrontOffice/payment/payment.component';
 import { ConfirmationComponent } from './BackOffice/confirmation/confirmation.component';
+import {AuthGuard} from "./auth.guard";
+import { EditProfileComponent } from './FrontOffice/edit-profile/edit-profile.component';
+import { FrontNotificationsComponent } from './FrontOffice/front-notifications/front-notifications.component';
+import { NotificationDetailsComponent } from './FrontOffice/notification-details/notification-details.component';
+import { ShowUserComponent } from './BackOffice/user-back/show-user/show-user.component';
+import { EditUserComponent } from './BackOffice/user-back/edit-user/edit-user.component';
+import { AddUserComponent } from './BackOffice/user-back/add-user/add-user.component';
+import { NotificationListComponent } from './BackOffice/notification-back/notification-list/notification-list.component';
+import { ShowNotificationComponent } from './BackOffice/notification-back/show-notification/show-notification.component';
+import { EditNotificationComponent } from './BackOffice/notification-back/edit-notification/edit-notification.component';
+import { AddNotificationComponent } from './BackOffice/notification-back/add-notification/add-notification.component';
+import { VerifiedComponent } from './FrontOffice/verified/verified.component';
+import { StatsUserComponent } from './BackOffice/user-back/stats-user/stats-user.component';
+import {CommonModule} from "@angular/common";
+import { LoyaltyListComponent } from './BackOffice/loyalty-back/loyalty-list/loyalty-list.component';
+import { AddLoyaltyComponent } from './BackOffice/loyalty-back/add-loyalty/add-loyalty.component';
+import { EditLoyaltyComponent } from './BackOffice/loyalty-back/edit-loyalty/edit-loyalty.component';
+import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/show-loyalty.component';
 
 @NgModule({
   declarations: [
@@ -48,15 +66,32 @@ import { ConfirmationComponent } from './BackOffice/confirmation/confirmation.co
     AssetclientComponent,
     PaymentComponent,
     ConfirmationComponent
+    EditProfileComponent,
+    FrontNotificationsComponent,
+    NotificationDetailsComponent,
+    ShowUserComponent,
+    EditUserComponent,
+    AddUserComponent,
+    NotificationListComponent,
+    ShowNotificationComponent,
+    EditNotificationComponent,
+    AddNotificationComponent,
+    VerifiedComponent,
+    StatsUserComponent,
+    LoyaltyListComponent,
+    AddLoyaltyComponent,
+    EditLoyaltyComponent,
+    ShowLoyaltyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }  ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
