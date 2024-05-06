@@ -1,0 +1,174 @@
+<!-- list-post.component.html -->
+
+<div class="container mt-5">
+  <h2>List of Posts</h2>
+  <button (click)="toggleAddPostForm()">Add Post</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Created Date</th>
+        <th>Likes</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts">
+
+        <td>{{ post.title }}</td>
+        <td>{{ post.content }}</td>
+        <td>{{ post.createdDate | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ post.likes }}</td>
+        <td>
+          <button (click)="showUpdateForm(post.id)">update Post</button>
+          <button (click)="likePost(post.id)" style="background-color: rgb(3, 74, 3);">  <i class="fas fa-thumbs-up"></i></button>
+          <button (click)="dislikePost(post.id)" style="background-color: rgb(112, 3, 3);">   <i class="fas fa-thumbs-down"></i></button>
+          <button (click)="viewComments(post.id)">View Comments</button>
+          <button (click)="showCommentForm(post.id)">Add Comment</button>
+          <button (click)="deletePost(post.id)">Delete Post</button>
+        </td>
+
+
+
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+  <!-- try -->
+  <!-- <div *ngFor="let post of posts">
+    <div class="card">
+      <div class="date-time-container">
+        <time class="date-time" datetime="2022-10-10">
+          <span>{{ post.createdDate | date: 'dd/MM/yyyy' }}</span>
+      
+        </time>
+      </div>
+      <div class="content">
+      
+        <div class="infos">
+          <a href="#">
+            <span class="title">
+              {{ post.title }}
+            </span>
+          </a>
+    
+          <p class="description">
+            {{ post.content }}
+          </p>
+        </div>
+    
+          <a class="action" href="#">
+            {{ post.likes }}
+          </a>
+          <button (click)="showUpdateForm(post.id)">update Post</button>
+          <button (click)="likePost(post.id)" style="background-color: rgb(3, 74, 3);">  <i class="fas fa-thumbs-up"></i></button>
+          <button (click)="dislikePost(post.id)" style="background-color: rgb(112, 3, 3);">   <i class="fas fa-thumbs-down"></i></button>
+          <button (click)="viewComments(post.id)">View Comments</button>
+          <button (click)="showCommentForm(post.id)">Add Comment</button>
+          <button (click)="deletePost(post.id)">Delete Post</button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Formulaire pour ajouter un commentaire -->
+  <div *ngIf="showCommentFormId !== null" class="mt-4">
+    <h3>Add Comment</h3>
+    <form (submit)="addComment(showCommentFormId)" class="needs-validation" novalidate>
+      <div class="mb-3">
+       
+        <textarea [(ngModel)]="commentContent" name="commentContent" id="commentContent" class="form-control" rows="3" required></textarea>
+        <div class="invalid-feedback">
+          Please enter your comment.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+  </div>
+  
+
+  <div *ngIf="comments.length > 0">
+    <h3>Comments</h3>
+    <ul>
+      <li *ngFor="let comment of comments">
+        <div class="like-dislike-container" style="margin-bottom: 30px;">
+          <div class="">
+            <div>
+              <p>Comment: {{ comment.content }}</p>
+            </div>
+            <div>
+              <p>Ratings: {{ comment.rating }}</p>
+            </div>
+           
+             
+
+            <!-- Champ d'entrée pour le contenu mis à jour du commentaire -->
+            <input type="text" [(ngModel)]="comment.content" placeholder="New Comment Content">
+
+            <!-- Bouton pour mettre à jour le commentaire -->
+            <button (click)="updateComment(comment)">Update Comment</button>
+
+            <!-- Bouton pour supprimer le commentaire -->
+            <button (click)="deleteComment(comment.id)">
+              <i class="fas fa-trash-alt"></i> <!-- Icône de poubelle pour supprimer -->
+            </button>
+            <button (click)="likeComment(comment.id)" style="background-color: rgb(3, 74, 3);">
+              <i class="fas fa-thumbs-up"></i>
+            </button>
+
+            <!-- Bouton pour disliker le commentaire -->
+            <button (click)="dislikeComment(comment.id)" style="background-color: rgb(112, 3, 3);">
+              <i class="fas fa-thumbs-down"></i>
+            </button>
+
+          </div>
+        </div>
+
+
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="showUpdateFormId !== null">
+    <h3>Update Post</h3>
+    <form (submit)="updatePost(updatedPost)">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="updatedPost.title" required>
+      </div>
+      <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea class="form-control" id="content" name="content" [(ngModel)]="updatedPost.content"
+          required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+
+  <div>
+
+    <!-- Afficher le formulaire uniquement si showAddPostForm est vrai -->
+    <form *ngIf="showAddPostForm" (submit)="onSubmit()">
+      <h3>Add Post</h3>
+      <!-- Les champs du formulaire -->
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="newPost.title" required>
+      </div>
+      <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea class="form-control" id="content" name="content" [(ngModel)]="newPost.content" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+  </div>
+</div>
+<div style="max-width: 900px;">
+  <div>
+    <canvas #myChart width="3" height="1.5"></canvas>
+  </div>
+
+</div>

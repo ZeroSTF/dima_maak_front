@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <h2>List of Posts</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Content</th>
+        <th>Created Date</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let comment of comments">
+        <td>{{ comment.id }}</td>
+        <td>{{ comment.content }}</td>
+        <td>{{ comment.createdDate | date }}</td>
+   
+     
+        <td>   <button (click)="DetailComment(comment.id)">Details</button>
+          <button (click)="deleteComment(comment.id)">Delete</button>
+          <button (click)="updateComment(comment.id)">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  

@@ -1,0 +1,12 @@
+<div class="container mt-5" *ngIf="complaint">
+    <h2>Complaint Details</h2>
+    <div>
+      <p><strong>ID:</strong> {{ complaint.id }}</p>
+      <p><strong>Date:</strong> {{ complaint.date | date: 'dd/MM/yyyy' }}</p>
+      <p><strong>Subject:</strong> {{ complaint.subject }}</p>
+      <p><strong>Description:</strong> {{ complaint.description }}</p>
+      <p><strong>Status:</strong> {{ complaint.status ? 'Active' : 'Inactive' }}</p>
+      <p><strong>User ID:</strong> {{ complaint.user?.id }}</p>
+    </div>
+  </div>
+  
