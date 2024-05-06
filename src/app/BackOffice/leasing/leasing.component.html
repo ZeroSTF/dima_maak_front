@@ -1,0 +1,221 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Create New leasing
+              </button>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Leasing</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+  
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+      
+  
+        <div class="container">
+
+            <h1></h1>
+            <!-- Button trigger modal -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form #ngForm="ngForm" (ngSubmit)="onSubmit(ngForm)">
+                <div class="form-group">
+                  <label for="startdate">Start Date:</label>
+                  <input type="date" id="startdate" ngModel name="startdate" required class="form-control">
+                </div>
+              
+                <div class="form-group">
+                  <label for="enddate">End Date:</label>
+                  <input type="date" id="enddate" ngModel name="enddate" required class="form-control">
+                </div>
+              
+                <!-- <div class="form-group">
+                  <label for="monthlypayment">Monthly Payment:</label>
+                  <input type="number" id="monthlypayment" ngModel name="monthlypayment" required class="form-control">
+                </div> -->
+              
+           
+              
+                <!-- <div class="form-group">
+                  <label for="depositamount">Deposit Amount:</label>
+                  <input type="number" id="depositamount" ngModel name="depositamount" class="form-control">
+                </div>
+              
+                <div class="form-group">
+                  <label for="penaltyfee">Penalty Fee:</label>
+                  <input type="number" id="penaltyfee" ngModel name="penaltyfee" class="form-control">
+                </div>
+              
+                <div class="form-group">
+                  <label for="additionalfee">Additional Fee:</label>
+                  <input type="number" id="additionalfee" ngModel name="additionalfee" class="form-control">
+                </div>
+               -->
+            
+                <div class="form-group">
+                    <label for="renwealoption">renwealoption:</label>
+                    <select id="renwealoption" ngModel name="renwealoption" class="form-control">
+                      <option  disabled>select ...</option>
+                      <option value="true">True</option>
+                      <option value="false">false</option>
+                    </select>
+                  </div>
+              
+                <!-- <div class="form-group">
+                  <label for="initialValue">Initial Value:</label>
+                  <input type="number" id="initialValue" ngModel name="initialValue" class="form-control">
+                </div>
+               -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+              </form>
+              
+              
+              
+        </div>
+     
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form #ngForm="ngForm" (ngSubmit)="update()">
+                <div class="form-group">
+                  <label for="startdate">Start Date:</label>
+                  <input type="date" id="startdate" [(ngModel)]="loanData.startdate" name="startdate" required class="form-control">
+                </div>
+              
+                <div class="form-group">
+                  <label for="enddate">End Date:</label>
+                  <input type="date" id="enddate" [(ngModel)]="loanData.enddate" name="enddate" required class="form-control">
+                </div>
+              
+                <!-- <div class="form-group">
+                  <label for="monthlypayment">Monthly Payment:</label>
+                  <input type="number" id="monthlypayment" [(ngModel)]="loanData.monthlypayment" name="monthlypayment" required class="form-control">
+                </div> -->
+                <div class="form-group">
+                    <label for="renwealoption">renwealoption:</label>
+                    <select id="renwealoption" [(ngModel)]="loanData.renwealoption" name="renwealoption" class="form-control">
+                      <option  disabled>select ...</option>
+                      <option value="true">True</option>
+                      <option value="false">false</option>
+                    </select>
+                  </div>
+           
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" [(ngModel)]="loanData.status" name="status" class="form-control">
+                      <option  disabled>select ...</option>
+                      <option value="Offer">Offer</option>
+                      <option value="Denied">Denied</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Accepted">Accepted</option>
+
+                    </select>
+                  </div>
+                <!-- <div class="form-group">
+                  <label for="depositamount">Deposit Amount:</label>
+                  <input type="number" id="depositamount" [(ngModel)]="loanData.depositamount" name="depositamount" class="form-control">
+                </div>
+              
+                <div class="form-group">
+                  <label for="penaltyfee">Penalty Fee:</label>
+                  <input type="number" id="penaltyfee" [(ngModel)]="loanData.penaltyfee" name="penaltyfee" class="form-control">
+                </div>
+              
+                <div class="form-group">
+                  <label for="additionalfee">Additional Fee:</label>
+                  <input type="number" id="additionalfee" [(ngModel)]="loanData.additionalfee" name="additionalfee" class="form-control">
+                </div>
+              
+                <div class="form-group">
+                  <label for="paymentstatus">Payment Status:</label>
+                  <select id="paymentstatus" [(ngModel)]="loanData.paymentstatus" name="paymentstatus" class="form-control">
+                    <option  disabled>select ...</option>
+                    <option value="Active">Active</option>
+                    <option value="Paid_off">Paid_off</option>
+                    <option value="In_default">In_default</option>
+                  </select>
+                </div>
+               -->
+                <div class="form-group">
+                  <label for="initialValue">Initial Value:</label>
+                  <input type="number" id="initialValue" [(ngModel)]="loanData.initialValue" name="initialValue" class="form-control">
+                </div>
+              
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+              </form>
+        </div>
+     
+      </div>
+    </div>
+  </div> 
+
+       
+          </div>
+        <!-- /.row -->
+        <div class="row">
+            <!-- asset-list.component.html -->
+
+<div class="container">
+    <h1>All Leasing</h1>
+    <div class="asset-container">
+      <div class="asset-card" *ngFor="let lease of assets">
+       
+        <div class="lease-details">
+            <div><strong>Start Date:</strong> <span style="color:red" >{{ lease.startdate }}</span></div>
+            <div><strong>End Date:</strong> <span style="color:red"  >{{ lease.enddate }}</span></div>
+            <div><strong>Monthly Payment:</strong> <span style="color:red" >{{ lease.monthlypayment  }}</span></div>
+            <div><strong>renwealoption::</strong> <span style="color:red" >{{ lease.renwealoption }}</span></div>
+            <div><strong>Initial Value:</strong> <span style="color:red" >{{ lease.initialValue }}</span></div>
+          </div>
+          
+          
+        
+        <div class="asset-actions">
+          <button (click)="delete(lease.leaseid)" class="btn btn-danger">Delete</button>
+          <button (click)="copyobj(lease)" data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-secondary">Edit</button>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+  
+        </div>
+      </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->

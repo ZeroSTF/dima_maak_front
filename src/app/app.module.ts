@@ -19,6 +19,12 @@ import { UserListComponent } from './BackOffice/user-back/user-list/user-list.co
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ProfileComponent } from './FrontOffice/profile/profile.component';
 import {AuthInterceptor} from "./Service/auth.interceptor";
+import { AssetComponent } from './BackOffice/asset/asset.component';
+import { LeasingComponent } from './BackOffice/leasing/leasing.component';
+import { DemandeComponent } from './BackOffice/demande/demande.component';
+import { AssetclientComponent } from './FrontOffice/assetclient/assetclient.component';
+import { PaymentComponent } from './FrontOffice/payment/payment.component';
+import { ConfirmationComponent } from './BackOffice/confirmation/confirmation.component';
 import {AuthGuard} from "./auth.guard";
 import { EditProfileComponent } from './FrontOffice/edit-profile/edit-profile.component';
 import { FrontNotificationsComponent } from './FrontOffice/front-notifications/front-notifications.component';
@@ -54,6 +60,12 @@ import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/sho
     SignupComponent,
     UserListComponent,
     ProfileComponent,
+    AssetComponent,
+    LeasingComponent,
+    DemandeComponent,
+    AssetclientComponent,
+    PaymentComponent,
+    ConfirmationComponent
     EditProfileComponent,
     FrontNotificationsComponent,
     NotificationDetailsComponent,
