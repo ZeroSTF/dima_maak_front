@@ -13,27 +13,25 @@
           <table class="table m-0 table-striped table-dark">
             <thead>
             <tr>
-              <th scope="col" class="text-center">idV</th>
-              <th scope="col" class="text-center">CompanyName</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Company Name</th>
               <th scope="col" class="text-center">Stage</th>
               <th scope="col" class="text-center">Sector</th>
-              <th scope="col" class="text-center">VentureName</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Venture Name</th>
               <th scope="col" class="text-center">Description</th>
-              <th scope="col" class="text-center">DateExpiration</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Expiration Date</th>
               <th scope="col" class="text-center">Status</th>
-              <th scope="col" class="text-center">AvailableShares</th>
-              <th scope="col" class="text-center">SharesPrice</th>
-              <th scope="col" class="text-center">DividendPerShare</th>
-              <th scope="col" class="text-center">LoanAmount</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Available Shares</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Shares Price</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Dividend Per Share</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Loan Amount</th>
               <th scope="col" class="text-center">Interest</th>
-              <th scope="col" class="text-center">LoanDuration</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Loan Duration</th>
               <th scope="col" class="text-center">Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let venture of ventures; let i = index">
-              <td class="align-middle text-center">{{ venture.idV }}</td>
-              <td class="align-middle text-center">{{ venture.companyName }}</td>
+              <td class="align-middle text-center">{{ venture.idV }}-{{ venture.companyName }}</td>
               <td class="align-middle text-center">{{ venture.stage }}</td>
               <td class="align-middle text-center">{{ venture.sector }}</td>
               <td class="align-middle text-center">{{ venture.ventureName }}</td>
@@ -44,7 +42,7 @@
               <td class="align-middle text-center">{{ venture.sharesPrice }}</td>
               <td class="align-middle text-center">{{ venture.dividendPerShare }}</td>
               <td class="align-middle text-center">{{ venture.loanAmount }}</td>
-              <td class="align-middle text-center">{{ venture.interest }}</td>
+              <td class="align-middle text-center">{{ venture.interest }}%</td>
               <td class="align-middle text-center">{{ venture.loanDuration }}</td>
               <td class="align-middle">
                 <div class="d-flex justify-content-between">

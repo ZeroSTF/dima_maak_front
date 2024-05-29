@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-          
+
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Demande</li>
+              <li class="breadcrumb-item active">Leasing Requests</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -22,8 +22,8 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      
-  
+
+
         <div class="container">
 
             <h1></h1>
@@ -31,18 +31,17 @@
 
 
 
-       
+
           </div>
         <!-- /.row -->
         <div class="row">
             <!-- asset-list.component.html -->
 
 <div class="container">
-    <h1>All demande</h1>
+    <h1>All leasing requests</h1>
     <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Request Date</th>
             <th>Status</th>
             <th>Actions</th>
@@ -52,20 +51,19 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of data">
-            <td>{{ item.id }}</td>
             <td>{{ item.requestDate | date }}</td> <!-- Assuming requestDate is a valid Date object -->
             <td>{{ item.status }}</td>
-            <td><button (click)="updatedemande('Offer',item.id)" class="btn btn-success"> Accepte</button>
-                <button (click)="updatedemande('Denied',item.id)" class="btn btn-info"> Cancel</button></td>
+            <td><button (click)="updatedemande('Offer',item.id)" class="btn btn-success"> Accept</button>
+                <button (click)="updatedemande('Denied',item.id)" class="btn btn-info"> Deny</button></td>
             <td><button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger" (click)="getasset(item.id)"> See Asset</button>
                 <button data-bs-toggle="modal" data-bs-target="#userModal" class="btn btn-secondary"  (click)="getusers(item.id)"> See User</button></td>
                 <td><a class="btn btn-primary" [routerLink]="'../leasing/' + item.id"> Add leasing</a></td>
             </tr>
         </tbody>
       </table>
-      
-    
-    
+
+
+
   </div>
   <!-- Modal -->
 <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
@@ -95,8 +93,8 @@
             <p>Status: <span style="color: red">{{ user?.status }}</span></p>
             <!-- <p>Surname: <span style="color: red">{{ user?.surname }}</span></p> -->
           </div>
-          
-              
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -118,20 +116,20 @@
             <th>price</th>
             <th>description</th>
             <th>image</th>
-            
+
       <tbody>
       <tr >
       <td>{{ object?.assetid }}</td>
       <td>{{ object?.description }}</td>
       <td>{{ object?.price }}</td>
-      <td><img [src]="'http://localhost:8085/assets/images/'+object?.image " style="height: 200px;width: 200px;" alt=""></td>
-     
+      <td><img [src]="'http://localhost:8080/assets/images/'+object?.image " style="height: 200px;width: 200px;" alt=""></td>
+
       </tr>
       </tbody>
-           
+
           </table>
-          
-              
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -145,4 +143,10 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

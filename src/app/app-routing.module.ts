@@ -102,6 +102,7 @@ const routes: Routes = [
         path:"investmentform/:id",
         component:InvestmentformComponent
       },
+      {
         path: "profile",
         component: ProfileComponent, canActivate: [AuthGuard]
       },
@@ -116,9 +117,12 @@ const routes: Routes = [
       {
         path:"InsurancePacks",
         component:InsurancePackOffersComponent
-      },   {
-        path:"payment/:id/:amount",
-        component:PaypremiumComponent
+      },
+      {
+        path: "payment/:id/:amount",
+        component: PaypremiumComponent
+      },
+      {
         path: "notifications",
         component: FrontNotificationsComponent, canActivate: [AuthGuard]
       },
@@ -163,7 +167,7 @@ const routes: Routes = [
         path: "ListComplaintBack",
         component: ListComplaintBackComponent
       },
-    
+
       { path: 'updateComplaintBack/:id', component: EditComplaintBackComponent },
       { path: 'detailComplaintBack/:id', component: DetailComplaintBackComponent },
       {
@@ -240,26 +244,26 @@ const routes: Routes = [
       },
       {
         path:"leasing/:id",
-    component:LeasingComponent
+        component:LeasingComponent
       },
       {
         path:"demande",
-    component:DemandeComponent
+        component:DemandeComponent
       },
       {
-        path:"insurancelist", 
+        path:"insurancelist",
         component:InsuranceListComponent
       },
       {
-        path:"packlist", 
+        path:"packlist",
         component:InsurancepackComponent
       },
       {
-        path:"claim", 
+        path:"claim",
         component:ClaimComponent
       },
       {
-        path:"premium", 
+        path:"premium",
         component:PremiumComponent
       },
       {
@@ -300,7 +304,7 @@ const routes: Routes = [
       }
 
     ]
-  } 
+  }
 
 ];
 

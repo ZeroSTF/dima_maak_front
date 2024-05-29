@@ -4,16 +4,16 @@
       <div class="col-lg-7 col-md-10">
         <!-- Section Tittle -->
         <div class="section-tittle text-center mb-70">
-          <h2>insurance packs</h2>
+          <h2>Our Insurance Packs</h2>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="packs-container">
         <button class="btn btn-primary" (click)="change(true)">
-          List Insurance
+          Your insurances
         </button>
-     
+
         <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -28,30 +28,30 @@
               <label for="date">Date:</label>
               <input type="date" id="date" name="date" ngModel required class="form-control">
           </div>
-      
+
           <div class="form-group">
               <label for="details">Details:</label>
               <textarea id="details" name="details" rows="4" cols="50" ngModel required class="form-control"></textarea>
           </div>
-      
+
           <div class="form-group">
               <label for="amount">Amount:</label>
               <input type="number" id="amount" name="amount" step="0.01" ngModel required class="form-control">
           </div>
-      
+
           <div class="form-group">
             <input type="hidden" name="status" id="status" value="Pending">
         </div>
-        
-      
+
+
           <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Save</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
       </form>
-      
+
       </div>
-   
+
     </div>
   </div>
 </div>
@@ -78,7 +78,7 @@
                 <td>{{ coverage.state }}</td>
                 <td><button class="btn" (click)="getallpr(coverage.id)">see</button></td>
                 <td>   <button  *ngIf="coverage.state=== 'Accepted'" class="btn btn-success" (click)="copy(coverage.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: green;">
-                  Add claim 
+                  Add claim
                 </button></td>
               </tr>
             </tbody>
@@ -86,29 +86,27 @@
           <table class="table" *ngIf="premium.length > 0">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>date</th>
-                <th>amount</th>
-                <th>status</th>
-                <th>accumulatedInterest</th>
-                <th>payment</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Accumulated Interest</th>
+                <th>Payment</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let insurance of premium">
-               
-                <td>{{ insurance.id }}</td>
+
                 <td>{{ insurance.date }}</td>
                 <td>{{ insurance.amount }}</td>
                 <td>{{ insurance.status }}</td>
-                <td>{{ insurance.accumulatedInterest }}</td>
+                <td>{{ insurance.accumulatedInterest }}%</td>
                 <td> <a *ngIf="insurance.status != true" class="btn btn-primary" [routerLink]="'/payment/'+insurance.id+'/'+insurance.amount">Payment</a>
                   <button *ngIf="insurance.status == true" class="btn btn-primary" disabled>Payment</button>
                 </td>
-           
-  
-  
-  
+
+
+
+
               </tr>
             </tbody>
           </table>
@@ -144,7 +142,7 @@
           <div
             class="col-lg-4 col-md-6 mb-4"
             *ngFor="let pack of insurancepacks"
-          >
+            style="width: 500px" >
             <div class="card pack">
               <div class="card-header pack__header">
                 <h3 class="card-title">{{ pack.name }}</h3>

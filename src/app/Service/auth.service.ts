@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private baseUrl:String = 'http://localhost:8080/auth/'
-  islogin=false
+
   headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });

@@ -7,7 +7,7 @@
         <!-- Section Tittle -->
         <div class="section-tittle text-center mb-70">
           <h2>
-            All Product
+            Our Products for Leasing
             <!-- Button trigger modal -->
 
             <!-- Modal -->
@@ -18,13 +18,12 @@
       </div>
     </div>
     <button type="button" class="btn btn-primary" (click)="etat(true)">
-      List demande
+      My leasing requests
     </button>
     <div class="modal-body m-2" *ngIf="showtable">
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Request Date</th>
             <th>Status</th>
             <th></th>
@@ -32,7 +31,6 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of data">
-            <td>{{ item.id }}</td>
             <td>{{ item.requestDate | date }}</td>
             <!-- Assuming requestDate is a valid Date object -->
             <td>{{ item.status }}</td>
@@ -52,14 +50,14 @@
     <div class="row">
   <div class="col-md-4" *ngFor="let asset of assets">
     <div class="card">
-      <img [src]="'http://localhost:8085/assets/images/' + asset.image" class="card-img-top" style="height: 250px;width: 250px;" alt="Asset Image">
+      <img src="/assets/pngwing.com.png" class="card-img-top" style="height: 250px;width: 250px;" alt="Asset Image">
       <div class="card-body">
         <p class="card-text">Description: {{ asset.description }}</p>
         <p class="card-text">Type: {{ asset.type }}</p>
 
-        <p class="card-text">Price: {{ asset.price }}</p>
+        <p class="card-text">Price: {{ asset.price }} DT</p>
         <button (click)="add(asset.assetid)" class="btn btn-danger">
-          envoyer Demande
+          Send Request
         </button>
       </div>
     </div>

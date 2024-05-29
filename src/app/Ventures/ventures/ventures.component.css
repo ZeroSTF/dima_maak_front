@@ -1,9 +1,10 @@
-/* Styles généraux pour le tableau */
+/*
+!* Styles généraux pour le tableau *!
 .table {
     width: 100%;
     border-collapse: collapse;
-    /* Ajout d'une scrollbar verticale */
-    max-height: 500px; /* Vous pouvez ajuster cette valeur selon vos besoins */
+    !* Ajout d'une scrollbar verticale *!
+    max-height: 500px; !* Vous pouvez ajuster cette valeur selon vos besoins *!
     overflow-y: auto;
 }
 .center-text {
@@ -24,7 +25,7 @@
     border-bottom: 1px solid #dee2e6;
 }
 
-/* Styles pour les boutons */
+!* Styles pour les boutons *!
 .btn {
     padding: 5px 12px;
     margin-right: 8px;
@@ -50,17 +51,17 @@
     border-color: #6c757d;
 }
 
-/* Style pour les cellules de données centrées verticalement */
+!* Style pour les cellules de données centrées verticalement *!
 .align-middle {
     vertical-align: middle !important;
 }
 
-/* Style pour les boutons dans la colonne Actions */
+!* Style pour les boutons dans la colonne Actions *!
 .d-flex.justify-content-between {
     width: 100%;
 }
 
-/* Style pour le footer */
+!* Style pour le footer *!
 .card-footer {
     padding: 15px;
     background-color: #f8f9fa;
@@ -72,3 +73,4 @@
 .content-wrapper {
     box-shadow: 0 0.25rem 0.75rem rgba(250, 0, 255, 0.2);
 }
+*/

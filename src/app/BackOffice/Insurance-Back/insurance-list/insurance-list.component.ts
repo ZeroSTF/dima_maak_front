@@ -10,7 +10,7 @@ import { InStatus } from 'src/app/Model/Insurance';
 export class InsuranceListComponent {
   insurances:any[]=[];
   InStatus = InStatus;
-  
+
   constructor(private insuranceservice:InsuranceServicesService) {
 
   }
@@ -18,16 +18,16 @@ export class InsuranceListComponent {
     this.insuranceservice.findallinsurances().subscribe(insurances=>{
       this.insurances=insurances;
       console.log(insurances);
-      
-      
+
+
     });
   }
   getall(){
     this.insuranceservice.findallinsurances().subscribe(insurances=>{
       this.insurances=insurances;
       console.log(insurances);
-      
-      
+
+
     });
   }
   ins= new Insurance()
@@ -52,21 +52,23 @@ console.log(this.ins);
       if (confirmation) {
         this.insurances.splice(index, 1);
         this.insuranceservice.deleteins(x).subscribe();
-      } 
+      }
     }
   }
   updateInsuranceState(insuranceId: number): void {
     this.insuranceservice.updateInsurance(insuranceId).subscribe(
-      () => {
+      (data:any) => {
         // Mettre à jour les données après la mise à jour de l'assurance
-        this.insuranceservice.findallinsurances().subscribe(
+        console.log(data);
+        this.getall();
+/*        this.insuranceservice.findallinsurances().subscribe(
           (insurances: Insurance[]) => {
             this.insurances = insurances;
           },
           (error: any) => {
             console.error('Error fetching insurances:', error);
           }
-        );
+        );*/
       },
       (error: any) => {
         console.error('Error updating insurance:', error);

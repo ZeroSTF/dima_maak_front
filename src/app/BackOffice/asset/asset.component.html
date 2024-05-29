@@ -19,12 +19,12 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-  
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      
-  
+
+
         <div class="container">
 
             <h1></h1>
@@ -119,7 +119,7 @@
                 </div>
               </form>
         </div>
-     
+
       </div>
     </div>
   </div>
@@ -212,12 +212,12 @@
                 </div>
               </form>
         </div>
-     
+
       </div>
     </div>
-  </div> 
+  </div>
 
-       
+
           </div>
         <!-- /.row -->
         <div class="row">
@@ -226,31 +226,28 @@
 <div class="container">
     <h1>All Assets</h1>
     <table class="table">
-      <th>ID</th>
       <th>price</th>
       <th>description</th>
       <th>image</th>
       <th>action</th>
 <tbody>
 <tr *ngFor="let asset of assets">
-<td>{{ asset.assetid }}</td>
 <td>{{ asset.description }}</td>
 <td>{{ asset.price }}</td>
-<td><img [src]="'http://localhost:8085/assets/images/'+asset.image " style="height: 250px;width: 250px;" alt=""></td>
+<td><img src="assets/pngwing.com.png" style="height: 250px;width: 250px;" alt=""></td>
 <td> <button (click)="delete(asset.assetid)" class="btn btn-danger">Delete</button>
 <button (click)="copyobj(asset)" data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-secondary">Edit</button></td>
 </tr>
 </tbody>
-     
+
     </table>
-    
-    
+
+
   </div>
-  
+
         </div>
       </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  

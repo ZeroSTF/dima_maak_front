@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { InsurancePack } from 'src/app/Model/InsurancePack';
 import { InsurancePackServiceService } from 'src/app/Service/Insurance-Pack/insurance-pack-service.service';
 import { InsuranceServicesService } from 'src/app/Service/Insurance/insurance-services.service';
+import {UserService} from "../../../Service/user/user.service";
 
 @Component({
   selector: 'app-insurance-pack-offers',
@@ -11,25 +12,26 @@ import { InsuranceServicesService } from 'src/app/Service/Insurance/insurance-se
 })
 export class InsurancePackOffersComponent implements OnInit {
   insurancepacks:InsurancePack[]=[];
-  constructor(private insurancepackservice:InsurancePackServiceService,private service:InsuranceServicesService) {
+  constructor(private insurancepackservice:InsurancePackServiceService,private service:InsuranceServicesService, private userService:UserService) {
 
   }
   id:any
   ngOnInit(){
-    this.id=localStorage.getItem("userId")
-    console.log(this.id);
+    this.userService.getProfile().subscribe((data:any)=>{
+      this.id=data.id
+    });
     this.getallbyuser()
     this.insurancepackservice.findallinsurancepacks().subscribe(data=>{
       this.insurancepacks=data;
       console.log(data);
-      
+
     });
   }
 choose(x:any){
 this.service.addins(x,this.id).subscribe(data=>{
   console.log(data);
   alert("added successfully ...")
-  
+
 })
 }
 listebyuser:any[]=[]
@@ -48,7 +50,7 @@ addclaim(ng:NgForm){
   this.service.addclaim(ng.value,this.idclaim).subscribe(data=>{
     console.log(data);
     alert("added ....")
-    
+
   })
 }
 premium:any[]=[]

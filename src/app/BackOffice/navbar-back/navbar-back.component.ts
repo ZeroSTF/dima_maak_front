@@ -96,9 +96,4 @@ export class NavbarBackComponent implements OnInit{
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  }
-logout(){
-  localStorage.clear()
-  window.location.href="/login"
-}
 }

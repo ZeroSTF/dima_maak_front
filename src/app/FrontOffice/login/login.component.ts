@@ -50,22 +50,4 @@ export class LoginComponent implements OnInit {
         });
     }
   }
-  login(){
-    const email = this.loginForm.get('email')?.value;
-    const password = this.loginForm.get('password')?.value;
-this.service.login(email,password).subscribe((data:any)=>{
-  console.log(data.role[0].authority,data.id);
-  localStorage.setItem('userId', data.id); 
-    localStorage.setItem('userRole', data.role[0].authority); 
-
-   if(data.role[0].authority==="ADMIN")
-    {
-      this.router.navigate(['/admin/packlist']); 
-    }else{
-      this.router.navigate(['/InsurancePacks']); 
-    }
-  
-  
-})
-  }
 }

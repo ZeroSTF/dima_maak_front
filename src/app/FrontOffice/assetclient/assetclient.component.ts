@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AssetService } from 'src/app/Service/asset.service';
+import {UserService} from "../../Service/user/user.service";
 
 @Component({
   selector: 'app-assetclient',
@@ -8,15 +9,17 @@ import { AssetService } from 'src/app/Service/asset.service';
   styleUrls: ['./assetclient.component.css']
 })
 export class AssetclientComponent implements OnInit{
-  constructor(private assetService: AssetService) { }
+  constructor(private assetService: AssetService, private userService:UserService) { }
 id:any
 assets:any[]=[]
   ngOnInit(): void {
-    this.id=JSON.parse(String(localStorage.getItem("iddima")))
-this.assetService.getasset().subscribe(data=>{
+    this.userService.getProfile().subscribe((data:any)=>{
+      this.id=data.id;
+    })
+  this.assetService.getasset().subscribe(data=>{
   this.assets=data
   console.log(data);
-  
+
 })
 this.loadData();
   }
@@ -41,9 +44,9 @@ this.loadData();
     status: 'Pending'
   };
 
-  
 
- 
+
+
 
   resetForm(): void {
     this.newDemand = {
@@ -62,7 +65,7 @@ this.loadData();
       (response: any[]) => {
         this.data = response;
         console.log(response);
-        
+
       },
       (error) => {
         console.error('Error fetching data: ', error);

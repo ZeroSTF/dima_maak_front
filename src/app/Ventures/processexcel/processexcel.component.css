@@ -1,15 +1,17 @@
+/*
 .form-wrapper {
-    background-color: #f8f9fa; /* Changer la couleur de fond du formulaire */
+    background-color: #f8f9fa; !* Changer la couleur de fond du formulaire *!
 }
 
 .form-wrapper input[type="file"],
 .form-wrapper button[type="submit"] {
-    background-color: #007bff; /* Changer la couleur de fond des champs de formulaire et des boutons */
-    color: #fff; /* Changer la couleur du texte pour mieux se détacher */
-    border-color: #007bff; /* Changer la couleur de la bordure */
+    background-color: #007bff; !* Changer la couleur de fond des champs de formulaire et des boutons *!
+    color: #fff; !* Changer la couleur du texte pour mieux se détacher *!
+    border-color: #007bff; !* Changer la couleur de la bordure *!
 }
 
 .form-wrapper input[type="file"]:focus,
 .form-wrapper button[type="submit"]:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Ajouter une mise en évidence lorsqu'un élément est en focus */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); !* Ajouter une mise en évidence lorsqu'un élément est en focus *!
 }
+*/

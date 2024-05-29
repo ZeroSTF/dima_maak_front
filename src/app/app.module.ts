@@ -103,7 +103,7 @@ import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/sho
     AllreturnsComponent,
     InvestorsComponent,
     InvestorsScoresComponent,
-    AddreturnComponent
+    AddreturnComponent,
     UserListComponent,
     ProfileComponent,
     InsuranceListComponent,
@@ -112,13 +112,13 @@ import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/sho
     InsurancepackComponent,
     PremiumComponent,
     ClaimComponent,
-    PaypremiumComponent
+    PaypremiumComponent,
     AssetComponent,
     LeasingComponent,
     DemandeComponent,
     AssetclientComponent,
     PaymentComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
     EditProfileComponent,
     FrontNotificationsComponent,
     NotificationDetailsComponent,
@@ -136,7 +136,7 @@ import { ShowLoyaltyComponent } from './BackOffice/loyalty-back/show-loyalty/sho
     UpdateCommentComponent,
     UpdatePostComponent,
     StatPostComponent,
-    ListPostBackComponent
+    ListPostBackComponent,
     ShowUserComponent,
     EditUserComponent,
     AddUserComponent,

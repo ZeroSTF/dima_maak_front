@@ -19,15 +19,15 @@
                   <ul id="navigation">
                     <li><a routerLink="/">Home</a></li>
                     <li><a routerLink="#">Our Loan Packs</a></li>
-                    <li><a routerLink="#">Our Insurance Packs</a></li>
-                    <li><a routerLink="#">Our Leasing Offers</a>
+                    <li><a routerLink="/InsurancePacks">Our Insurance Packs</a></li>
+                    <li><a routerLink="/assetclient">Our Leasing Offers</a>
                     <li><a routerLink="#">Ventures</a>
                       <ul class="submenu">
                         <li><a routerLink="/venturefront">Invest</a></li>
                         <li><a routerLink="#">Launch a Venture</a></li>
                       </ul>
                     </li>
-                    <li><a routerLink="#">Forum</a></li>
+                    <li><a routerLink="/ListPost">Forum</a></li>
                     <!-- Notifications Dropdown Menu -->
                     <li *ngIf="authService.isAuthenticated()" class="nav-item dropdown">
                       <a class="nav-link" data-toggle="dropdown" routerLink="#">
@@ -52,16 +52,15 @@
                     <!-- Notifications Dropdown Menu End-->
                     <li><a routerLink="/profile">My Profile</a>
                       <ul class="submenu">
-                        <li><a routerLink="#">Insurances</a></li>
+                        <li><a routerLink="">Insurances</a></li>
                         <li><a routerLink="#">Loans</a></li>
                         <li><a routerLink="#">Leases</a></li>
                         <li><a routerLink="#">Investments</a></li>
                         <li><a routerLink="#">Ventures</a></li>
+                        <li><a routerLink="/ListComplaint">My complaints</a></li>
                       </ul>
                     </li>
                     <li><a *ngIf="!authService.isAuthenticated()" routerLink="/signup">Sign Up</a>
-                      <li><a (click)="logout()">Logout</a>
-
                   </ul>
                 </nav>
               </div>

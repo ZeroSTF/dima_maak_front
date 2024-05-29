@@ -125,7 +125,7 @@
               </div>
           </form>
         </div>
-     
+
       </div>
     </div>
   </div>
@@ -226,13 +226,12 @@
               </div>
           </form>
         </div>
-     
+
       </div>
     </div>
   </div>
   <section class="content">
     <div class="container-fluid">
-      <p>insurance-pack-list works!</p>
       <div class="insurance-list card">
         <div class="card-header">
           <h3 class="card-title">Insurances pack</h3>
@@ -241,7 +240,6 @@
           <table class="table" *ngIf="insurances.length > 0">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Type</th>
                 <th>Coverage Amount</th>
@@ -253,8 +251,6 @@
             </thead>
             <tbody>
               <tr *ngFor="let insurance of insurances">
-               
-                <td>{{ insurance.id }}</td>
                 <td>{{ insurance.name }}</td>
                 <td>{{ insurance.type }}</td>
                 <td>{{ insurance.coverageAmount }}</td>

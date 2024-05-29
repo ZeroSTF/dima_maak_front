@@ -30,48 +30,48 @@
               <table class="table table-striped">
                 <thead>
                 <tr>
-                  <th>Email</th>
-                  <th style="white-space: nowrap;">First Name</th>
-                  <th style="white-space: nowrap;">Last Name</th>
-                  <th>Job</th>
-                  <th>Salary</th>
-                  <th>Address</th>
-                  <th>CIN</th>
-                  <th>RIB</th>
-                  <th>Balance</th>
-                  <th>LP</th>
-                  <th style="white-space: nowrap;">Birth Date</th>
-                  <th style="white-space: nowrap;">Risk Category</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                  <th></th>
+                  <th class="customTh">Email</th>
+                  <th class="customTh" style="white-space: nowrap;">First Name</th>
+                  <th class="customTh" style="white-space: nowrap;">Last Name</th>
+                  <th class="customTh">Job</th>
+                  <th class="customTh">Salary</th>
+                  <th class="customTh">Address</th>
+                  <th class="customTh">CIN</th>
+                  <th class="customTh">RIB</th>
+                  <th class="customTh">Balance</th>
+                  <th class="customTh">LP</th>
+                  <th class="customTh" style="white-space: nowrap;">Birth Date</th>
+                  <th class="customTh" style="white-space: nowrap;">Risk Category</th>
+                  <th class="customTh">Role</th>
+                  <th class="customTh">Status</th>
+                  <th class="customTh"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let user of filteredUsers">
-                  <td>{{ user.email }}</td>
-                  <td>{{ user.surname }}</td>
-                  <td>{{ user.name }}</td>
-                  <td>{{ user.job }}</td>
-                  <td>{{ user.salary }}</td>
-                  <td>{{ user.address.city }}, {{ user.address.state }}, {{ user.address.country }} {{ user.address.postalCode }}</td>
-                  <td>{{ user.cin}}</td>
-                  <td>{{ user.rib}}</td>
-                  <td>{{ user.balance}}</td>
-                  <td>{{ user.lp}}</td>
-                  <td>{{ user.birthDate}}</td>
-                  <td>
+                  <td class="customTh">{{ user.email }}</td>
+                  <td class="customTh">{{ user.surname }}</td>
+                  <td class="customTh">{{ user.name }}</td>
+                  <td class="customTh">{{ user.job }}</td>
+                  <td class="customTh">{{ user.salary }}</td>
+                  <td class="customTh">{{ user.address.city }}, {{ user.address.state }}, {{ user.address.country }} {{ user.address.postalCode }}</td>
+                  <td class="customTh">{{ user.cin}}</td>
+                  <td class="customTh">{{ user.rib}}</td>
+                  <td class="customTh">{{ user.balance}}</td>
+                  <td class="customTh">{{ user.lp}}</td>
+                  <td class="customTh">{{ user.birthDate}}</td>
+                  <td class="customTh">
                     <span *ngIf="user['riskCategory'] === 'Low Risk'" class="badge badge-success custom-badge">{{ user['riskCategory'] }}</span>
                     <span *ngIf="user['riskCategory'] === 'Medium Risk'" class="badge badge-warning custom-badge">{{ user['riskCategory'] }}</span>
                     <span *ngIf="user['riskCategory'] === 'High Risk'" class="badge badge-danger custom-badge">{{ user['riskCategory'] }}</span>
                   </td>
-                  <td>
+                  <td class="customTh">
                     <span *ngIf="user.role[0]?.type === 'ADMIN'" class="badge badge-primary custom-badge">Admin</span>
                     <span *ngIf="user.role[0]?.type === 'USER'" class="badge badge-secondary custom-badge">User</span>
                     <span *ngIf="user.role[0]?.type !== 'ADMIN' && user.role[0]?.type !== 'USER'" class="badge badge-secondary custom-badge" style="background-color: #FFC107">Investor</span>
                   </td>
-                  <td>{{ user.status }}</td>
-                  <td class="project-actions text-right" style="white-space: nowrap;">
+                  <td class="customTh">{{ user.status }}</td>
+                  <td class="project-actions text-right customTh" style="white-space: nowrap;">
                     <a routerLink="/admin/profile/{{user.id}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-eye"></i> View</a>
                     <a (click)="edit(user)" class="btn btn-sm btn-warning mr-1"><i class="fas fa-edit"></i> Edit</a>
                     <a (click)="delete(user)" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
