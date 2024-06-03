@@ -1,0 +1,227 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Insurances</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Insurances</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="insurance-list card">
+          <div class="card-header">
+            <h3 class="card-title">Insurances</h3>
+          </div>
+          <div class="card-body">
+            <table *ngIf="insurances.length > 0" class="table">
+              <thead>
+                <tr>
+                  <th>StartDate</th>
+                  <th>EndDate</th>
+                  <th>Coverage Amount</th>
+                  <th>Premium</th>
+                  <th>State</th>
+                  <th>Pack Name</th>
+                  <th>User</th>
+
+                  <th>Action</th>
+                  <th>see premium</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let insurance of insurances">
+                  <td>{{ insurance.startDate }}</td>
+                  <td>{{ insurance.endDate }}</td>
+                  <td>{{ insurance.clientcoverageamount }}</td>
+                  <td>{{ insurance.clientpremium }}</td>
+                  <td>{{ insurance.state }}</td>
+                  <td >{{ insurance.insuranceP?.name }}</td>
+                  <td>{{ insurance.user.id }} - {{ insurance.user.surname }} {{ insurance.user.name }}</td>
+
+      <td><button class="btn btn-success"      data-bs-toggle="modal"
+        data-bs-target="#exampleModal" (click)="edit(insurance)" >edit</button><button (click)="delete(insurance.id)" class="btn btn-danger">delete</button></td>
+         <td><button class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#seeModal" (click)="getallpr(insurance.id)">See</button></td>
+        <td>
+                      <button *ngIf="insurance.state === InStatus.Pending" class="btn btn-secondary" (click)="updateInsuranceState(insurance.id)">
+                          Accept
+                        </button>
+
+
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer text-center" *ngIf="insurances.length === 0">
+            <p class="text-muted">No  found.</p>
+          </div>
+        </div>
+
+    </div><!--/. container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+               <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add pack</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+
+                  <form #ng="ngForm" (ngSubmit)="update()">
+                    <div>
+                      <div class="form-group">
+                        <label for="name">start date</label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="startDate"
+                          name="startDate"
+                          [(ngModel)]="ins.startDate"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="state">state</label>
+                        <select class="form-control" id="state" name="state" [(ngModel)]="ins.state">
+
+                          <option value="Accepted"> Accepted</option>
+                          <option value="Pending">Pending</option>
+                          <option value="Denied">Denied</option>
+                          <option value="Archived">Archived</option>
+
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="endDate">endDate</label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="endDate"
+                          name="endDate"
+                          [(ngModel)]="ins.endDate"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="duration">clientcoverageamount</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="clientcoverageamount"
+                          name="clientcoverageamount"
+                          [(ngModel)]="ins.clientcoverageamount"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="policy">clientpremium</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="clientpremium"
+                          name="clientpremium"
+                          [(ngModel)]="ins.clientpremium"
+                        />
+                      </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                      </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div
+          class="modal fade"
+          id="seeModal"
+          tabindex="-1"
+          aria-labelledby="seeModalLabel"
+          aria-hidden="true"
+        >
+
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="seeModalLabel">List premium</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+
+              <table class="table" *ngIf="premium.length > 0">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Accumulated Interest</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let insurance of premium">
+                    <td>{{ insurance.date }}</td>
+                    <td>{{ insurance.amount }}</td>
+                    <td *ngIf="insurance.status">Paid</td>
+                    <td *ngIf="!insurance.status">Unpaid</td>
+                    <td>{{ insurance.accumulatedInterest }}%</td>
+
+
+
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+<br>
+<br>
+<br>
+<br>
+<br>

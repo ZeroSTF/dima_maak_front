@@ -7,11 +7,11 @@ import { Post } from '../Model/Post';
   providedIn: 'root'
 })
 export class PostService {
-  private baseUrl = 'http://localhost:8085/post';
+  private baseUrl = 'http://localhost:8080/post';
 
   constructor(private http: HttpClient) { }
 
-  addPost(post: Post): Observable<any> {
+  addPost(post: any){
     return this.http.post(`${this.baseUrl}/save`, post);
   }
 

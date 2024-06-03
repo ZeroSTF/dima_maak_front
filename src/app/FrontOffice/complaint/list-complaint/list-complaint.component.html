@@ -4,32 +4,39 @@
     <table class="table">
       <thead>
         <tr>
+<<<<<<< HEAD
           
+=======
+>>>>>>> b43d295234c8d5c8f75e42b4dbcc625e3c099ab7
           <th>Date</th>
           <th>Subject</th>
           <th>Description</th>
           <th>Status</th>
-          <th>User</th>
-          <th>action</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let complaint of complaints">
+<<<<<<< HEAD
           
+=======
+>>>>>>> b43d295234c8d5c8f75e42b4dbcc625e3c099ab7
           <td>{{ complaint.date | date: 'dd/MM/yyyy' }}</td>
           <td>{{ complaint.subject }}</td>
           <td>{{ complaint.description }}</td>
           <td>{{ complaint.status ? 'Active' : 'Inactive' }}</td>
-          <td>{{ complaint.user?.id }}</td>
           <td>
-          <button (click)="updateComplaint(complaint.id)">Update</button>
-          <button (click)="deleteComplaint(complaint.id)">Delete</button>
-          <button (click)="DetailComplaint(complaint.id)">Details</button>
+          <button class="btn-primary" (click)="updateComplaint(complaint.id)">Update</button>
+          <button class="btn-primary" (click)="deleteComplaint(complaint.id)">Delete</button>
+          <button class="btn-primary" (click)="DetailComplaint(complaint.id)">Details</button>
         </td>
       </tbody>
     </table>
   </div>
+<<<<<<< HEAD
   <br>
   <br>
   <br>
   
+=======
+>>>>>>> b43d295234c8d5c8f75e42b4dbcc625e3c099ab7

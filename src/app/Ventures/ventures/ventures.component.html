@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="content-wrapper">
+
+    <!-- CARD: VENTURES -->
+    <div class="card">
+      <div class="card-header border-transparent">
+        <h3 class="card-title" style="text-align: center;">Ventures Details</h3>
+      </div>
+      <!-- /.card-header -->
+
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table m-0 table-striped table-dark">
+            <thead>
+            <tr>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Company Name</th>
+              <th scope="col" class="text-center">Stage</th>
+              <th scope="col" class="text-center">Sector</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Venture Name</th>
+              <th scope="col" class="text-center">Description</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Expiration Date</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Available Shares</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Shares Price</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Dividend Per Share</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Loan Amount</th>
+              <th scope="col" class="text-center">Interest</th>
+              <th scope="col" class="text-center" style="white-space: nowrap;">Loan Duration</th>
+              <th scope="col" class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let venture of ventures; let i = index">
+              <td class="align-middle text-center">{{ venture.idV }}-{{ venture.companyName }}</td>
+              <td class="align-middle text-center">{{ venture.stage }}</td>
+              <td class="align-middle text-center">{{ venture.sector }}</td>
+              <td class="align-middle text-center">{{ venture.ventureName }}</td>
+              <td class="align-middle text-center">{{ venture.description }}</td>
+              <td class="align-middle text-center">{{ venture.dateExp }}</td>
+              <td class="align-middle text-center" [ngClass]="getStatusLabelClass(venture.status)">{{ venture.status }}</td>
+              <td class="align-middle text-center">{{ venture.availableShares }}</td>
+              <td class="align-middle text-center">{{ venture.sharesPrice }}</td>
+              <td class="align-middle text-center">{{ venture.dividendPerShare }}</td>
+              <td class="align-middle text-center">{{ venture.loanAmount }}</td>
+              <td class="align-middle text-center">{{ venture.interest }}%</td>
+              <td class="align-middle text-center">{{ venture.loanDuration }}</td>
+              <td class="align-middle">
+                <div class="d-flex justify-content-between">
+                  <button *ngIf="venture.idV" (click)="deleteVenture(venture.idV)" class="btn btn-danger btn-sm">Delete</button>
+                  <button class="btn btn-sm btn-secondary float-right" [routerLink]="['/admin/updateventure', venture.idV]">Update</button>
+
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="ventures.length === 0">
+              <td colspan="15" class="text-center">No ventures found</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.table-responsive -->
+      </div>
+      <!-- /.card-body -->
+      <!-- Delete All Expired Ventures Button -->
+      <div class="d-flex justify-content-center mt-3">
+        <button (click)="deleteExpiredVentures()" class="btn btn-danger">Delete All Expired Ventures</button>
+      </div>
+
+      <!-- Add new venture Button -->
+      <div class="card-footer clearfix mt-3">
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-sm btn-secondary" [routerLink]="['/admin/addventures']">Add new venture</button>
+          <button class="btn btn-sm btn-secondary" [routerLink]="['/admin/processexcel']">Add new venture from excel</button>
+
+        </div>
+      <!-- /.card-footer -->
+
+      </div>
+    </div>
+    <!-- /.card -->
+
+  </div>
+</div>

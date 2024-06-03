@@ -1,0 +1,15 @@
+<div class="container mt-3">
+    <h2>User Scores</h2>
+    <div class="list-group">
+        <!-- Adding dynamic classes for different score ranges -->
+        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+           *ngFor="let score of scores" [ngClass]="{'list-group-item-success': score.score > 80, 'list-group-item-warning': score.score > 50 && score.score <= 80, 'list-group-item-danger': score.score <= 50}">
+            <div>
+                <h5 class="mb-1">User ID: {{ score.userId }}</h5>
+                <small>Click for more details</small>
+            </div>
+            <span class="badge badge-primary badge-pill">{{ score.score }}</span>
+        </a>
+    </div>
+    <p *ngIf="scores.length === 0" class="text-center">No scores available.</p>
+</div>

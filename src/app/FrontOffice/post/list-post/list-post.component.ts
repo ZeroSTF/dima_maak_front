@@ -6,6 +6,7 @@ import { Comment } from 'src/app/Model/Comment';
 import { User } from 'src/app/Model/User';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Service/auth.service';
+import {UserService} from "../../../Service/user/user.service";
 
 @Component({
   selector: 'app-list-post',
@@ -18,6 +19,7 @@ export class ListPostComponent implements OnInit {
   showCommentFormId: number | null = null; // ID du post pour lequel le formulaire de commentaire est affiché
   commentContent: string = '';
   updatedContent: string = '';// Contenu du commentaire
+  currentUser:any;
   usr !: User;
   p !: Post;
   showUpdateFormId: number | null = null;
@@ -30,17 +32,20 @@ export class ListPostComponent implements OnInit {
     createdDate: new Date(),
     likes: 0,
     favorites: [],
-    user: null, 
+    user: null,
     comments: []
   };
 
-  constructor(private postService: PostService, private commentService: CommentService, 
-    private router: Router , private authService : AuthService) { }
+  constructor(private postService: PostService, private commentService: CommentService,
+    private router: Router , private authService : AuthService, private userService:UserService) { }
 
   ngOnInit(): void {
+    this.userService.getProfile().subscribe((data:any)=>{
+      this.currentUser=data;
+    });
     this.loadPosts();
 
-  
+
   }
 
   loadPosts(): void {
@@ -92,10 +97,10 @@ export class ListPostComponent implements OnInit {
       comments => {
         this.comments = comments;
         console.log("Comments:", this.comments);
-  
+
         // Réinitialiser showCommentFormId une fois les commentaires chargés
         this.showCommentFormId = null;
-  
+
         // Mettre à jour le nombre de likes de chaque commentaire
         this.comments.forEach(comment => {
           // Vous pouvez ici ajouter la logique pour calculer le nombre total de likes de chaque commentaire
@@ -106,7 +111,7 @@ export class ListPostComponent implements OnInit {
       }
     );
   }
-  
+
 
   showCommentForm(postId: number): void {
     this.showCommentFormId = postId; // Afficher le formulaire de commentaire pour ce post
@@ -122,7 +127,7 @@ export class ListPostComponent implements OnInit {
       id: 0,
       content: this.commentContent,
       createdDate: new Date(),
-      user: this.usr, // Remplacez null par l'utilisateur actuel si nécessaire
+      user: this.currentUser, // Remplacez null par l'utilisateur actuel si nécessaire
       post: this.p, // Remplacez null par les détails du post si nécessaire
       rating: 0// Si vous avez des évaluations à inclure
     };
@@ -173,11 +178,11 @@ export class ListPostComponent implements OnInit {
         console.error('Error updating post:', error);
       }
     );
-   
+
     this.showUpdateFormId = null;
     window.location.reload();
   }
-  
+
   showUpdateForm(postId: number): void {
     this.showUpdateFormId = postId;
     // Charger les détails du post à mettre à jour
@@ -190,7 +195,7 @@ export class ListPostComponent implements OnInit {
       }
     );
   }
-  
+
 
   updateComment(comment: Comment): void {
     comment.createdDate = new Date();
@@ -205,21 +210,23 @@ export class ListPostComponent implements OnInit {
       }
     );
     window.location.reload();
-    
+
   }
 
 //add post
 toggleAddPostForm(): void {
   this.showAddPostForm = !this.showAddPostForm; // Inverser la valeur de la variable
 }
-addPost(newPost: Post): void {
+addPost(newPost: any): void {
   this.postService.addPost(newPost).subscribe(
-    () => {
+    (data:any) => {
+      console.log(data);
       console.log("Post added successfully.");
       // Actualisez la liste des posts après l'ajout du nouveau post
       this.loadPosts();
     },
     error => {
+      console.log(newPost);
       console.error('Error adding post:', error);
     }
   );
@@ -229,6 +236,8 @@ onSubmit(): void {
     console.error("Title and content are required.");
     return;
   }
+  this.newPost.id=-1;
+  this.newPost.user=this.currentUser;
   this.addPost(this.newPost);
   // Réinitialisez les valeurs du nouveau post après l'ajout
   this.newPost = {
@@ -244,7 +253,7 @@ onSubmit(): void {
   this.toggleAddPostForm();
   window.location.reload();
 }
-//delete post 
+//delete post
 deletePost(postId: number): void {
   const confirmDelete = window.confirm('Are you sure you want to delete this post?');
   if (confirmDelete) {

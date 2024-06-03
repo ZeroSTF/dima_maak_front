@@ -1,0 +1,253 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Create New Asset
+            </button>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Asset</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+
+        <div class="container">
+
+            <h1></h1>
+            <!-- Button trigger modal -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form #ngform="ngForm" (ngSubmit)="onSubmit(ngform)">
+                <div class="form-group">
+                  <label>Type</label>
+                  <select name="type" id="type" ngModel  class="form-control">
+                    <option *ngFor="let assetType of AssetType" [value]="assetType">{{ assetType }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <input type="text" name="description" id="description" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Price</label>
+                  <input type="number" name="price" id="price" [(ngModel)]="asset.price" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Image</label>
+                  <input type="file" name="image" id="image" (change)="selectimage($event)" class="form-control">
+                </div>
+                <!-- <div class="form-group">
+                  <label>Initial Amount</label>
+                  <input type="number"  name="initialAmount" id="initialAmount" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Purchase Date</label>
+                  <input type="date"  name="purchasedate" id="purchasedate" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Warranty Expiration Date</label>
+                  <input type="date"  name="warrantyExpirationDate" id="warrantyExpirationDate" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Maintenance Status</label>
+                  <input type="text"  name="maintenanceStatus" id="maintenanceStatus" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Last Maintenance Date</label>
+                  <input type="date" name="lastMaintenanceDate" id="lastMaintenanceDate" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Functions</label>
+                  <input type="text"  name="functions" id="functions" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Power</label>
+                  <input type="number"   name="power" id="power" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Production Capacity</label>
+                  <input type="number"   name="productionCapacity" id="productionCapacity" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Operational Efficiency</label>
+                  <input type="text"   name="operationalEfficiency" id="operationalEfficiency" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Service Level</label>
+                  <input type="text"   name="serviceLevel" id="serviceLevel" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Fuel Consumption</label>
+                  <input type="text"  name="fuelConsumption" id="fuelConsumption" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Engine Condition</label>
+                  <input type="text"   name="engineCondition" id="engineCondition" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Mileage</label>
+                  <input type="number"  name="mileage" id="mileage" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Annual Interest Rate</label>
+                  <input type="number"   name="annualInterestRate" id="annualInterestRate"  ngModel class="form-control">
+                </div> -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" [disabled]="!ngform.valid" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form #ngform="ngForm" (ngSubmit)="update()">
+                <div class="form-group">
+                  <label>Type</label>
+                  <select name="type" id="type"  [(ngModel)]="asset.type"  class="form-control">
+                    <option *ngFor="let assetType of AssetType" [value]="assetType">{{ assetType }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <input type="text" name="description" id="description" [(ngModel)]="asset.description" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Price</label>
+                  <input type="number" name="price" id="price" [(ngModel)]="asset.price" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Image</label>
+                  <input type="file" name="image" id="image" (change)="selectimage($event)" class="form-control">
+                </div>
+                <!-- <div class="form-group">
+                  <label>Initial Amount</label>
+                  <input type="number"  name="initialAmount" id="initialAmount" [(ngModel)]="asset.initialAmount" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Purchase Date</label>
+                  <input type="date"  name="purchasedate" id="purchasedate" [(ngModel)]="asset.purchasedate" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Warranty Expiration Date</label>
+                  <input type="date"  name="warrantyExpirationDate" id="warrantyExpirationDate" [(ngModel)]="asset.warrantyExpirationDate" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Maintenance Status</label>
+                  <input type="text"  name="maintenanceStatus" id="maintenanceStatus" [(ngModel)]="asset.maintenanceStatus" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Last Maintenance Date</label>
+                  <input type="date" name="lastMaintenanceDate" id="lastMaintenanceDate" [(ngModel)]="asset.lastMaintenanceDate" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Functions</label>
+                  <input type="text"  name="functions" id="functions" [(ngModel)]="asset.functions" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Power</label>
+                  <input type="number"   name="power" id="power" [(ngModel)]="asset.power" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Production Capacity</label>
+                  <input type="number"   name="productionCapacity" id="productionCapacity" [(ngModel)]="asset.productionCapacity" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Operational Efficiency</label>
+                  <input type="text"   name="operationalEfficiency" id="operationalEfficiency" [(ngModel)]="asset.operationalEfficiency" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Service Level</label>
+                  <input type="text"   name="serviceLevel" id="serviceLevel" [(ngModel)]="asset.serviceLevel" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Fuel Consumption</label>
+                  <input type="text"  name="fuelConsumption" id="fuelConsumption" [(ngModel)]="asset.fuelConsumption" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Engine Condition</label>
+                  <input type="text"   name="engineCondition" id="engineCondition" [(ngModel)]="asset.engineCondition" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Mileage</label>
+                  <input type="number"  name="mileage" id="mileage" [(ngModel)]="asset.mileage" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Annual Interest Rate</label>
+                  <input type="number"   name="annualInterestRate" id="annualInterestRate"  [(ngModel)]="asset.annualInterestRate" class="form-control">
+                </div> -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" [disabled]="!ngform.valid" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+          </div>
+        <!-- /.row -->
+        <div class="row">
+            <!-- asset-list.component.html -->
+
+<div class="container">
+    <h1>All Assets</h1>
+    <table class="table">
+      <th>price</th>
+      <th>description</th>
+      <th>image</th>
+      <th>action</th>
+<tbody>
+<tr *ngFor="let asset of assets">
+<td>{{ asset.description }}</td>
+<td>{{ asset.price }}</td>
+<td><img src="assets/pngwing.com.png" style="height: 250px;width: 250px;" alt=""></td>
+<td> <button (click)="delete(asset.assetid)" class="btn btn-danger">Delete</button>
+<button (click)="copyobj(asset)" data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-secondary">Edit</button></td>
+</tr>
+</tbody>
+
+    </table>
+
+
+  </div>
+
+        </div>
+      </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->

@@ -52,6 +52,8 @@
                 <option value="Doctor">Doctor</option>
                 <option value="Teacher">Teacher</option>
                 <option value="Lawyer">Lawyer</option>
+                <option value="Farmer">Farmer</option>
+                <option value="Farm Owner">Farm Owner</option>
               </select>
             </div>
           </div>
@@ -70,6 +72,8 @@
                 </div>
                 <div class="col-sm-3">
                   <input type="text" id="postalCode" formControlName="postalCode" placeholder="Postal Code" class="form-control">
+                  <input type="text" id="latitude" formControlName="latitude" class="form-control" hidden>
+                  <input type="text" id="longitude" formControlName="longitude"class="form-control" hidden>
                   <button type="button" class="btn btn-primary" (click)="changeLocation()"><i class="fas fa-map-marker-alt mr-2"></i>Get current location</button>
                 </div>
               </div>

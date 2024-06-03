@@ -1,18 +1,118 @@
-<div class="user-list card">
-  <div class="card-header">
-    <h3 class="card-title">Users</h3>
-  </div>
-  <div class="card-body">
-    <ul *ngIf="users.length > 0" class="list-group">
-      <li *ngFor="let user of users" class="list-group-item">
-        <div class="user-details d-flex justify-content-between align-items-center">
-          <span class="user-name">{{ user.name }} {{ user.surname }}</span>
-          <span class="user-email">{{ user.email }}</span>
+<br>
+<section class="content mt-lg-5" style="margin-left: 13%">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h1 style="margin-left: 44%">
+              User List
+            </h1>
+          </div>
+          <div class="card-body">
+            <div class="search-bar row mb-2">
+              <div class="col-md-5 ml-1">
+                <input [(ngModel)]="searchTerm" (ngModelChange)="filterUsers()" placeholder="Search users..." class="form-control">
+              </div>
+              <div class="col-md-1">
+                <select [(ngModel)]="searchType" (ngModelChange)="filterUsers()" class="form-control">
+                  <option value="surname">First Name</option>
+                  <option value="name">Last Name</option>
+                  <option value="job">Job</option>
+                  <option value="address">Address</option>
+                  <option value="role">Role</option>
+                  <option value="status">Status</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th class="customTh">Email</th>
+                  <th class="customTh" style="white-space: nowrap;">First Name</th>
+                  <th class="customTh" style="white-space: nowrap;">Last Name</th>
+                  <th class="customTh">Job</th>
+                  <th class="customTh">Salary</th>
+                  <th class="customTh">Address</th>
+                  <th class="customTh">CIN</th>
+                  <th class="customTh">RIB</th>
+                  <th class="customTh">Balance</th>
+                  <th class="customTh">LP</th>
+                  <th class="customTh" style="white-space: nowrap;">Birth Date</th>
+                  <th class="customTh" style="white-space: nowrap;">Risk Category</th>
+                  <th class="customTh">Role</th>
+                  <th class="customTh">Status</th>
+                  <th class="customTh"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of filteredUsers">
+                  <td class="customTh">{{ user.email }}</td>
+                  <td class="customTh">{{ user.surname }}</td>
+                  <td class="customTh">{{ user.name }}</td>
+                  <td class="customTh">{{ user.job }}</td>
+                  <td class="customTh">{{ user.salary }}</td>
+                  <td class="customTh">{{ user.address.city }}, {{ user.address.state }}, {{ user.address.country }} {{ user.address.postalCode }}</td>
+                  <td class="customTh">{{ user.cin}}</td>
+                  <td class="customTh">{{ user.rib}}</td>
+                  <td class="customTh">{{ user.balance}}</td>
+                  <td class="customTh">{{ user.lp}}</td>
+                  <td class="customTh">{{ user.birthDate}}</td>
+                  <td class="customTh">
+                    <span *ngIf="user['riskCategory'] === 'Low Risk'" class="badge badge-success custom-badge">{{ user['riskCategory'] }}</span>
+                    <span *ngIf="user['riskCategory'] === 'Medium Risk'" class="badge badge-warning custom-badge">{{ user['riskCategory'] }}</span>
+                    <span *ngIf="user['riskCategory'] === 'High Risk'" class="badge badge-danger custom-badge">{{ user['riskCategory'] }}</span>
+                  </td>
+                  <td class="customTh">
+                    <span *ngIf="user.role[0]?.type === 'ADMIN'" class="badge badge-primary custom-badge">Admin</span>
+                    <span *ngIf="user.role[0]?.type === 'USER'" class="badge badge-secondary custom-badge">User</span>
+                    <span *ngIf="user.role[0]?.type !== 'ADMIN' && user.role[0]?.type !== 'USER'" class="badge badge-secondary custom-badge" style="background-color: #FFC107">Investor</span>
+                  </td>
+                  <td class="customTh">{{ user.status }}</td>
+                  <td class="project-actions text-right customTh" style="white-space: nowrap;">
+                    <a routerLink="/admin/profile/{{user.id}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-eye"></i> View</a>
+                    <a (click)="edit(user)" class="btn btn-sm btn-warning mr-1"><i class="fas fa-edit"></i> Edit</a>
+                    <a (click)="delete(user)" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                  </td>
+                </tr>
+                <tr *ngIf="users.length==0">
+                  <td colspan="12">No users to display.</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <a routerLink="/admin/addUser" class="nav-link btn btn-success">
+              <i class="fas fa-plus"></i>Create a new user</a>
+            <a routerLink="/admin/userStats" class="nav-link btn btn-default"><i class="nav-icon fas fa-chart-pie"></i><p>Statistics</p>
+            </a>
+          </div>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
-  <div class="card-footer text-center" *ngIf="users.length === 0">
-    <p class="text-muted">No users found.</p>
-  </div>
-</div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

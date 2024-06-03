@@ -7,7 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ComplaintService {
+<<<<<<< HEAD
   private baseUrl = 'http://localhost:8085/complaint'; // URL de mon backend Spring
+=======
+  private baseUrl = 'http://localhost:8080/complaint'; // URL de votre backend Spring
+>>>>>>> b43d295234c8d5c8f75e42b4dbcc625e3c099ab7
   private evaluateUrl = `${this.baseUrl}/evaluate`;
 
   constructor(private http: HttpClient) { }

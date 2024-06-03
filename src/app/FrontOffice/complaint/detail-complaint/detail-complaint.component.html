@@ -1,4 +1,5 @@
 <div class="container mt-5" *ngIf="complaint">
+<<<<<<< HEAD
   <br>
   <br>
   <br>
@@ -17,3 +18,42 @@
   <br>
   <br>
   
+=======
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h2>Complaint Details</h2>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Date:</strong> {{ complaint.date | date: 'dd/MM/yyyy' }}
+        </li>
+        <li class="list-group-item">
+          <strong>Subject:</strong> {{ complaint.subject }}
+        </li>
+        <li class="list-group-item">
+          <strong>Description:</strong> {{ complaint.description }}
+        </li>
+        <li class="list-group-item">
+          <strong>Status: </strong>
+          <span class="badge bg-{{ complaint.status ? 'success' : 'danger' }}">
+            {{ complaint.status ? 'Active' : 'Inactive' }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+>>>>>>> b43d295234c8d5c8f75e42b4dbcc625e3c099ab7

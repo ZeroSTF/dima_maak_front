@@ -29,4 +29,8 @@ export class AuthService {
   register(requestBody :any) {
     return this.http.post(this.baseUrl+`register`,requestBody,{ headers : this.headers , withCredentials: true  })
   }
+
+  affiliateRegister(id:string, requestBody :any) {
+    return this.http.post(this.baseUrl+`register/${id}`,requestBody,{ headers : this.headers , withCredentials: true  })
+  }
 }

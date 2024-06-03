@@ -1,0 +1,152 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Leasing Requests</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+  <!-- Modal -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+
+        <div class="container">
+
+            <h1></h1>
+            <!-- Button trigger modal -->
+
+
+
+
+          </div>
+        <!-- /.row -->
+        <div class="row">
+            <!-- asset-list.component.html -->
+
+<div class="container">
+    <h1>All leasing requests</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Request Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+            <th></th>
+            <th>Leasing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+            <td>{{ item.requestDate | date }}</td> <!-- Assuming requestDate is a valid Date object -->
+            <td>{{ item.status }}</td>
+            <td><button (click)="updatedemande('Offer',item.id)" class="btn btn-success"> Accept</button>
+                <button (click)="updatedemande('Denied',item.id)" class="btn btn-info"> Deny</button></td>
+            <td><button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger" (click)="getasset(item.id)"> See Asset</button>
+                <button data-bs-toggle="modal" data-bs-target="#userModal" class="btn btn-secondary"  (click)="getusers(item.id)"> See User</button></td>
+                <td><a class="btn btn-primary" [routerLink]="'../leasing/' + item.id"> Add leasing</a></td>
+            </tr>
+        </tbody>
+      </table>
+
+
+
+  </div>
+  <!-- Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <!-- <p>Address: <span style="color: red">{{ user?.address }}</span></p> -->
+            <p>Balance: <span style="color: red">{{ user?.balance }}</span></p>
+            <p>Birth Date: <span style="color: red">{{ user?.birthDate }}</span></p>
+            <p>CIN: <span style="color: red">{{ user?.cin }}</span></p>
+            <p>Credit Score: <span style="color: red">{{ user?.creditScore }}</span></p>
+            <p>Email: <span style="color: red">{{ user?.email }}</span></p>
+            <!-- <p>ID: <span style="color: red">{{ user?.id }}</span></p> -->
+            <p>Job: <span style="color: red">{{ user?.job }}</span></p>
+            <p>LP: <span style="color: red">{{ user?.lp }}</span></p>
+            <p>Name: <span style="color: red">{{ user?.name }}</span></p>
+            <!-- <p>Password: <span style="color: red">{{ user?.password }}</span></p>
+            <p>Photo: <span style="color: red">{{ user?.photo }}</span></p> -->
+            <p>RIB: <span style="color: red">{{ user?.rib }}</span></p>
+            <!-- <p>Role: <span style="color: red">{{ user?.role }}</span></p> -->
+            <p>Salary: <span style="color: red">{{ user?.salary }}</span></p>
+            <p>Status: <span style="color: red">{{ user?.status }}</span></p>
+            <!-- <p>Surname: <span style="color: red">{{ user?.surname }}</span></p> -->
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Asset</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <th>ID</th>
+            <th>price</th>
+            <th>description</th>
+            <th>image</th>
+
+      <tbody>
+      <tr >
+      <td>{{ object?.assetid }}</td>
+      <td>{{ object?.description }}</td>
+      <td>{{ object?.price }}</td>
+      <td><img [src]="'http://localhost:8080/assets/images/'+object?.image " style="height: 200px;width: 200px;" alt=""></td>
+
+      </tr>
+      </tbody>
+
+          </table>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+      </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

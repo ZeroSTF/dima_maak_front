@@ -1,0 +1,40 @@
+  <table class="table m-0 table-striped table-dark">
+  <thead>
+  <tr>
+      <th>idV</th>
+      <th scope="col" class="text-center">CompanyName</th>
+      <th>Stage</th>
+      <th>">Sector</th>
+      <th>VentureName</th>
+      <th>Description</th>
+      <th>DateExpiration</th>
+      <th>Status</th>
+      <th>AvailableShares</th>
+      <th>SharesPrice</th>
+      <th>DividendPerShare</th>
+      <th>LoanAmount</th>
+      <th>Interest</th>
+  </tr>
+  </thead>
+      <tbody>
+      <tr *ngFor="let venture of ventures; let i = index">
+          <td class="align-middle text-center">{{ i + 1 }}</td>
+          <td class="align-middle text-center">{{ venture.companyName }}</td>
+          <td class="align-middle text-center">{{ venture.stage }}</td>
+          <td class="align-middle text-center">{{ venture.sector }}</td>
+          <td class="align-middle text-center">{{ venture.ventureName }}</td>
+          <td class="align-middle text-center">{{ venture.description }}</td>
+          <td class="align-middle text-center">{{ venture.dateExp }}</td>
+          <td class="align-middle text-center">{{ venture.status }}</td>
+          <td class="align-middle text-center">{{ venture.availableShares }}</td>
+          <td class="align-middle text-center">{{ venture.sharesPrice }}</td>
+          <td class="align-middle text-center">{{ venture.dividendPerShare }}</td>
+          <td class="align-middle text-center">{{ venture.loanAmount }}</td>
+          <td class="align-middle text-center">{{ venture.interest }}</td>
+          <td class="align-middle text-center">{{ venture.loanDuration }}</td>
+          <td class="align-middle">
+
+      </tr>
+      </tbody>
+  </table>
+

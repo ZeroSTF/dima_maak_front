@@ -1,0 +1,85 @@
+
+<!-- Testimonial End -->
+<!-- Blog Ara Start -->
+<div class="home-blog-area section-padding30">
+    <div class="container">
+      <div class="row justify-content-center">
+     
+      </div>
+      <div class="row">
+          <div class="container">
+              <div class="asset-container">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-T4/ZzvydeGZJxTVZ+RgILfTtTByPJHYwoyD9aOCJnrmzYfHmgQd2kMC+1nFJhZoV7sIohc9X+bPtOmzCT2j3sQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                
+                
+                <!-- Header-->
+            
+                
+                
+                <div class="main">
+                    <div class="section text">
+                      <h5 class="fw-bold m-4" >
+                        <a routerLink="/assetclient" ><i class="fas fa-angle-left me-2"></i>Back </a>
+                      </h5>
+                      <div class="container py-5 d-flex justify-content-center align-items-center">
+                      
+                        <div class="col-lg-6">
+                          <div class="card shopping-cart shadow-lg" style="border-radius: 15px;">
+                            <div class="card-body text-black">
+                              <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>
+                              <form class="mb-5">
+                                <div class="form-outline mb-5">
+                                  <input type="text" id="typeText" name="cardNumber" [(ngModel)]="chargeRequest.cardNumber" class="form-control form-control-lg" size="17"
+                                    minlength="19" maxlength="19" />
+                                  <label class="fw-bold mb-0" for="typeText">Card Number</label>
+                                </div>
+                                <div class="form-outline mb-5">
+                                  <input type="text" id="typeName" name="name" [(ngModel)]="chargeRequest.name" class="form-control form-control-lg" size="17"
+                                    value="John Smith" />
+                                  <label class="fw-bold mb-0" for="typeName">Name on card</label>
+                                </div>
+                                <div class="form-outline mb-5">
+                                  <input type="email" id="typeName" name="email" [(ngModel)]="chargeRequest.email" class="form-control form-control-lg" size="17" />
+                                  <label class="fw-bold mb-0" for="typeName">Email</label>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6 mb-5">
+                                    <div class="form-outline">
+                                      <div class="input-group">
+                                        <input type="text" id="typeExp" name="exp_month" [(ngModel)]="chargeRequest.exp_month" class="form-control form-control-lg"
+                                          size="2" id="exp" placeholder="MM" minlength="2" maxlength="2" />
+                                        <input type="text" id="typeExp" name="exp_year" placeholder="YYYY" [(ngModel)]="chargeRequest.exp_year" class="form-control form-control-lg"
+                                          value="01/22" size="4" id="exp" minlength="4" maxlength="4" />
+                                      </div>
+                                      <label class="fw-bold mb-0" for="typeExp">Expiration</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 mb-5">
+                                    <div class="form-outline">
+                                      <input type="password" id="typeText" name="cvv" [(ngModel)]="chargeRequest.cvv" class="form-control form-control-lg" size="1"
+                                        minlength="3" maxlength="3" />
+                                      <label class="fw-bold mb-0" for="typeText">Cvv</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <p class="mb-5">Tous les droits sont réservés <a href="#!">contact admin</a>.</p>
+                                <button type="submit" (click)="charge()" class="btn btn-primary btn-block btn-lg">Buy now</button>
+                               
+                              </form>
+                             
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+              </div>
+              
+              
+            </div>
+      </div>
+    </div>
+  </div>
+  <!-- Blog Ara End -->
+  
